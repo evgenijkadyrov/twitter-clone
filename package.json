@@ -13,11 +13,16 @@
 		"prettier": "prettier \"src/**/*.{ts,tsx}\" . --write --cache"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^3.6.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.7",
 		"mrm": "2",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"react-hook-form": "^7.52.0",
+		"react-redux": "^9.1.2",
+		"styled-components": "^6.1.11",
+		"yup": "^1.4.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20.14.9",
@@ -42,7 +47,8 @@
 		"eslint-plugin-import": "^2.25.3",
 		"eslint-plugin-react-hooks": "^4.3.0",
 		"eslint-plugin-jsx-a11y": "^6.5.1",
-		"eslint-plugin-react": "^7.28.0"
+		"eslint-plugin-react": "^7.28.0",
+		"styled-components": "^5"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx}": "yarn eslint",
