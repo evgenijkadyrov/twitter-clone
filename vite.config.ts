@@ -12,6 +12,7 @@ export default defineConfig({
 			'@assets': path.resolve(__dirname, './src/assets'),
 			'@components': path.resolve(__dirname, './src/components'),
 			'@common': path.resolve(__dirname, './src/common'),
+			'@theme': path.resolve(__dirname, './src/theme'),
 		},
 	},
 	include: ['.eslintrc.cjs'],
