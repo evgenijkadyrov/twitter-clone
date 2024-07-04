@@ -14,4 +14,5 @@ export default defineConfig({
 			'@common': path.resolve(__dirname, './src/common'),
 		},
 	},
+	include: ['.eslintrc.cjs'],
 });

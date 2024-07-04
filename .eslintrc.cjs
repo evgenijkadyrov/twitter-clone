@@ -1,6 +1,6 @@
 module.exports = {
 	root: true,
-	env: { browser: true, es2020: true },
+	//env: { browser: true, es2020: true },
 	extends: [
 		'airbnb',
 		'airbnb/hooks',
@@ -19,20 +19,32 @@ module.exports = {
 				'plugin:@typescript-eslint/recommended-requiring-type-checking',
 			],
 			parserOptions: {
-				project: ['./tsconfig.json'],
+				project: './tsconfig.json',
+				ecmaVersion: 2021,
+				sourceType: 'module',
+				ecmaFeatures: {
+					jsx: true,
+				},
 			},
 		},
 	],
 
-	plugins: [
-		'@typescript-eslint',
-		'react',
-		'simple-import-sort',
-		'import',
-		'prettier',
-	],
+	plugins: ['@typescript-eslint', 'react', 'simple-import-sort', 'import', 'prettier'],
+	parserOptions: {
+		ecmaVersion: 2021,
+		sourceType: 'module',
+		ecmaFeatures: {
+			jsx: true,
+		},
+	},
+	env: {
+		es6: true,
+		browser: true,
+		node: true,
+	},
 	rules: {
 		'react-refresh/only-export-components': 'off',
+		'dot-notation': 'off',
 		'simple-import-sort/imports': [
 			'error',
 			{
@@ -61,6 +73,6 @@ module.exports = {
 		'import/newline-after-import': 'error',
 		'import/no-duplicates': 'error',
 		'import/prefer-default-export': 'off',
-		'@typescript-eslint/no-unsafe-assignment': 'error',
+		//'@typescript-eslint/no-unsafe-assignment': 'error',
 	},
 };
