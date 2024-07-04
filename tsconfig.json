@@ -6,15 +6,15 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"@components/*": ["src/components/*"],
-			"@assets": ["./src/assets"],
-			"@common": ["src/common"],
-			"@theme": ["src/theme"]
+			"@assets/*": ["src/assets/*"],
+			"@common/*": ["src/common/*"],
+			"@/style/*": ["src/style/*"]
 		},
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		"skipLibCheck": true,
 		/* Bundler mode */
-		"moduleResolution": "bundler",
+		"moduleResolution": "Node",
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,

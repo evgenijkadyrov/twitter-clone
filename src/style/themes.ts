@@ -6,37 +6,37 @@ import { FontSizes, FontWeights } from './fonts';
 export const LightTheme: DefaultTheme = {
 	backgroundColor: Colors.lightBackground,
 	textColor: Colors.black,
-	shadowColor: Colors.grey,
-	border: Colors.lightGrey,
+	shadowColor: Colors.grey[400],
+	border: Colors.grey[100],
 	button: {
 		backgroundColor: {
 			primary: Colors.blue,
-			hover: Colors.blueForHover,
-			disabled: Colors.blueDisabled,
+			hover: Colors.blue[600],
+			disabled: Colors.blue[100],
 		},
 		textColor: {
 			primary: Colors.white,
 			outline: Colors.black,
 		},
 		border: {
-			primary: Colors.lightGrey,
+			primary: Colors.grey[100],
 			hover: Colors.black,
 		},
 	},
 	input: {
 		backgroundColor: {
 			primary: Colors.transparent,
-			search: Colors.greyForNotification,
+			search: Colors.grey[400],
 		},
 		textColor: {
 			primary: Colors.black,
 		},
 		border: {
-			primary: Colors.lightGrey,
+			primary: Colors.grey[100],
 			focused: Colors.black,
 		},
 		placeholder: {
-			primary: Colors.darkGrey,
+			primary: Colors.grey[700],
 		},
 	},
 	select: {
@@ -45,10 +45,10 @@ export const LightTheme: DefaultTheme = {
 		},
 		textColor: {
 			primary: Colors.black,
-			disabled: Colors.darkGrey,
+			disabled: Colors.grey[700],
 		},
 		border: {
-			primary: Colors.lightGrey,
+			primary: Colors.grey[100],
 			focused: Colors.black,
 		},
 	},
@@ -65,21 +65,21 @@ export const LightTheme: DefaultTheme = {
 			primary: Colors.white,
 		},
 		shadow: {
-			primary: Colors.grey,
+			primary: Colors.grey[400],
 		},
 	},
 	links: {
 		backgroundColor: {
-			hover: Colors.greyForNotification,
+			hover: Colors.grey[400],
 		},
 	},
 	fontColors: {
-		blue: Colors.blue,
-		grey: Colors.darkGrey,
+		blue: Colors.blue[300],
+		grey: Colors.grey[700],
 		red: Colors.red,
 	},
 	backgroundColors: {
-		blue: Colors.blue,
+		blue: Colors.blue[300],
 		sidebar: Colors.white,
 	},
 	fontWeights: {
@@ -105,37 +105,37 @@ export const LightTheme: DefaultTheme = {
 export const DarkTheme: DefaultTheme = {
 	backgroundColor: Colors.darkBackground,
 	textColor: Colors.white,
-	shadowColor: Colors.grey,
-	border: Colors.lightGrey,
+	shadowColor: Colors.grey[400],
+	border: Colors.grey[100],
 	button: {
 		backgroundColor: {
-			primary: Colors.blue,
-			hover: Colors.blueForHover,
-			disabled: Colors.blueDisabled,
+			primary: Colors.blue[300],
+			hover: Colors.blue[600],
+			disabled: Colors.blue[100],
 		},
 		textColor: {
 			primary: Colors.white,
 			outline: Colors.white,
 		},
 		border: {
-			primary: Colors.lightGrey,
-			hover: Colors.blue,
+			primary: Colors.grey[100],
+			hover: Colors.blue[300],
 		},
 	},
 	input: {
 		backgroundColor: {
-			primary: Colors.blueForInput,
-			search: Colors.blueForInput,
+			primary: Colors.blue[400],
+			search: Colors.blue[400],
 		},
 		textColor: {
 			primary: Colors.white,
 		},
 		border: {
-			primary: Colors.lightGrey,
+			primary: Colors.grey[100],
 			focused: Colors.black,
 		},
 		placeholder: {
-			primary: Colors.darkGrey,
+			primary: Colors.grey[700],
 		},
 	},
 	select: {
@@ -144,12 +144,12 @@ export const DarkTheme: DefaultTheme = {
 		},
 		textColor: {
 			primary: Colors.white,
-			disabled: Colors.darkGrey,
+			disabled: Colors.grey[700],
 		},
 		border: {
-			primary: Colors.lightGrey,
-			focused: Colors.blue,
-			hover: Colors.blue,
+			primary: Colors.grey[100],
+			focused: Colors.blue[300],
+			hover: Colors.blue[300],
 		},
 	},
 	notification: {
@@ -165,23 +165,23 @@ export const DarkTheme: DefaultTheme = {
 			primary: Colors.darkBackground,
 		},
 		shadow: {
-			primary: Colors.grey,
+			primary: Colors.grey[400],
 		},
 	},
 	links: {
 		backgroundColor: {
-			hover: Colors.blueForLinks,
+			hover: Colors.blue[50],
 		},
 	},
 	fontColors: {
-		blue: Colors.blue,
-		grey: Colors.darkGrey,
+		blue: Colors.blue[300],
+		grey: Colors.grey[700],
 		red: Colors.red,
 		white: Colors.white,
 	},
 	backgroundColors: {
-		blue: Colors.blue,
-		light: Colors.greyForNotification,
+		blue: Colors.blue[300],
+		light: Colors.grey[400],
 		sidebar: Colors.darkBackground,
 	},
 	fontWeights: {
