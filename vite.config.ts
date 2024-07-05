@@ -4,7 +4,7 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	base: '/',
+	base: './',
 
 	resolve: {
 		alias: {
@@ -12,6 +12,8 @@ export default defineConfig({
 			'@assets': path.resolve(__dirname, './src/assets'),
 			'@components': path.resolve(__dirname, './src/components'),
 			'@common': path.resolve(__dirname, './src/common'),
+			'@/style': path.resolve(__dirname, './src/style'),
 		},
 	},
+	assetsInclude: ['.eslintrc.cjs'],
 });
