@@ -1,27 +1,54 @@
 import React from 'react';
 
+import Google from '@/assets/icons/google-icon.svg';
 import HomeImage from '@/assets/images/big-picture.png';
+import IconImage from '@/assets/images/twitter.svg';
+
+import {
+	Button,
+	ButtonIcon,
+	ButtonText,
+	Column,
+	Icon,
+	Image,
+	Row,
+	Section,
+	StyledLink,
+	SubTitle,
+	Text,
+	Title,
+	WrapperForButtonContent,
+} from './home.styled';
 
 export const Home = () => (
-	<section>
-		<div>
-			row
-			<img src={HomeImage as string} alt="HomeImage" />
-			<div>
-				column
-				<div>icon</div>
-				<h1> Happening now</h1>
-				<h3>Join Twitter Today</h3>
-				<button type="button">Sign google</button>
-				<button type="button">Sign email</button>
+	<Section>
+		<Row>
+			<Image src={HomeImage as string} alt="HomeImage" />
+			<Column>
+				<Icon src={IconImage as string} alt="Icon_twitter" />
+				<Title> Happening now</Title>
+				<SubTitle>Join Twitter Today</SubTitle>
+
+				<Button type="button">
+					<WrapperForButtonContent>
+						<ButtonIcon src={Google as string} alt="googleIcon" />
+						<ButtonText>Sign google</ButtonText>
+					</WrapperForButtonContent>
+				</Button>
+				<Button type="button">
+					<WrapperForButtonContent>
+						<ButtonText>Sign up with email</ButtonText>
+					</WrapperForButtonContent>
+				</Button>
+				<Text>
+					By singing up you agree to the <StyledLink to="#">Terms of Service</StyledLink> and{' '}
+					<StyledLink to="#">Privacy Policy</StyledLink>, including{' '}
+					<StyledLink to="#">Cookie Use</StyledLink> .
+				</Text>
 				<div>
-					{' '}
-					y singing up you agree to the Terms of Service and Privacy Policy, including Cookie Use.
+					Already have an account?<StyledLink to="login"> Log in?</StyledLink>
 				</div>
-				<div>
-					Already have an account?<span>Log in?</span>{' '}
-				</div>
-			</div>
-		</div>
-	</section>
+			</Column>
+		</Row>
+	</Section>
 );
