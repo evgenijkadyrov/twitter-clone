@@ -1,6 +1,5 @@
 module.exports = {
 	root: true,
-	//env: { browser: true, es2020: true },
 	extends: [
 		'airbnb',
 		'airbnb-typescript',
@@ -18,14 +17,6 @@ module.exports = {
 				'plugin:@typescript-eslint/recommended',
 				'plugin:@typescript-eslint/recommended-requiring-type-checking',
 			],
-			parserOptions: {
-				project: './tsconfig.json',
-				ecmaVersion: 'latest',
-				sourceType: 'module',
-				ecmaFeatures: {
-					jsx: true,
-				},
-			},
 		},
 	],
 
@@ -86,6 +77,6 @@ module.exports = {
 		'import/newline-after-import': 'error',
 		'import/no-duplicates': 'error',
 		'import/prefer-default-export': 'off',
-		//'@typescript-eslint/no-unsafe-assignment': 'error',
+		'@typescript-eslint/no-unsafe-assignment': 'error',
 	},
 };
