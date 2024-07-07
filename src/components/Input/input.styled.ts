@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
-export const StyledInput = styled.input<{ $width?: string }>`
+export const StyledInput = styled.input<{ $width?: string | undefined }>`
 	width: ${({ $width }) => $width || '100%'};
 	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.input.border.primary};
 	padding: ${Sizes.MarginSizes.m15};

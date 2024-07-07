@@ -1,8 +1,9 @@
-import React, { forwardRef, PropsWithRef } from 'react';
+import { forwardRef, PropsWithRef } from 'react';
 import { ErrorMessage, StyledInput } from '@components/Input/input.styled';
 
 export interface InputProps extends PropsWithRef<JSX.IntrinsicElements['input']> {
-	width: string;
+	/* eslint-disable-next-line react/require-default-props */
+	width?: string | undefined;
 	errorMessage: string | undefined;
 }
 export const Input = forwardRef<HTMLInputElement, InputProps>(

@@ -67,12 +67,7 @@ export const Login = () => {
 						/>
 					</Inputs>
 					<ButtonWrapper>
-						<Button
-							type="submit"
-							primary
-							content="Log In"
-							disabled={!isValid || !isDirty || isSubmitting}
-						>
+						<Button type="submit" content="Log In" disabled={!isValid || !isDirty || isSubmitting}>
 							Log in
 						</Button>
 					</ButtonWrapper>
