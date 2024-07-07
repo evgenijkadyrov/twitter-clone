@@ -3,13 +3,14 @@ import { SuspenseLayoutForAuthBlock, SuspenseLayoutForMainContent } from '@compo
 
 import { Paths } from '@/constants/routerPaths';
 import { Home } from '@/pages/Home';
+import { Login } from '@/pages/Login';
 
 export const rootRouter = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path={Paths.HOME} errorElement="Error">
 			<Route element={<SuspenseLayoutForAuthBlock />}>
 				<Route index element={<Home />} />
-				<Route path={Paths.LOGIN} element="Login" />
+				<Route path={Paths.LOGIN} element={<Login />} />
 				<Route path={Paths.REGISTRATION} element="Register" />
 			</Route>
 			<Route element={<SuspenseLayoutForMainContent />}>
