@@ -45,17 +45,21 @@ export const WidthSizes = {
 	w40: '40px',
 	w400: '400px',
 	w375: '375px',
+	w50: '50px',
+	w450: '450px',
 };
 export const HeightSizes = {
 	h32: '32px',
 	h50: '50px',
 	h60: '60px',
+	h40: '40px',
 };
 export const BorderSizes = {
 	b01: '1px',
 };
 export const BorderRadiusSizes = {
 	br40: '40px',
+	br06: '6px',
 };
 export const GapSizes = {
 	g40: '40px',

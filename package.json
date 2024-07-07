@@ -13,7 +13,7 @@
 		"prettier": "prettier \"src/**/*.{ts,tsx}\" . --write --cache"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "^3.6.0",
+		"@hookform/resolvers": "^3.9.0",
 		"babel-core": "^6.26.3",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.7",
