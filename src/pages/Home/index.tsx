@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Google from '@/assets/icons/google-icon.svg';
 import HomeImage from '@/assets/images/big-picture.png';
 import IconImage from '@/assets/images/twitter.svg';
