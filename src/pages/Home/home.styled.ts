@@ -40,6 +40,7 @@ export const Button = styled.button`
 	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.border};
 	border-radius: ${Sizes.BorderRadiusSizes.br40};
 	margin-bottom: ${Sizes.MarginSizes.m20};
+
 	&:hover {
 		cursor: pointer;
 	}
@@ -68,4 +69,17 @@ export const Text = styled.div`
 export const StyledLink = styled(Link)`
 	font-size: ${({ theme }) => theme.fontSize.f16};
 	color: ${({ theme }) => theme.fontColors.blue};
+`;
+
+export const ListItem = styled.div`
+	margin-right: ${Sizes.MarginSizes.m10};
+	font-size: ${({ theme }) => theme.fontSize.f12};
+	color: ${({ theme }) => theme.textColor};
+	margin-bottom: ${Sizes.MarginSizes.m20};
+`;
+export const List = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-top: ${Sizes.MarginSizes.m20};
+	gap: ${Sizes.GapSizes.g15};
 `;

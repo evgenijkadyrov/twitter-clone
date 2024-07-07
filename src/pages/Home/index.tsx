@@ -3,6 +3,7 @@ import React from 'react';
 import Google from '@/assets/icons/google-icon.svg';
 import HomeImage from '@/assets/images/big-picture.png';
 import IconImage from '@/assets/images/twitter.svg';
+import { FOOTER_LINKS } from '@/constants/footerLinks';
 
 import {
 	Button,
@@ -11,6 +12,8 @@ import {
 	Column,
 	Icon,
 	Image,
+	List,
+	ListItem,
 	Row,
 	Section,
 	StyledLink,
@@ -50,5 +53,10 @@ export const Home = () => (
 				</div>
 			</Column>
 		</Row>
+		<List>
+			{FOOTER_LINKS.map((link) => (
+				<ListItem key={link.id}> {link.name}</ListItem>
+			))}
+		</List>
 	</Section>
 );

@@ -59,4 +59,5 @@ export const BorderRadiusSizes = {
 };
 export const GapSizes = {
 	g40: '40px',
+	g15: '5px',
 };
