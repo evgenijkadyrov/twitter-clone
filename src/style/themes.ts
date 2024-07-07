@@ -10,7 +10,7 @@ export const LightTheme: DefaultTheme = {
 	border: Colors.grey[100],
 	button: {
 		backgroundColor: {
-			primary: Colors.blue,
+			primary: Colors.blue[400],
 			hover: Colors.blue[600],
 			disabled: Colors.blue[100],
 		},

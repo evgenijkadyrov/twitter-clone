@@ -32,7 +32,7 @@ export const Home = () => (
 				<Button type="button">
 					<WrapperForButtonContent>
 						<ButtonIcon src={Google as string} alt="googleIcon" />
-						<ButtonText>Sign google</ButtonText>
+						<ButtonText>Sign up with Google</ButtonText>
 					</WrapperForButtonContent>
 				</Button>
 				<Button type="button">

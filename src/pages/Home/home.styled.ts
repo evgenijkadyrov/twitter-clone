@@ -1,43 +1,45 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import * as Sizes from '@/style/sizes';
+
 export const Section = styled.section`
 	height: 100%;
 `;
 export const Row = styled.div`
 	display: flex;
 	justify-content: flex-start;
-	gap: 40px;
+	gap: ${Sizes.GapSizes.g40};
 `;
 export const Column = styled.div`
-	padding-top: 200px;
+	padding-top: ${Sizes.PaddingSizes.p200};
 
 	display: flex;
 	flex-direction: column;
 `;
 export const Icon = styled.img`
-	margin-bottom: 57px;
-	height: 50px;
-	width: 41px;
+	margin-bottom: ${Sizes.MarginSizes.m60};
+	height: ${Sizes.HeightSizes.h50};
+	width: ${Sizes.WidthSizes.w40};
 `;
 export const Image = styled.img`
 	width: 60%;
 `;
 export const Title = styled.h1`
-	margin-bottom: 45px;
-	font-size: 64px;
+	margin-bottom: ${Sizes.MarginSizes.m40};
+	font-size: ${({ theme }) => theme.fontSize.f64};
 `;
 export const SubTitle = styled.h3`
-	margin-bottom: 31px;
-	font-size: 42px;
+	margin-bottom: ${Sizes.MarginSizes.m30};
+	font-size: ${({ theme }) => theme.fontSize.f42};
 `;
 export const Button = styled.button`
-	width: 403px;
-	background-color: white;
-	height: 62px;
-	border: 1px solid #e4eaed;
-	border-radius: 40px;
-	margin-bottom: 21px;
+	width: ${Sizes.WidthSizes.w400};
+	background-color: ${({ theme }) => theme.button.backgroundColor};
+	height: ${Sizes.HeightSizes.h60};
+	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.border};
+	border-radius: ${Sizes.BorderRadiusSizes.br40};
+	margin-bottom: ${Sizes.MarginSizes.m20};
 	&:hover {
 		cursor: pointer;
 	}
@@ -48,23 +50,22 @@ export const WrapperForButtonContent = styled.div`
 	align-items: center;
 `;
 export const ButtonIcon = styled.img`
-	width: 32px;
-	height: 32px;
+	width: ${Sizes.WidthSizes.w32};
+	height: ${Sizes.HeightSizes.h32};
 `;
 export const ButtonText = styled.p`
-	font-size: 20px;
-	font-weight: 500;
-	font-family: Roboto, serif;
+	font-size: ${({ theme }) => theme.fontSize.f20};
+	font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 export const Text = styled.div`
-	font-size: 14px;
-	width: 373px;
-	margin-top: 10px;
-	font-weight: 500;
-	line-height: 20px;
-	margin-bottom: 21px;
+	font-size: ${({ theme }) => theme.fontSize.f14};
+	width: ${Sizes.WidthSizes.w375};
+	margin-top: ${Sizes.MarginSizes.m10};
+	font-weight: ${({ theme }) => theme.fontWeights.medium};
+	line-height: ${({ theme }) => theme.fontSize.f20};
+	margin-bottom: ${Sizes.MarginSizes.m20};
 `;
 export const StyledLink = styled(Link)`
-	font-size: 16px;
-	color: blue;
+	font-size: ${({ theme }) => theme.fontSize.f16};
+	color: ${({ theme }) => theme.fontColors.blue};
 `;
