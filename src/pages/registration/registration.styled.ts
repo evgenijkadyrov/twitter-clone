@@ -13,7 +13,6 @@ export const Section = styled.section`
 
 export const Wrapper = styled.div`
 	height: 100%;
-
 	background-color: ${({ theme }) => theme.backgroundColor};
 	color: ${({ theme }) => theme.textColor};
 `;
@@ -21,12 +20,13 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
 	margin-bottom: ${Sizes.MarginSizes.m40};
 
-	font-size: ${({ theme }) => theme.fontSize.f42};
+	font-size: ${({ theme }) => theme.fontSize.f32};
 `;
 
 export const StyledLink = styled(Link)`
 	max-width: fit-content;
-	margin-top: ${Sizes.MarginSizes.m40};
+	margin-top: ${Sizes.MarginSizes.m25};
+	margin-bottom: ${Sizes.MarginSizes.m15};
 	margin-left: auto;
 	border-bottom: ${Sizes.BorderSizes.b01} solid transparent;
 
@@ -42,6 +42,7 @@ export const StyledLink = styled(Link)`
 export const Inputs = styled.div`
 	margin-bottom: ${Sizes.MarginSizes.m20};
 	display: flex;
+	justify-content: flex-start;
 	flex-direction: column;
 	gap: ${Sizes.GapSizes.g15};
 `;
@@ -68,4 +69,19 @@ export const Button = styled.button`
 export const ButtonWrapper = styled.div`
 	display: flex;
 	justify-content: center;
+`;
+export const SubTitle = styled.div`
+	font-size: ${({ theme }) => theme.fontSize.f18};
+	margin-top: ${Sizes.MarginSizes.m15};
+`;
+export const AgeConfirmText = styled.div`
+	font-size: ${({ theme }) => theme.fontSize.f16};
+	color: ${({ theme }) => theme.fontColors.grey};
+	margin-bottom: ${Sizes.MarginSizes.m30};
+	margin-top: ${Sizes.MarginSizes.m30};
+`;
+export const SelectWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin: ${Sizes.MarginSizes.m30} 0;
 `;
