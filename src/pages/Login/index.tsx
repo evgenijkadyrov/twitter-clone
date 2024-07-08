@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import IconImage from '@/assets/images/twitter.svg';
 import { Paths } from '@/constants/routerPaths';
+import { LoginSchema } from '@/validation/loginValidation';
 
 import {
 	Button,
@@ -17,20 +18,8 @@ import {
 	Wrapper,
 } from './login.styled';
 
-export interface SignInFormFields {
-	phoneOrEmail: string;
-	password: string;
-}
-type FormData = yup.InferType<typeof SignupSchema>;
+type FormData = yup.InferType<typeof LoginSchema>;
 
-const SignupSchema = yup.object().shape({
-	phoneOrEmail: yup.string().required('Email / Phone is required'),
-	password: yup
-		.string()
-		.min(3, 'Password must contain at least 3 character')
-		.max(128, 'Password must contain maximum 128 characters')
-		.required('Password is required!'),
-});
 export const Login = () => {
 	const {
 		handleSubmit,
@@ -38,7 +27,7 @@ export const Login = () => {
 		reset,
 		formState: { errors, isValid, isDirty, isSubmitting },
 	} = useForm<FormData>({
-		resolver: yupResolver(SignupSchema),
+		resolver: yupResolver(LoginSchema),
 		mode: 'onBlur',
 	});
 	const onSubmit: SubmitHandler<FormData> = (data) => {
