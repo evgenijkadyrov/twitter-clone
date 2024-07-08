@@ -9,6 +9,8 @@ import { MONTH_NAMES } from '@/constants/monthNames';
 import { Paths } from '@/constants/routerPaths';
 import { AGE_TEXT_CONFIRM } from '@/constants/textConstant';
 import { getListDaysOfMonth, getListOfYears } from '@/helpers';
+import { formateDate } from '@/helpers/formateDate';
+import { singUp } from '@/services/serviceAuth';
 import { SignupSchema } from '@/validation/signUpValidation';
 
 import {
@@ -38,9 +40,17 @@ export const Registration = () => {
 		resolver: yupResolver(SignupSchema),
 		mode: 'onBlur',
 	});
-	const onSubmit: SubmitHandler<FormData> = (data) => {
-		console.log(data);
-		reset();
+
+	const onSubmit: SubmitHandler<FormData> = async (data) => {
+		const { phoneNumber, name, password, email, day, month, year } = data;
+		const birthDate = formateDate(day, month, year);
+		try {
+			await singUp(name, email, phoneNumber, password, birthDate);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			reset();
+		}
 	};
 	return (
 		<Wrapper>
