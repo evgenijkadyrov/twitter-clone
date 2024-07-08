@@ -15,6 +15,7 @@ import {
 	AgeConfirmText,
 	Button,
 	ButtonWrapper,
+	ErrorMessage,
 	Inputs,
 	Logo,
 	Section,
@@ -66,6 +67,13 @@ export const Registration = () => {
 							{...register('phoneNumber')}
 							errorMessage={errors.phoneNumber?.message}
 						/>
+						<Input
+							placeholder="Password"
+							type="password"
+							/* eslint-disable-next-line react/jsx-props-no-spreading */
+							{...register('password')}
+							errorMessage={errors.password?.message}
+						/>
 					</Inputs>
 					<StyledLink to={Paths.HOME}>Use email</StyledLink>
 					<SubTitle>Date of birth</SubTitle>
@@ -93,13 +101,18 @@ export const Registration = () => {
 							{...register('day')}
 						/>
 					</SelectWrapper>
+					<ErrorMessage>
+						{errors.month && <p>{errors.month?.message || 'Error!'}</p>}
+						{errors.month && <p>{errors.year?.message || 'Error!'}</p>}
+						{errors.month && <p>{errors.day?.message || 'Error!'}</p>}
+					</ErrorMessage>
 					<ButtonWrapper>
 						<Button
 							type="submit"
 							content="Continue"
 							disabled={!isValid || !isDirty || isSubmitting}
 						>
-							Continue
+							Sing up
 						</Button>
 					</ButtonWrapper>
 				</form>

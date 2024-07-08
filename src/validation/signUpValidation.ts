@@ -18,11 +18,11 @@ export const SignupSchema = yup.object().shape({
 		.string()
 		.test('phone', ' Phone is invalid', (value) => validatePhone(parseInt(value ?? '0', 10)))
 		.required('Phone number is required!'),
-	// password: yup
-	//     .string()
-	//     .min(3, 'Password must contain at least 3 character')
-	//     .max(128, 'Password must contain maximum 128 characters')
-	//     .required('Password is required!'),
+	password: yup
+		.string()
+		.min(3, 'Password must contain at least 3 character')
+		.max(128, 'Password must contain maximum 128 characters')
+		.required('Password is required!'),
 	email: yup.string().required('Email  is required'),
 	month: yup.string().required('Month is required'),
 	year: yup.string().required('Year is required'),
