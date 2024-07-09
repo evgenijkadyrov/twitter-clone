@@ -6,6 +6,8 @@ import * as yup from 'yup';
 import IconImage from '@/assets/images/twitter.svg';
 import { Paths } from '@/constants/routerPaths';
 import { login, LoginFormFields } from '@/services/serviceAuth';
+import { useAppDispatch } from '@/store';
+import { userActions } from '@/store/userSlice';
 import { LoginSchema } from '@/validation/loginValidation';
 
 import {
@@ -31,10 +33,22 @@ export const Login = () => {
 		resolver: yupResolver(LoginSchema),
 		mode: 'onBlur',
 	});
+	const dispatch = useAppDispatch();
 	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
-		const { userData } = await login(data);
+		const { userData, uid, token } = await login(data);
 
 		console.log(userData);
+		dispatch(
+			userActions.fetchUser({
+				name: (userData?.data.name as string) || null,
+				phoneNumber: (userData?.data.phoneNumber as string) || null,
+				email: (userData?.data.email as string) || null,
+				id: uid,
+				token: token || null,
+				birthDate: (userData?.data.birthDate as string) || null,
+				// description: (userData?.data.description as string) || null,
+			})
+		);
 		reset();
 	};
 	return (
