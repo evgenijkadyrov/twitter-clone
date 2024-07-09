@@ -20,7 +20,7 @@ export const SignupSchema = yup.object().shape({
 		.required('Phone number is required!'),
 	password: yup
 		.string()
-		.min(3, 'Password must contain at least 3 character')
+		.min(6, 'Password must contain at least 6character')
 		.max(128, 'Password must contain maximum 128 characters')
 		.required('Password is required!'),
 	email: yup.string().required('Email  is required'),

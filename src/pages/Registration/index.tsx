@@ -5,11 +5,12 @@ import { Select } from '@components/Select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { MONTH_NAMES } from '@/constants/monthNames';
+import { BIRTHDATE_SELECTED_FIELDS } from '@/constants/birthDateSelectedFields';
+import { REGISTRATION_FORM_DATA } from '@/constants/registrationFormData';
 import { Paths } from '@/constants/routerPaths';
 import { AGE_TEXT_CONFIRM } from '@/constants/textConstant';
-import { getListDaysOfMonth, getListOfYears } from '@/helpers';
 import { formateDate } from '@/helpers/formateDate';
+import { RegistrationFormData } from '@/pages/Registration/registration.interface';
 import { singUp } from '@/services/serviceAuth';
 import { SignupSchema } from '@/validation/signUpValidation';
 
@@ -29,7 +30,6 @@ import {
 } from './registration.styled';
 
 type FormData = yup.InferType<typeof SignupSchema>;
-
 export const Registration = () => {
 	const {
 		handleSubmit,
@@ -42,7 +42,7 @@ export const Registration = () => {
 	});
 
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
-		const { phoneNumber, name, password, email, day, month, year } = data;
+		const { phoneNumber, name, password, email, day, month, year }: RegistrationFormData = data;
 		const birthDate = formateDate(day, month, year);
 		try {
 			await singUp(name, email, phoneNumber, password, birthDate);
@@ -59,62 +59,36 @@ export const Registration = () => {
 				<Title>Create an account</Title>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Inputs>
-						<Input
-							placeholder="Name"
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('name')}
-							errorMessage={errors.name?.message}
-						/>
-						<Input
-							placeholder="Email"
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('email')}
-							errorMessage={errors.email?.message}
-						/>
-						<Input
-							placeholder="Phone number"
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('phoneNumber')}
-							errorMessage={errors.phoneNumber?.message}
-						/>
-						<Input
-							placeholder="Password"
-							type="password"
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('password')}
-							errorMessage={errors.password?.message}
-						/>
+						{REGISTRATION_FORM_DATA.map((field) => (
+							<Input
+								key={field.name}
+								placeholder={field.placeholder}
+								type={field.type}
+								/* eslint-disable-next-line react/jsx-props-no-spreading */
+								{...register(field.registerName)}
+								errorMessage={errors.root?.message}
+							/>
+						))}
 					</Inputs>
 					<StyledLink to={Paths.HOME}>Use email</StyledLink>
 					<SubTitle>Date of birth</SubTitle>
 					<AgeConfirmText>{AGE_TEXT_CONFIRM}</AgeConfirmText>
 					<SelectWrapper>
-						<Select
-							placeholder="Year"
-							width="30%"
-							options={getListOfYears()}
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('year')}
-						/>
-						<Select
-							placeholder="Month"
-							width="40%"
-							options={MONTH_NAMES}
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('month')}
-						/>
-						<Select
-							placeholder="Day"
-							width="20%"
-							options={getListDaysOfMonth()}
-							/* eslint-disable-next-line react/jsx-props-no-spreading */
-							{...register('day')}
-						/>
+						{BIRTHDATE_SELECTED_FIELDS.map((field) => (
+							<Select
+								key={field.name}
+								placeholder={field.placeholder}
+								width={field.width}
+								options={field.options}
+								/* eslint-disable-next-line react/jsx-props-no-spreading */
+								{...register(field.name)}
+							/>
+						))}
 					</SelectWrapper>
 					<ErrorMessage>
-						{errors.month && <p>{errors.month?.message || 'Error!'}</p>}
-						{errors.month && <p>{errors.year?.message || 'Error!'}</p>}
-						{errors.month && <p>{errors.day?.message || 'Error!'}</p>}
+						{Object.keys(errors).map((fieldName) => (
+							<p key={fieldName}>{errors.root?.message || `Error ${fieldName}!`}</p>
+						))}
 					</ErrorMessage>
 					<ButtonWrapper>
 						<Button
