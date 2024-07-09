@@ -4,7 +4,7 @@ import { SuspenseLayoutForAuthBlock, SuspenseLayoutForMainContent } from '@compo
 import { Paths } from '@/constants/routerPaths';
 import { Home } from '@/pages/Home';
 import { Login } from '@/pages/Login';
-import { Registration } from '@/pages/registration';
+import { Registration } from '@/pages/Registration';
 
 export const rootRouter = createBrowserRouter(
 	createRoutesFromElements(

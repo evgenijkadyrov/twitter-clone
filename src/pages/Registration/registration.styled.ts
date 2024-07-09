@@ -69,6 +69,7 @@ export const Button = styled.button`
 export const ButtonWrapper = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-top: ${Sizes.MarginSizes.m30};
 `;
 export const SubTitle = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f18};
@@ -83,5 +84,10 @@ export const AgeConfirmText = styled.div`
 export const SelectWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin: ${Sizes.MarginSizes.m30} 0;
+	margin-top: ${Sizes.MarginSizes.m30};
+`;
+export const ErrorMessage = styled.div`
+	color: ${({ theme }) => theme.notification.border.error};
+	font-size: ${({ theme }) => theme.fontSize.f12};
+	margin-bottom: ${Sizes.MarginSizes.m30} 0;
 `;
