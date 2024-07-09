@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import IconImage from '@/assets/images/twitter.svg';
 import { Paths } from '@/constants/routerPaths';
+import { login, LoginFormFields } from '@/services/serviceAuth';
 import { LoginSchema } from '@/validation/loginValidation';
 
 import {
@@ -30,8 +31,10 @@ export const Login = () => {
 		resolver: yupResolver(LoginSchema),
 		mode: 'onBlur',
 	});
-	const onSubmit: SubmitHandler<FormData> = (data) => {
-		console.log(data);
+	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
+		const { userData } = await login(data);
+
+		console.log(userData);
 		reset();
 	};
 	return (
