@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Input } from '@components/Input';
+import { FirebaseError } from '@firebase/util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -57,11 +58,13 @@ export const Login = () => {
 			);
 			reset();
 		} catch (error: unknown) {
-			dispatch(
-				notificationActions.showError({
-					error: error.message as string,
-				})
-			);
+			if (error instanceof FirebaseError) {
+				dispatch(
+					notificationActions.showError({
+						error: error.message,
+					})
+				);
+			}
 		}
 	};
 	return (

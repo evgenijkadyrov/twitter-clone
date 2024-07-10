@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import IconImage from '@assets/images/twitter.svg';
 import { Input } from '@components/Input';
 import { Select } from '@components/Select';
+import { FirebaseError } from '@firebase/util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -12,6 +13,9 @@ import { AGE_TEXT_CONFIRM } from '@/constants/textConstant';
 import { formateDate } from '@/helpers/formateDate';
 import { RegistrationFormData } from '@/pages/Registration/registration.interface';
 import { singUp } from '@/services/serviceAuth';
+import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
+import { userActions } from '@/store/userSlice';
 import { SignupSchema } from '@/validation/signUpValidation';
 
 import {
@@ -40,14 +44,36 @@ export const Registration = () => {
 		resolver: yupResolver(SignupSchema),
 		mode: 'onBlur',
 	});
-
+	const dispatch = useAppDispatch();
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
 		const { phoneNumber, name, password, email, day, month, year }: RegistrationFormData = data;
 		const birthDate = formateDate(day, month, year);
 		try {
-			await singUp(name, email, phoneNumber, password, birthDate);
-		} catch (error) {
-			console.log(error);
+			const { uid, token } = await singUp(name, email, phoneNumber, password, birthDate);
+			dispatch(
+				userActions.fetchUser({
+					name: name || null,
+					phoneNumber: phoneNumber || null,
+					email: email || null,
+					id: uid,
+					token: token || null,
+					birthDate: birthDate || null,
+					// description: (userData?.data.description as string) || null,
+				})
+			);
+			dispatch(
+				notificationActions.showSuccess({
+					success: 'Success registration!',
+				})
+			);
+		} catch (error: unknown) {
+			if (error instanceof FirebaseError) {
+				dispatch(
+					notificationActions.showError({
+						error: error.message,
+					})
+				);
+			}
 		} finally {
 			reset();
 		}
