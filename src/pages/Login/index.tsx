@@ -35,21 +35,24 @@ export const Login = () => {
 	});
 	const dispatch = useAppDispatch();
 	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
-		const { userData, uid, token } = await login(data);
+		try {
+			const { userData, uid, token } = await login(data);
 
-		console.log(userData);
-		dispatch(
-			userActions.fetchUser({
-				name: (userData?.data.name as string) || null,
-				phoneNumber: (userData?.data.phoneNumber as string) || null,
-				email: (userData?.data.email as string) || null,
-				id: uid,
-				token: token || null,
-				birthDate: (userData?.data.birthDate as string) || null,
-				// description: (userData?.data.description as string) || null,
-			})
-		);
-		reset();
+			dispatch(
+				userActions.fetchUser({
+					name: (userData?.data.name as string) || null,
+					phoneNumber: (userData?.data.phoneNumber as string) || null,
+					email: (userData?.data.email as string) || null,
+					id: uid,
+					token: token || null,
+					birthDate: (userData?.data.birthDate as string) || null,
+					// description: (userData?.data.description as string) || null,
+				})
+			);
+			reset();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	return (
 		<Wrapper>
