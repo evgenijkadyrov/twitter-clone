@@ -116,7 +116,6 @@ export const login = async (inputData: LoginFormFields) => {
 	const token = await user.getIdToken();
 
 	const usersCollectionRef = collection(db, 'users');
-
 	const response = await getDocs(usersCollectionRef);
 
 	const data = response.docs.map((doc) => ({ id: doc.id, data: doc.data() }));

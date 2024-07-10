@@ -2,14 +2,16 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import IconImage from '@assets/images/twitter.svg';
 import { Input } from '@components/Input';
 import { Select } from '@components/Select';
-import { FirebaseError } from '@firebase/util';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { BIRTHDATE_SELECTED_FIELDS } from '@/constants/birthDateSelectedFields';
+import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
+import { NotificationMessages } from '@/constants/notificationMessages';
 import { REGISTRATION_FORM_DATA } from '@/constants/registrationFormData';
 import { Paths } from '@/constants/routerPaths';
 import { AGE_TEXT_CONFIRM } from '@/constants/textConstant';
+import { handleFirebaseError } from '@/helpers/firebaseErrors';
 import { formateDate } from '@/helpers/formateDate';
 import { RegistrationFormData } from '@/pages/Registration/registration.interface';
 import { singUp } from '@/services/serviceAuth';
@@ -63,17 +65,19 @@ export const Registration = () => {
 			);
 			dispatch(
 				notificationActions.showSuccess({
-					success: 'Success registration!',
+					success: NotificationMessages.SUCCESS_REGISTRATION,
 				})
 			);
 		} catch (error: unknown) {
-			if (error instanceof FirebaseError) {
-				dispatch(
-					notificationActions.showError({
-						error: error.message,
-					})
-				);
-			}
+			dispatch(
+				notificationActions.showError(
+					handleFirebaseError(
+						error,
+						ErrorsResponseCode.EMAIL_ALREADY_IN_USE,
+						NotificationMessages.ERROR_REGISTRATION
+					)
+				)
+			);
 		} finally {
 			reset();
 		}
