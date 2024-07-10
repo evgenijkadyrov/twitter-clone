@@ -12,7 +12,7 @@ export const LightTheme: DefaultTheme = {
 		backgroundColor: {
 			primary: Colors.blue[400],
 			hover: Colors.blue[600],
-			disabled: Colors.blue[100],
+			disabled: Colors.grey[400],
 		},
 		textColor: {
 			primary: Colors.white,
