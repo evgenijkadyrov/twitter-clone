@@ -56,9 +56,11 @@ export const HeightSizes = {
 };
 export const BorderSizes = {
 	b01: '1px',
+	b02: '2px',
 };
 export const BorderRadiusSizes = {
 	br40: '40px',
+	br10: '10px',
 	br06: '6px',
 };
 export const GapSizes = {

@@ -7,6 +7,7 @@ import IconImage from '@/assets/images/twitter.svg';
 import { Paths } from '@/constants/routerPaths';
 import { login, LoginFormFields } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 import { LoginSchema } from '@/validation/loginValidation';
 
@@ -49,9 +50,18 @@ export const Login = () => {
 					// description: (userData?.data.description as string) || null,
 				})
 			);
+			dispatch(
+				notificationActions.showSuccess({
+					success: 'Success log in!',
+				})
+			);
 			reset();
-		} catch (error) {
-			console.log(error);
+		} catch (error: unknown) {
+			dispatch(
+				notificationActions.showError({
+					error: error.message as string,
+				})
+			);
 		}
 	};
 	return (

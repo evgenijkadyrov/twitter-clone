@@ -1,4 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
+import { Notification } from '@components/Notification';
 import { ThemeProvider } from 'styled-components';
 
 import { rootRouter } from '@/router';
@@ -10,6 +11,7 @@ const App = () => (
 	<>
 		<GlobalStyles />
 		<ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
+			<Notification />
 			<RouterProvider router={rootRouter} fallbackElement="Loading" />
 		</ThemeProvider>
 	</>
