@@ -15,7 +15,7 @@ export const StyledSelect = styled.select<{ $width?: string | undefined }>`
 	outline: none;
 	appearance: none;
 
-	background: url(${arrow as string}) no-repeat right;
+	background: url(${arrow}) no-repeat right;
 	background-position-x: calc(100% - 8px);
 	color: ${({ theme }) => theme.select.textColor.primary};
 

@@ -54,7 +54,7 @@ export const Login = () => {
 	return (
 		<Wrapper>
 			<Section>
-				<Logo src={IconImage as string} alt="logo" />
+				<Logo src={IconImage} alt="logo" />
 				<Title>Log in to Twitter</Title>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Inputs>

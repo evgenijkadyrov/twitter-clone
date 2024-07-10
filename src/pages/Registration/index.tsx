@@ -55,7 +55,7 @@ export const Registration = () => {
 	return (
 		<Wrapper>
 			<Section>
-				<Logo src={IconImage as string} alt="logo" />
+				<Logo src={IconImage} alt="logo" />
 				<Title>Create an account</Title>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Inputs>
