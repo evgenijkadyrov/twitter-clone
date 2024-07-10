@@ -4,9 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import IconImage from '@/assets/images/twitter.svg';
+import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
+import { NotificationMessages } from '@/constants/notificationMessages';
 import { Paths } from '@/constants/routerPaths';
+import { handleFirebaseError } from '@/helpers/firebaseErrors';
 import { login, LoginFormFields } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 import { LoginSchema } from '@/validation/loginValidation';
 
@@ -37,7 +41,6 @@ export const Login = () => {
 	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
 		try {
 			const { userData, uid, token } = await login(data);
-
 			dispatch(
 				userActions.fetchUser({
 					name: (userData?.data.name as string) || null,
@@ -49,9 +52,22 @@ export const Login = () => {
 					// description: (userData?.data.description as string) || null,
 				})
 			);
+			dispatch(
+				notificationActions.showSuccess({
+					success: NotificationMessages.SUCCESS_LOGIN,
+				})
+			);
 			reset();
-		} catch (error) {
-			console.log(error);
+		} catch (error: unknown) {
+			dispatch(
+				notificationActions.showError(
+					handleFirebaseError(
+						error,
+						ErrorsResponseCode.INVALID_CREDENTIALS,
+						NotificationMessages.ERROR_LOGIN
+					)
+				)
+			);
 		}
 	};
 	return (

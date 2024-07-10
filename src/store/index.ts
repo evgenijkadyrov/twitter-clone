@@ -4,10 +4,12 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
 import storage from 'redux-persist/lib/storage';
 
+import { notificationReducer } from '@/store/notificationSlice';
 import { userReducer } from '@/store/userSlice';
 
 const rootReducer = combineReducers({
 	user: userReducer,
+	notification: notificationReducer,
 });
 const persistConfig = {
 	key: 'root',
