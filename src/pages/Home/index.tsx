@@ -40,15 +40,15 @@ export const Home = () => {
 	return (
 		<Section>
 			<Row>
-				<Image src={HomeImage as string} alt="HomeImage" />
+				<Image src={HomeImage} alt="HomeImage" />
 				<Column>
-					<Icon src={IconImage as string} alt="Icon_twitter" />
+					<Icon src={IconImage} alt="Icon_twitter" />
 					<Title> Happening now</Title>
 					<SubTitle>Join Twitter Today</SubTitle>
 
 					<Button type="button" onClick={handleGoogleClick}>
 						<WrapperForButtonContent>
-							<ButtonIcon src={Google as string} alt="googleIcon" />
+							<ButtonIcon src={Google} alt="googleIcon" />
 							<ButtonText>Sign up with Google</ButtonText>
 						</WrapperForButtonContent>
 					</Button>

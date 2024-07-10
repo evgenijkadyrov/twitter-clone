@@ -2,11 +2,17 @@ import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	GoogleAuthProvider,
+	signInWithEmailAndPassword,
 	signInWithPopup,
 } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, limit, query, setDoc, where } from 'firebase/firestore';
+import * as yup from 'yup';
 
 import { db } from '@/firebase';
+import { validatePhone } from '@/validation/signUpValidation';
+
+export const validateEmail = (email: string | undefined): boolean =>
+	yup.string().email().isValidSync(email);
 
 export interface User {
 	id: string | null;
@@ -16,6 +22,11 @@ export interface User {
 	token: string | null;
 	birthDate: string | null;
 	description: string | null;
+}
+
+export interface LoginFormFields {
+	phoneOrEmail: string;
+	password: string;
 }
 
 export const signUpWithGoogle = async (): Promise<User> => {
@@ -81,4 +92,35 @@ export const singUp = async (
 		id: uid,
 	});
 	return { uid, token };
+};
+export const login = async (inputData: LoginFormFields) => {
+	const auth = getAuth();
+	const { phoneOrEmail, password } = inputData;
+	let emailFromDb = '';
+
+	const phoneNumber = validatePhone(phoneOrEmail) ? phoneOrEmail : null;
+
+	if (phoneNumber) {
+		const q = query(collection(db, 'users'), where('phoneNumber', '==', phoneNumber), limit(3));
+		const querySnapshot = await getDocs(q);
+
+		querySnapshot.forEach((doc) => {
+			emailFromDb = doc.data().email as string;
+		});
+	}
+
+	const email = validateEmail(phoneOrEmail) ? phoneOrEmail : emailFromDb;
+	const { user } = await signInWithEmailAndPassword(auth, email, password);
+
+	const { uid } = user;
+	const token = await user.getIdToken();
+
+	const usersCollectionRef = collection(db, 'users');
+
+	const response = await getDocs(usersCollectionRef);
+
+	const data = response.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+	const userData = data.find((item) => item.data.id === uid);
+
+	return { userData, token, uid };
 };
