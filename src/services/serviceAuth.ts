@@ -22,6 +22,7 @@ export interface User {
 	token: string | null;
 	birthDate: string | null;
 	description: string | null;
+	nickname: string | null;
 }
 
 export interface LoginFormFields {
@@ -49,6 +50,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 		phoneNumber: null,
 		birthDate: null,
 		description: null,
+		nickname: null,
 	};
 
 	if (docSnap.exists()) {
@@ -122,4 +124,8 @@ export const login = async (inputData: LoginFormFields) => {
 	const userData = data.find((item) => item.data.id === uid);
 
 	return { userData, token, uid };
+};
+export const signOut = async (): Promise<void> => {
+	const auth = getAuth();
+	await auth.signOut();
 };

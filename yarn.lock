@@ -1622,7 +1622,7 @@
     tslib "^2.1.0"
     undici "5.28.4"
 
-"@firebase/util@1.9.7":
+"@firebase/util@1.9.7", "@firebase/util@^1.9.7":
   version "1.9.7"
   resolved "https://registry.yarnpkg.com/@firebase/util/-/util-1.9.7.tgz#c03b0ae065b3bba22800da0bd5314ef030848038"
   integrity sha512-fBVNH/8bRbYjqlbIhZ+lBtdAAS4WqZumx03K06/u7fJSpz1TGjEMm1ImvKD47w+xaFKIP2ori6z8BrbakRfjJA==

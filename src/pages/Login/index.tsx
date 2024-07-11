@@ -3,6 +3,7 @@ import { Input } from '@components/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import AvatarIcon from '@/assets/images/avatar.png';
 import IconImage from '@/assets/images/twitter.svg';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
@@ -50,6 +51,8 @@ export const Login = () => {
 					token: token || null,
 					birthDate: (userData?.data.birthDate as string) || null,
 					// description: (userData?.data.description as string) || null,
+					nickname: (userData?.data.nickname as string) || null,
+					avatarImage: (userData?.data.avatarImage as string) || AvatarIcon,
 				})
 			);
 			dispatch(
