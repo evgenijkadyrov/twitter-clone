@@ -60,7 +60,7 @@ export const Registration = () => {
 					id: uid,
 					token: token || null,
 					birthDate: birthDate || null,
-					// description: (userData?.data.description as string) || null,
+					description: null,
 				})
 			);
 			dispatch(

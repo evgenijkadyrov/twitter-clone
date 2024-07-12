@@ -11,6 +11,7 @@ export const SuspenseLayoutForAuthBlock: FC = () => (
 		<Outlet />
 	</Suspense>
 );
+
 export const SuspenseLayoutForMainContent: FC = () => (
 	<Section>
 		<SideBar />

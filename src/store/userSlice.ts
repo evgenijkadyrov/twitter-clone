@@ -7,6 +7,7 @@ export interface User {
 	token: string | null;
 	phoneNumber: string | null;
 	birthDate: string | null;
+	description: string | null;
 	nickname?: string | null;
 	avatarImage?: string | null;
 }
@@ -20,6 +21,7 @@ const initialState: User = {
 	birthDate: null,
 	nickname: null,
 	avatarImage: null,
+	description: null,
 };
 
 const userSlice = createSlice({

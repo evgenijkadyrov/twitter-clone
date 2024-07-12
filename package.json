@@ -13,8 +13,8 @@
 		"prettier": "prettier \"src/**/*.{ts,tsx}\" . --write --cache"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "^3.9.0",
 		"@firebase/util": "^1.9.7",
+		"@hookform/resolvers": "^3.9.0",
 		"@reduxjs/toolkit": "^2.2.6",
 		"babel-core": "^6.26.3",
 		"firebase": "^10.12.3",
@@ -59,6 +59,7 @@
 		"eslint-plugin-react-refresh": "^0.4.7",
 		"eslint-plugin-simple-import-sort": "^12.1.0",
 		"prettier": "^3.3.2",
+		"prop-types": "^15.8.1",
 		"typescript": "^5.2.2",
 		"vite": "^5.3.1"
 	},

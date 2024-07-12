@@ -9,26 +9,11 @@ import { collection, doc, getDoc, getDocs, limit, query, setDoc, where } from 'f
 import * as yup from 'yup';
 
 import { db } from '@/firebase';
+import { LoginFormFields, User } from '@/services/interfaces';
 import { validatePhone } from '@/validation/signUpValidation';
 
 export const validateEmail = (email: string | undefined): boolean =>
 	yup.string().email().isValidSync(email);
-
-export interface User {
-	id: string | null;
-	name: string | null;
-	email: string | null;
-	phoneNumber: string | null;
-	token: string | null;
-	birthDate: string | null;
-	description: string | null;
-	nickname: string | null;
-}
-
-export interface LoginFormFields {
-	phoneOrEmail: string;
-	password: string;
-}
 
 export const signUpWithGoogle = async (): Promise<User> => {
 	const auth = getAuth();

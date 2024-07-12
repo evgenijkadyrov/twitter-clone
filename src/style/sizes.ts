@@ -47,12 +47,14 @@ export const WidthSizes = {
 	w375: '375px',
 	w50: '50px',
 	w450: '450px',
+	w150: '150px',
 };
 export const HeightSizes = {
 	h32: '32px',
 	h50: '50px',
 	h60: '60px',
 	h40: '40px',
+	h150: '150px',
 };
 export const BorderSizes = {
 	b01: '1px',
