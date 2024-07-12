@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { CreatingTweetBlock } from '@components/Content/CreatingTweetBlock';
 import { SubscriptionBlock } from '@components/Content/SubscriptionInfo';
 import { TopBlock } from '@components/Content/TopBlock';
+import { TweetsBlock } from '@components/Content/TweetsBlock';
 import { UserCommonInfo } from '@components/Content/UserCommonInfo';
 
 import { userSelector } from '@/store/selectors';
@@ -17,7 +18,7 @@ export const ContentBlock: FC = () => {
 			<UserCommonInfo />
 			<SubscriptionBlock />
 			<CreatingTweetBlock avatarImage={avatarImage} />
-			{/* <div>Tweets</div> */}
+			<TweetsBlock avatarImage={avatarImage} />
 		</Content>
 	);
 };
