@@ -17,7 +17,8 @@ export const tweets: Tweet[] = [
 		authorNickname: '@johndoe',
 		createdAt: '2022-01-01',
 		tweetContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		tweetImage: 'https://example.com/image1.jpg',
+		tweetImage:
+			'https://img.freepik.com/premium-photo/aerial-view-small-town-dobrush-belarus_77190-6500.jpg?w=996',
 		isLiked: true,
 		countLikes: 10,
 	},
@@ -28,7 +29,8 @@ export const tweets: Tweet[] = [
 		authorNickname: '@janesmith',
 		createdAt: '2022-01-02',
 		tweetContent: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		tweetImage: 'https://example.com/image2.jpg',
+		tweetImage:
+			'https://img.freepik.com/premium-photo/african-elephant-walking-national-park-savannah_77190-22421.jpg?w=996',
 		isLiked: false,
 		countLikes: 5,
 	},
@@ -38,8 +40,8 @@ export const tweets: Tweet[] = [
 		authorName: 'Jane Smith',
 		authorNickname: '@janesmith',
 		createdAt: '2022-01-02',
-		tweetContent: 'dsdsdsd sds ff sds fsfsf bore et dolore magna aliqua.',
-		tweetImage: 'https://example.com/image2.jpg',
+		tweetContent:
+			'https://img.freepik.com/premium-photo/dog-relaxing-sandy-beach_77190-23406.jpg?w=996',
 		isLiked: true,
 		countLikes: 25,
 	},

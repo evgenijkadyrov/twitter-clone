@@ -1,8 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { CheckAuth } from '@components/Auth';
-import { ContentBlock } from '@components/Content';
 import { SuspenseLayoutForAuthBlock, SuspenseLayoutForMainContent } from '@components/Layouts';
 
+import { ContentBlock } from '@/components/Content';
 import { Paths } from '@/constants/routerPaths';
 import { Home, Login, Registration } from '@/pages';
 
