@@ -1,16 +1,21 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { AuthorInfoComponent } from '@components/Content/AuthorComponent';
 import { Avatar } from '@components/Content/CreatingTweetBlock/creatingTweetBlock.styled';
 import { LikesComponent } from '@components/Content/LikesBlock';
 import { Timestamp } from 'firebase/firestore';
 
-import { Tweet } from '@/constants/mocTweets';
+import { TweetResponse } from '@/components';
+import { userSelector } from '@/store/selectors';
 
 import { Settings, TweetContainer, TweetImage, TweetText, TweetWrapper } from './tweet.styled';
 
 interface TweetComponentProps {
-	tweet: Tweet;
-	avatarImage: string | null | undefined;
+	tweet: TweetResponse;
+	handleClickTweet?: () => void;
+	avatarImage?: string | null | undefined;
 }
+
 const formattedDate = (createdAt: Timestamp): string => {
 	try {
 		const date = createdAt.toDate();
@@ -23,15 +28,20 @@ const formattedDate = (createdAt: Timestamp): string => {
 	}
 };
 
-export const TweetComponent = ({ tweet, avatarImage }: TweetComponentProps) => {
-	const { createdAt, authorName, authorNickname, tweetContent, likedList, tweetImage } = tweet;
-
+export const TweetComponent = ({ tweet, avatarImage, handleClickTweet }: TweetComponentProps) => {
+	const { createdAt, authorName, authorNickname, tweetContent, likedList, tweetImage, userId } =
+		tweet;
+	const [isOwner, setIsOwner] = useState(false);
+	const { id } = useSelector(userSelector);
 	const formatDate = formattedDate(createdAt);
 	const handleLikeClick = () => {};
+	useEffect(() => {
+		setIsOwner(userId === id);
+	}, [tweet, id, userId]);
 
 	return (
-		<TweetContainer>
-			<Avatar background_url={avatarImage as string} />
+		<TweetContainer onClick={handleClickTweet}>
+			{avatarImage !== null && <Avatar background_url={avatarImage as string} />}
 			<TweetWrapper>
 				<AuthorInfoComponent
 					authorName={authorName}
@@ -46,7 +56,7 @@ export const TweetComponent = ({ tweet, avatarImage }: TweetComponentProps) => {
 					handleLikeClick={handleLikeClick}
 				/>
 			</TweetWrapper>
-			<Settings>...</Settings>
+			{isOwner && <Settings>...</Settings>}
 		</TweetContainer>
 	);
 };

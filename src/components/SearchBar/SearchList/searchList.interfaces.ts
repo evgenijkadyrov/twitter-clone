@@ -1,8 +1,9 @@
+import { TweetResponse } from '@/components';
 import { Tweet } from '@/constants/mocTweets';
 import { User } from '@/store/userSlice';
 
 export interface SearchListProps {
-	searchValue: string;
+	tweetItems: TweetResponse[];
 	clearSearch: () => void;
 }
 

@@ -1,8 +1,7 @@
-import { Tweet } from '@/constants/mocTweets';
+import { TweetResponse } from '@/components';
 import { User } from '@/store/userSlice';
 
 export interface SearchItemProps {
-	id: string;
-	data: User | Tweet;
+	data: User | TweetResponse;
 	clearSearch: () => void;
 }
