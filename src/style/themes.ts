@@ -26,7 +26,7 @@ export const LightTheme: DefaultTheme = {
 	input: {
 		backgroundColor: {
 			primary: Colors.transparent,
-			search: Colors.grey[400],
+			search: Colors.grey[100],
 		},
 		textColor: {
 			primary: Colors.black,
@@ -125,7 +125,7 @@ export const DarkTheme: DefaultTheme = {
 	input: {
 		backgroundColor: {
 			primary: Colors.blue[400],
-			search: Colors.blue[400],
+			search: Colors.grey[100],
 		},
 		textColor: {
 			primary: Colors.white,

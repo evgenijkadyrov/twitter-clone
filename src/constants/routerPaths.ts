@@ -6,4 +6,5 @@ export enum Paths {
 	PROFILE_ID = '/:id',
 	FEED = '/feed',
 	NOT_FOUND = '*',
+	TWEET = '/tweet',
 }

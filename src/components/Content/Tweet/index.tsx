@@ -1,6 +1,7 @@
 import { AuthorInfoComponent } from '@components/Content/AuthorComponent';
 import { Avatar } from '@components/Content/CreatingTweetBlock/creatingTweetBlock.styled';
 import { LikesComponent } from '@components/Content/LikesBlock';
+import { Timestamp } from 'firebase/firestore';
 
 import { Tweet } from '@/constants/mocTweets';
 
@@ -10,9 +11,22 @@ interface TweetComponentProps {
 	tweet: Tweet;
 	avatarImage: string | null | undefined;
 }
+const formattedDate = (createdAt: Timestamp): string => {
+	try {
+		const date = createdAt.toDate();
+		return date.toLocaleDateString('en-US', {
+			month: 'short',
+			day: 'numeric',
+		});
+	} catch (error) {
+		return '11.11';
+	}
+};
+
 export const TweetComponent = ({ tweet, avatarImage }: TweetComponentProps) => {
-	const { authorName, authorNickname, createdAt, tweetContent, isLiked, countLikes, tweetImage } =
-		tweet;
+	const { createdAt, authorName, authorNickname, tweetContent, likedList, tweetImage } = tweet;
+
+	const formatDate = formattedDate(createdAt);
 	const handleLikeClick = () => {};
 
 	return (
@@ -22,13 +36,13 @@ export const TweetComponent = ({ tweet, avatarImage }: TweetComponentProps) => {
 				<AuthorInfoComponent
 					authorName={authorName}
 					authorNickname={authorNickname}
-					createdAt={createdAt}
+					createdAt={formatDate}
 				/>
 				<TweetText>{tweetContent}</TweetText>
 				{tweetImage && <TweetImage src={tweetImage} alt="imageTweet" />}
 				<LikesComponent
-					isLiked={isLiked}
-					countLikes={countLikes}
+					isLiked={likedList.some((el) => el === '2')}
+					countLikes={likedList.length}
 					handleLikeClick={handleLikeClick}
 				/>
 			</TweetWrapper>

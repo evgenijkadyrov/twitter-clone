@@ -47,6 +47,7 @@ module.exports = {
 			},
 		],
 		'react-refresh/only-export-components': 'off',
+		'no-floating-promise/no-floating-promise': 'off',
 		'dot-notation': 'off',
 		'simple-import-sort/imports': [
 			'error',

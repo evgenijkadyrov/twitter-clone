@@ -6,7 +6,7 @@ export const AuthorInfoComponent = ({
 	createdAt,
 }: {
 	authorName: string;
-	authorNickname: string;
+	authorNickname: string | null;
 	createdAt: string;
 }) => (
 	<AuthorInfo>

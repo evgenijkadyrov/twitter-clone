@@ -1,39 +1,56 @@
-import { ChangeEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Button } from '@components/Button';
+import { TextAreaTweet } from '@components/Content/TextAreaForTweet';
 
-import { Avatar, Divider, StyledTextarea, Wrapper } from './creatingTweetBlock.styled';
+import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
+import { NotificationMessages } from '@/constants/notificationMessages';
+import { handleFirebaseError } from '@/helpers/firebaseErrors';
+import { TweetService } from '@/services/tweetService';
+import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
+import { userSelector } from '@/store/selectors';
+
+import { Avatar, Divider, Wrapper } from './creatingTweetBlock.styled';
 
 interface CreatingTweetBlockProps {
 	avatarImage: string | null | undefined;
+	tweet: string;
+	setTweet: (value: string) => void;
 }
-
-const TextAreaTweet = () => {
-	const [tweet, setTweet] = useState('');
-
-	const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-		setTweet(event.target.value);
+export const CreatingTweetBlock = ({ avatarImage, tweet, setTweet }: CreatingTweetBlockProps) => {
+	const dispatch = useAppDispatch();
+	const { id } = useSelector(userSelector);
+	const handleCreateTweet = async (): Promise<void> => {
+		try {
+			await TweetService.sendTweet(tweet, id, null);
+			dispatch(
+				notificationActions.showSuccess({
+					success: NotificationMessages.SUCCESS_TWEET_CREATED,
+				})
+			);
+			setTweet('');
+		} catch (error: unknown) {
+			dispatch(
+				notificationActions.showError(
+					handleFirebaseError(
+						error,
+						ErrorsResponseCode.INVALID_CREDENTIALS,
+						NotificationMessages.ERROR_TWEET_CREATED
+					)
+				)
+			);
+		}
 	};
-
 	return (
-		<div>
-			<StyledTextarea
-				placeholder="What's happening..."
-				value={tweet}
-				onChange={handleChange}
-				rows={5}
-			/>
-		</div>
+		<>
+			<Wrapper>
+				<Avatar background_url={avatarImage as string} />
+				<TextAreaTweet tweet={tweet} setTweet={setTweet} />
+				<Button width="100%" color="primary" onClick={handleCreateTweet}>
+					Sent
+				</Button>
+			</Wrapper>
+			<Divider />
+		</>
 	);
 };
-export const CreatingTweetBlock = ({ avatarImage }: CreatingTweetBlockProps) => (
-	<>
-		<Wrapper>
-			<Avatar background_url={avatarImage as string} />
-			<TextAreaTweet />
-			<Button width="100%" color="primary">
-				Sent
-			</Button>
-		</Wrapper>
-		<Divider />
-	</>
-);

@@ -61,6 +61,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 };
 
 const auth = getAuth();
+
 export const singUp = async (
 	name: string,
 	email: string,
