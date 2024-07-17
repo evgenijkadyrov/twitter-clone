@@ -10,8 +10,8 @@ export interface UpdateFormData {
 	phoneNumber: string;
 	name: string;
 	email: string;
-	nickname?: string | undefined;
-	description?: string | undefined;
+	nickname: string;
+	description: string;
 }
 
 export type FormData = yup.InferType<typeof UpdateSchema>;

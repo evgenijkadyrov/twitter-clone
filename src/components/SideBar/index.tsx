@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavBar } from '@components/NavBar';
+import { TweetModal } from '@components/TweetModal';
 
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
@@ -22,8 +24,13 @@ import {
 
 export const SideBar = () => {
 	const { name, nickname, avatarImage } = useSelector(userSelector);
-
+	const [isOpenModal, setIsOpenModal] = useState(false);
 	const dispatch = useAppDispatch();
+
+	const modalClickHandler = (): void => {
+		setIsOpenModal((prev) => !prev);
+	};
+
 	const handleLogout = async () => {
 		try {
 			await signOut();
@@ -48,7 +55,7 @@ export const SideBar = () => {
 	return (
 		<SideBarWrapper>
 			<NavBar />
-			<Button>Tweet</Button>
+			<Button onClick={modalClickHandler}>Tweet</Button>
 			{name && (
 				<Row>
 					{avatarImage && <Avatar src={avatarImage} alt="icon" />}
@@ -61,6 +68,7 @@ export const SideBar = () => {
 			<Button color="disabled" onClick={handleLogout}>
 				Log out
 			</Button>
+			{isOpenModal && <TweetModal closeModal={modalClickHandler} />}
 		</SideBarWrapper>
 	);
 };

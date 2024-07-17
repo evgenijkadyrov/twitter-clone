@@ -1,4 +1,3 @@
-import { UpdateFormData } from '@components/ProfileEditModal/profileEdit.inteface';
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
@@ -131,7 +130,11 @@ export const signOut = async (): Promise<void> => {
 };
 
 export const updateUserInfo = async (
-	data: UpdateFormData,
+	phoneNumber: string,
+	name: string,
+	email: string,
+	nickname: string | undefined,
+	description: string | undefined,
 	id: string | null | undefined
 ): Promise<void> => {
 	const auth = getAuth();
@@ -142,18 +145,15 @@ export const updateUserInfo = async (
 
 	const userRef = doc(db, 'users', id);
 
-	if (user.email !== data.email) {
-		await updateEmail(auth.currentUser, data.email);
+	if (user.email !== email) {
+		await updateEmail(auth.currentUser, email);
 	}
-	// else if (data.) {
-	// 	await updatePassword(auth.currentUser, data.newPassword);
-	// }
 
 	await updateDoc(userRef, {
-		name: data.name,
-		email: data.email,
-		phoneNumber: data.phoneNumber,
-		description: data.description,
-		nickname: data.nickname,
+		name,
+		email,
+		phoneNumber,
+		description,
+		nickname,
 	});
 };

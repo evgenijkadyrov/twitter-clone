@@ -3,11 +3,7 @@ import { createPortal } from 'react-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Input } from '@components/Input';
-import {
-	FormData,
-	ProfileEditModalProps,
-	UpdateFormData,
-} from '@components/ProfileEditModal/profileEdit.inteface';
+import { FormData, ProfileEditModalProps } from '@components/ProfileEditModal/profileEdit.inteface';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
@@ -39,9 +35,9 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 	const user = useSelector(userSelector);
 
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
-		const { phoneNumber, name, email, nickname, description }: UpdateFormData = data;
+		const { phoneNumber, name, email, nickname, description } = data;
 		try {
-			await updateUserInfo(data, user.id);
+			await updateUserInfo(phoneNumber, name, email, nickname, description, user.id);
 			dispatch(
 				userActions.updateUser({
 					...user,
