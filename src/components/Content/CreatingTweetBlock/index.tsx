@@ -46,7 +46,7 @@ export const CreatingTweetBlock = ({ avatarImage, tweet, setTweet }: CreatingTwe
 			<Wrapper>
 				<Avatar background_url={avatarImage as string} />
 				<TextAreaTweet tweet={tweet} setTweet={setTweet} />
-				<Button width="100%" color="primary" onClick={handleCreateTweet}>
+				<Button width="100%" color="primary" onClick={handleCreateTweet} type="submit">
 					Sent
 				</Button>
 			</Wrapper>

@@ -1,15 +1,28 @@
+import { UpdateFormData } from '@components/ProfileEditModal/profileEdit.inteface';
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	GoogleAuthProvider,
 	signInWithEmailAndPassword,
 	signInWithPopup,
+	updateEmail,
 } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, limit, query, setDoc, where } from 'firebase/firestore';
+import {
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	limit,
+	query,
+	setDoc,
+	updateDoc,
+	where,
+} from 'firebase/firestore';
 import * as yup from 'yup';
 
 import { db } from '@/firebase';
-import { LoginFormFields, User } from '@/services/interfaces';
+import { LoginFormFields } from '@/services/interfaces';
+import { User } from '@/store/userSlice';
 import { validatePhone } from '@/validation/signUpValidation';
 
 export const validateEmail = (email: string | undefined): boolean =>
@@ -72,6 +85,7 @@ export const singUp = async (
 	const { user } = await createUserWithEmailAndPassword(auth, email, password);
 	const { uid } = user;
 	const token = await user.getIdToken();
+
 	await setDoc(doc(db, 'users', uid), {
 		name,
 		email,
@@ -114,4 +128,32 @@ export const login = async (inputData: LoginFormFields) => {
 export const signOut = async (): Promise<void> => {
 	const auth = getAuth();
 	await auth.signOut();
+};
+
+export const updateUserInfo = async (
+	data: UpdateFormData,
+	id: string | null | undefined
+): Promise<void> => {
+	const auth = getAuth();
+	const user = auth.currentUser;
+	if (!user || !id) {
+		throw new Error('not login');
+	}
+
+	const userRef = doc(db, 'users', id);
+
+	if (user.email !== data.email) {
+		await updateEmail(auth.currentUser, data.email);
+	}
+	// else if (data.) {
+	// 	await updatePassword(auth.currentUser, data.newPassword);
+	// }
+
+	await updateDoc(userRef, {
+		name: data.name,
+		email: data.email,
+		phoneNumber: data.phoneNumber,
+		description: data.description,
+		nickname: data.nickname,
+	});
 };

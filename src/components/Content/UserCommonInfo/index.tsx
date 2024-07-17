@@ -12,7 +12,10 @@ import {
 	UserName,
 } from './userInfo.styled';
 
-export const UserCommonInfo = () => {
+interface UserCommonInfoProps {
+	openModal: () => void;
+}
+export const UserCommonInfo = ({ openModal }: UserCommonInfoProps) => {
 	const { nickname, name, description, avatarImage } = useSelector(userSelector);
 	return (
 		<CommonInfo>
@@ -22,7 +25,7 @@ export const UserCommonInfo = () => {
 				<NickName>{nickname}</NickName>
 				<UserDescription>{description} </UserDescription>
 			</ProfileInfo>
-			<Button color="disabled" width="20%">
+			<Button color="disabled" width="20%" onClick={openModal} type="button">
 				Edit profile
 			</Button>
 		</CommonInfo>

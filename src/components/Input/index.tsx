@@ -4,7 +4,7 @@ import { ErrorMessage, StyledInput } from '@components/Input/input.styled';
 export interface InputProps extends PropsWithRef<JSX.IntrinsicElements['input']> {
 	/* eslint-disable-next-line react/require-default-props */
 	width?: string | undefined;
-	errorMessage: string | undefined;
+	errorMessage?: string | undefined;
 }
 export const Input = forwardRef<HTMLInputElement, InputProps>(
 	(

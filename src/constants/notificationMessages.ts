@@ -7,4 +7,6 @@ export enum NotificationMessages {
 	ERROR_LOGIN = 'Enter correct password or email',
 	SUCCESS_LOGOUT = 'Exit from account successful',
 	ERROR_LOGOUT = 'Error during logout. ',
+	SUCCESS_UPDATE_PROFILE_INFO = 'Profile info success updated',
+	ERROR_UPDATE_PROFILE = 'Error during update profile info',
 }
