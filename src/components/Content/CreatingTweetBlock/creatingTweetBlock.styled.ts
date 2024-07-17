@@ -40,3 +40,16 @@ export const Avatar = styled.div<AvatarProps>`
 	background-repeat: no-repeat;
 	margin-left: ${Sizes.MarginSizes.m15};
 `;
+export const FileInput = styled.input`
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+`;
+
+export const Label = styled.label`
+	cursor: pointer;
+`;
+
+export const UploadIcon = styled.img`
+	padding: 15px 0 10px 15px;
+`;

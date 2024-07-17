@@ -1,14 +1,14 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
-import { db, storage } from '@/firebase';
+import { db } from '@/firebase';
 
 const uploadImage = async (uploadedImage: File | null): Promise<string | null> => {
 	if (!uploadedImage) {
 		return null;
 	}
-
-	const imageName = `images/${uploadedImage.name + Date.now()}`;
+	const storage = getStorage();
+	const imageName = `images/${uploadedImage.name}`;
 
 	const imageRef = ref(storage, imageName);
 	await uploadBytes(imageRef, uploadedImage);

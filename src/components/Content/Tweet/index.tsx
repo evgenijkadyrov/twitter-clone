@@ -4,8 +4,10 @@ import { AuthorInfoComponent } from '@components/Content/AuthorComponent';
 import { Avatar } from '@components/Content/CreatingTweetBlock/creatingTweetBlock.styled';
 import { LikesComponent } from '@components/Content/LikesBlock';
 import { Timestamp } from 'firebase/firestore';
+import { getDownloadURL, ref } from 'firebase/storage';
 
 import { TweetResponse } from '@/components';
+import { storage } from '@/firebase';
 import { userSelector } from '@/store/selectors';
 
 import { Settings, TweetContainer, TweetImage, TweetText, TweetWrapper } from './tweet.styled';
@@ -32,13 +34,22 @@ export const TweetComponent = ({ tweet, avatarImage, handleClickTweet }: TweetCo
 	const { createdAt, authorName, authorNickname, tweetContent, likedList, tweetImage, userId } =
 		tweet;
 	const [isOwner, setIsOwner] = useState(false);
+	const [imageUrl, setImageUrl] = useState<string>('');
 	const { id } = useSelector(userSelector);
 	const formatDate = formattedDate(createdAt);
 	const handleLikeClick = () => {};
 	useEffect(() => {
 		setIsOwner(userId === id);
 	}, [tweet, id, userId]);
-
+	useEffect(() => {
+		if (tweetImage) {
+			getDownloadURL(ref(storage, tweetImage))
+				.then((url) => {
+					setImageUrl(url);
+				})
+				.catch(() => {});
+		}
+	}, [tweetImage]);
 	return (
 		<TweetContainer onClick={handleClickTweet}>
 			{avatarImage !== null && <Avatar background_url={avatarImage as string} />}
@@ -49,7 +60,7 @@ export const TweetComponent = ({ tweet, avatarImage, handleClickTweet }: TweetCo
 					createdAt={formatDate}
 				/>
 				<TweetText>{tweetContent}</TweetText>
-				{tweetImage && <TweetImage src={tweetImage} alt="imageTweet" />}
+				{imageUrl && <TweetImage src={imageUrl} alt="imageTweet" />}
 				<LikesComponent
 					isLiked={likedList.some((el) => el === '2')}
 					countLikes={likedList.length}
