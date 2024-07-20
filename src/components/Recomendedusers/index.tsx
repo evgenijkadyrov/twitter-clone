@@ -1,11 +1,10 @@
 import { TypeButton } from '@components/ui/Button/button.interface';
+import { UserNameBlock } from '@components/ui/userNameBlock';
 
-import defaultAvatar from '@/assets/images/avatar.png';
-import { Avatar } from '@/components/SearchBar/SearchInput/searchInput.styled';
 import { Button } from '@/components/ui/Button';
 import { UserWithFollow } from '@/store/userSlice';
 
-import { ProfileInfo, Row, SubTitle, TitleForRecommended, TitleProfile } from './recomended.styled';
+import { TitleForRecommended } from './recomended.styled';
 
 interface RecommendedUsersProps {
 	usersByRecommendation: UserWithFollow[];
@@ -31,21 +30,16 @@ export const RecommendedUsers = ({
 		<>
 			<TitleForRecommended>You might like</TitleForRecommended>
 			{usersByRecommendation.map(({ name, nickname, id, avatarImage, follow }) => (
-				<Row key={id}>
-					<Avatar background_url={avatarImage || defaultAvatar} />
-					<ProfileInfo>
-						<TitleProfile>{name}</TitleProfile>
-						<SubTitle>{nickname}</SubTitle>
-					</ProfileInfo>
+				<UserNameBlock id={id} name={name} avatarImage={avatarImage} nickname={nickname} key={id}>
 					<Button
-						type={TypeButton.submit}
+						type={TypeButton.button}
 						color={follow ? 'disabled' : 'primary'}
 						width="30%"
 						onClick={handleChangeSubscribe(id)}
 					>
 						{follow ? 'Unfollow' : 'Follow'}
 					</Button>
-				</Row>
+				</UserNameBlock>
 			))}
 		</>
 	);

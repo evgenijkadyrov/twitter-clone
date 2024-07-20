@@ -2,27 +2,16 @@ import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { RecommendedUsers } from '@components/Recomendedusers';
 import { SearchList } from '@components/SearchBar/SearchList';
+import { UserNameBlock } from '@components/ui/userNameBlock';
 
 import searchIcon from '@/assets/icons/search.svg';
-import defaultAvatar from '@/assets/images/avatar.png';
 import { TweetResponse } from '@/components';
 import useDebounce from '@/hooks/useDebounce';
 import { useTweets } from '@/hooks/useTweets';
 import { useUsers } from '@/hooks/useUsers';
 import { User, UserWithFollow } from '@/store/userSlice';
 
-import {
-	Aside,
-	Avatar,
-	Container,
-	Icon,
-	ProfileInfo,
-	Row,
-	SearchBarContainer,
-	SubTitle,
-	Title,
-	TitleProfile,
-} from './searchInput.styled';
+import { Aside, Container, Icon, SearchBarContainer, Title } from './searchInput.styled';
 
 export enum SearchFields {
 	users = 'name',
@@ -57,7 +46,7 @@ export const SearchInput = () => {
 
 	useEffect(() => {
 		getRecommendationUsers();
-	}, [getRecommendationUsers]);
+	}, []);
 
 	const search = useCallback(() => {
 		if (searchPath === 'users') {
@@ -93,14 +82,7 @@ export const SearchInput = () => {
 						<SearchList tweetItems={tweetItems} clearSearch={clearSearch} />
 					) : (
 						usersBySearch.map(({ name, nickname, id, avatarImage }) => (
-							<Row key={id}>
-								<Avatar background_url={avatarImage || defaultAvatar} />
-
-								<ProfileInfo>
-									<TitleProfile>{name}</TitleProfile>
-									<SubTitle>{nickname}</SubTitle>
-								</ProfileInfo>
-							</Row>
+							<UserNameBlock name={name} avatarImage={avatarImage} id={id} nickname={nickname} />
 						))
 					)}
 				</>

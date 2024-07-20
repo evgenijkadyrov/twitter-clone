@@ -5,9 +5,10 @@ export enum TypeButton {
 	button = 'button',
 }
 export interface IButtonProps {
-	width: string;
-	color: string;
+	width?: string;
+	color?: string;
 	onClick?: () => void;
-	children: ReactNode;
+	children?: ReactNode;
 	type: TypeButton;
+	disabled?: boolean;
 }

@@ -1,4 +1,3 @@
-import AvatarDefault from '@assets/images/avatar.png';
 import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
@@ -23,39 +22,10 @@ export const Button = styled.button`
 		background-color: ${({ theme }) => theme.button.backgroundColor.hover};
 	}
 `;
-interface AvatarProps {
-	background_url: string;
-}
-export const Avatar = styled.div<AvatarProps>`
-	text-align: center;
-	border-radius: 50%;
-	width: ${Sizes.WidthSizes.w40};
-	height: ${Sizes.HeightSizes.h40};
-	background-image: url(${({ background_url }) => background_url || AvatarDefault});
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin-left: ${Sizes.MarginSizes.m15};
-`;
-export const Row = styled.div`
-	display: flex;
-	align-items: center;
-`;
-export const ProfileInfo = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: ${Sizes.MarginSizes.m20} ${Sizes.MarginSizes.m40} ${Sizes.MarginSizes.m20}
-		${Sizes.MarginSizes.m20};
-`;
+
 export const Title = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f16};
 	font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 	//line-height: 19px;
 	margin-bottom: ${Sizes.MarginSizes.m05};
-`;
-export const SubTitle = styled.div`
-	font-size: ${({ theme }) => theme.fontSize.f16};
-	font-weight: ${({ theme }) => theme.fontWeights.regular};
-	//line-height: 19px;
-	color: ${({ theme }) => theme.fontColors.grey};
 `;

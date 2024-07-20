@@ -13,9 +13,9 @@ export const Container = styled.div`
 export const Modal = styled.div`
 	position: relative;
 
-	width: 500px;
-	height: 600px;
-	padding: 20px;
+	width: ${Sizes.WidthSizes.w500};
+	height: ${Sizes.HeightSizes.h600};
+	padding: ${Sizes.PaddingSizes.p20};
 
 	display: flex;
 	flex-direction: column;
@@ -23,17 +23,17 @@ export const Modal = styled.div`
 	align-items: center;
 
 	box-shadow: 0 0 5px ${({ theme }) => theme.shadowColor};
-	border-radius: 6px;
+	border-radius: ${Sizes.BorderRadiusSizes.br06};
 	background-color: ${({ theme }) => theme.backgroundColor};
 
 	@media screen and (max-width: 1000px) {
-		padding-top: 30px;
+		padding-top: ${Sizes.PaddingSizes.p32};
 		width: 100%;
 	}
 
 	@media screen and (max-width: 780px) {
 		height: auto;
-		padding-bottom: 10px;
+		padding-bottom: ${Sizes.PaddingSizes.p10};
 	}
 `;
 export const ButtonClose = styled.button`
@@ -41,7 +41,7 @@ export const ButtonClose = styled.button`
 	right: 20px;
 	border: none;
 	background-color: transparent;
-	font-size: 20px;
+	font-size: ${({ theme }) => theme.fontSize.f20};
 	cursor: pointer;
 `;
 export const FormTitle = styled.div`

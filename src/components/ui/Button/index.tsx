@@ -4,8 +4,14 @@ import { IButtonProps } from './button.interface';
 import { StyledButton } from './button.styled';
 
 export const Button = memo<IButtonProps>(
-	({ width = '100%', color = 'primary', onClick, type, children }) => (
-		<StyledButton $width={width} $color={color} onClick={onClick} type={type}>
+	({ width = '100%', color = 'primary', onClick, type, disabled, children }) => (
+		<StyledButton
+			$width={width !== undefined ? width : '100%'}
+			$color={color !== undefined ? color : 'primary'}
+			onClick={onClick}
+			type={type}
+			disabled={disabled}
+		>
 			{children}
 		</StyledButton>
 	)

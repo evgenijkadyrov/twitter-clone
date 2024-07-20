@@ -1,15 +1,17 @@
-import { SyntheticEvent } from 'react';
+import { Fragment, SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { FormData, ProfileEditModalProps } from '@components/ProfileEditModal/profileEdit.inteface';
+import { TypeButton } from '@components/ui/Button/button.interface';
 import { ErrorMessage } from '@components/ui/ErrorMessage';
 import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { Button } from '@/components/ui/Button';
 import { UPDATE_USER_INFO } from '@/constants/registrationFormData';
 import { useUpdateProfileInfo } from '@/hooks/useUpdateProfileInfo';
-import { Button, ButtonWrapper, Inputs } from '@/pages/Registration/registration.styled';
+import { Inputs } from '@/pages/Registration/registration.styled';
 import { userSelector } from '@/store/selectors';
 import { User } from '@/store/userSlice';
 import { UpdateSchema } from '@/validation/signUpValidation';
@@ -46,7 +48,7 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Inputs>
 						{UPDATE_USER_INFO.map((field) => (
-							<>
+							<Fragment key={field.name}>
 								<label htmlFor={field.name}>{field.placeholder}</label>
 								<Input
 									key={field.name}
@@ -60,14 +62,17 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 								{errors[field.registerName] && (
 									<ErrorMessage message={errors[field.registerName]?.message as string} />
 								)}
-							</>
+							</Fragment>
 						))}
 					</Inputs>
-					<ButtonWrapper>
-						<Button type="submit" disabled={!isValid || !isDirty || isSubmitting}>
-							Update
-						</Button>
-					</ButtonWrapper>
+					<Button
+						type={TypeButton.submit}
+						disabled={!isValid || !isDirty || isSubmitting}
+						width="100%"
+						color="primary"
+					>
+						Update
+					</Button>
 				</form>
 				<ButtonClose onClick={closeModal}>X</ButtonClose>
 			</Modal>
