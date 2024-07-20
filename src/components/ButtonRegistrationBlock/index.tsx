@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import Google from '@assets/icons/google-icon.svg';
+import { ButtonRegistration } from '@components/ui/ButtonRegistration';
 
 import { Paths } from '@/constants/routerPaths';
 import { signUpWithGoogle } from '@/services/serviceAuth';
-
-import { Button, ButtonIcon, ButtonText, WrapperForButtonContent } from './buttonBlock.styled';
 
 export const ButtonRegistrationBlock = () => {
 	const navigate = useNavigate();
@@ -20,17 +19,12 @@ export const ButtonRegistrationBlock = () => {
 	};
 	return (
 		<>
-			<Button type="button" onClick={handleGoogleClick}>
-				<WrapperForButtonContent>
-					<ButtonIcon src={Google} alt="googleIcon" />
-					<ButtonText>Sign up with Google</ButtonText>
-				</WrapperForButtonContent>
-			</Button>
-			<Button type="button" onClick={handleEmailClick}>
-				<WrapperForButtonContent>
-					<ButtonText>Sign up with email</ButtonText>
-				</WrapperForButtonContent>
-			</Button>
+			<ButtonRegistration
+				text="Sign up with Google"
+				icon={Google}
+				onclickHandler={handleGoogleClick}
+			/>
+			<ButtonRegistration text="Sign up with email" onclickHandler={handleEmailClick} />
 		</>
 	);
 };

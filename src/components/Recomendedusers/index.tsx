@@ -1,3 +1,5 @@
+import { TypeButton } from '@components/Button/button.interface';
+
 import defaultAvatar from '@/assets/images/avatar.png';
 import { Button } from '@/components/Button';
 import { Avatar } from '@/components/SearchBar/SearchInput/searchInput.styled';
@@ -36,7 +38,7 @@ export const RecommendedUsers = ({
 						<SubTitle>{nickname}</SubTitle>
 					</ProfileInfo>
 					<Button
-						type="button"
+						type={TypeButton.submit}
 						color={follow ? 'disabled' : 'primary'}
 						width="30%"
 						onClick={handleChangeSubscribe(id)}

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Button } from '@components/Button';
+import { TypeButton } from '@components/Button/button.interface';
 import { TextAreaTweet } from '@components/Content/TextAreaForTweet';
 
 import uploadIcon from '@/assets/icons/upload-image.svg';
@@ -36,7 +37,7 @@ export const CreatingTweetBlock = ({ tweetText, setTweet }: CreatingTweetBlockPr
 						onChange={inputFileChangeHandler}
 					/>
 				</Label>
-				<Button width="100%" color="primary" onClick={handleCreateTweet} type="submit">
+				<Button width="100%" color="primary" onClick={handleCreateTweet} type={TypeButton.submit}>
 					Sent
 				</Button>
 			</Wrapper>

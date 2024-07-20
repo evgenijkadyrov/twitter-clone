@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Button } from '@components/Button';
+import { TypeButton } from '@components/Button/button.interface';
 
 import { userSelector } from '@/store/selectors';
 
@@ -25,7 +26,7 @@ export const UserCommonInfo = ({ openModal }: UserCommonInfoProps) => {
 				<NickName>{nickname}</NickName>
 				<UserDescription>{description} </UserDescription>
 			</ProfileInfo>
-			<Button color="disabled" width="20%" onClick={openModal} type="button">
+			<Button color="disabled" width="20%" onClick={openModal} type={TypeButton.button}>
 				Edit profile
 			</Button>
 		</CommonInfo>

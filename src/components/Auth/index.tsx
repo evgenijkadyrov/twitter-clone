@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ interface IProps {
 	children?: ReactNode;
 }
 
-export const CheckAuth: FC = ({ children }: IProps) => {
+export const CheckAuth = ({ children }: IProps) => {
 	const { token, id } = useSelector(userSelector);
 	const navigate = useNavigate();
 	useEffect(() => {
