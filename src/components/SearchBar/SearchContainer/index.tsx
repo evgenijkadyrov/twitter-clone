@@ -13,11 +13,6 @@ import { User, UserWithFollow } from '@/store/userSlice';
 
 import { SearchBarWrapper, Title } from './searchContainer.styled';
 
-export enum SearchFields {
-	users = 'name',
-	tweets = 'tweetContent',
-}
-
 export enum SearchPath {
 	users = 'users',
 	tweets = 'tweets',
@@ -25,8 +20,6 @@ export enum SearchPath {
 
 export const SearchContainer = () => {
 	const [searchValue, setSearchValue] = useState<string>('');
-	// const [tweetItems, setTweetItems] = useState<TweetResponse[]>([]);
-	// const [usersBySearch, setUsersBySearch] = useState<User[]>([]);
 	const [data, setData] = useState<User[] | TweetResponse[]>([]);
 	const [usersByRecommendation, setUsersByRecommendation] = useState<UserWithFollow[]>([]);
 	const location = useLocation();
@@ -51,10 +44,6 @@ export const SearchContainer = () => {
 		setSearchValue('');
 	};
 
-	useEffect(() => {
-		getRecommendationUsers();
-	}, []);
-
 	const search = useCallback(() => {
 		if (searchPath === SearchPath.users) {
 			getSearchUsers().catch((error) => {
@@ -67,7 +56,9 @@ export const SearchContainer = () => {
 			});
 		}
 	}, [searchPath, getSearchUsers, getTweets]);
-
+	useEffect(() => {
+		getRecommendationUsers();
+	}, []);
 	useEffect(() => {
 		search();
 	}, [debouncedValue]);
@@ -79,7 +70,6 @@ export const SearchContainer = () => {
 				searchPath={searchPath}
 				onChangeHandler={onChangeHandler}
 			/>
-
 			{searchValue && (
 				<>
 					<Title>Search Results</Title>

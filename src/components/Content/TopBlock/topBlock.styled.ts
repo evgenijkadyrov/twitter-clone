@@ -1,13 +1,13 @@
 import ProfileBackground from '@assets/images/home-background.jpg';
 import styled from 'styled-components';
 
-import { MarginSizes } from '@/style/sizes';
+import * as Sizes from '@/style/sizes';
 
 interface ImageBackgroundProps {
 	background_url: string;
 }
 export const ImageBackground = styled.div<ImageBackgroundProps>`
-	height: 250px;
+	height: ${Sizes.HeightSizes.h250};
 	width: 100%;
 	background-image: url(${({ background_url }) => background_url || ProfileBackground});
 	background-position: center;
@@ -17,14 +17,14 @@ export const ImageBackground = styled.div<ImageBackgroundProps>`
 export const BlockName = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f16};
 	font-weight: ${({ theme }) => theme.fontWeights.bold};
-	margin-left: ${MarginSizes.m15};
-	margin-top: ${MarginSizes.m20};
+	margin-left: ${Sizes.MarginSizes.m15};
+	margin-top: ${Sizes.MarginSizes.m20};
 `;
 export const TweetsCount = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f16};
 	font-weight: ${({ theme }) => theme.fontWeights.regular};
 	color: ${({ theme }) => theme.fontColors.grey};
-	margin-left: ${MarginSizes.m15};
-	margin-top: ${MarginSizes.m05};
-	margin: ${MarginSizes.m05} 0 ${MarginSizes.m20} ${MarginSizes.m15};
+	margin-left: ${Sizes.MarginSizes.m15};
+	margin-top: ${Sizes.MarginSizes.m05};
+	margin: ${Sizes.MarginSizes.m05} 0 ${Sizes.MarginSizes.m20} ${Sizes.MarginSizes.m15};
 `;

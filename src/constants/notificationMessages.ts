@@ -9,4 +9,6 @@ export enum NotificationMessages {
 	ERROR_LOGOUT = 'Error during logout. ',
 	SUCCESS_UPDATE_PROFILE_INFO = 'Profile info success updated',
 	ERROR_UPDATE_PROFILE = 'Error during update profile info',
+	SUCCESS_UPDATE_LKE = 'Like success updated',
+	ERROR_UPDATE_LIKE = 'Like not updated',
 }

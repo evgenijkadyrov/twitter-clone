@@ -1,13 +1,9 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 
+import { TextAreaTweetProps } from './textArea.interface';
 import { StyledTextarea } from './textArea.styled';
 
-interface TextAreaTweetProps {
-	tweet: string;
-	setTweet: (value: string) => void;
-}
-
-export const TextAreaTweet = ({ tweet, setTweet }: TextAreaTweetProps) => {
+export const TextAreaTweet = memo(({ tweet, setTweet }: TextAreaTweetProps) => {
 	const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		setTweet(event.target.value);
 	};
@@ -22,4 +18,4 @@ export const TextAreaTweet = ({ tweet, setTweet }: TextAreaTweetProps) => {
 			/>
 		</div>
 	);
-};
+});

@@ -6,15 +6,15 @@ import * as Sizes from '@/style/sizes';
 export const Wrapper = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 5fr 1fr;
-	grid-gap: 10px;
+	grid-gap: ${Sizes.GapSizes.g10};
 `;
 export const Divider = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 1px;
-	margin: 20px 0;
+	height: ${Sizes.BorderSizes.b01};
+	margin: ${Sizes.MarginSizes.m20} 0;
 
 	&::after {
 		content: '';
@@ -51,5 +51,5 @@ export const Label = styled.label`
 `;
 
 export const UploadIcon = styled.img`
-	padding: 15px 0 10px 15px;
+	padding: ${Sizes.PaddingSizes.p14} 0 ${Sizes.PaddingSizes.p10} ${Sizes.PaddingSizes.p14};
 `;

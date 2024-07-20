@@ -27,7 +27,12 @@ export const SearchItem = ({ data, clearSearch }: SearchItemProps) => {
 				}
 			}}
 		>
-			<TweetComponent tweet={data as TweetResponse} imageHeight={HeightSizes.h150} />;
+			<TweetComponent
+				tweet={data as TweetResponse}
+				imageHeight={HeightSizes.h150}
+				showTweetImage={false}
+			/>
+			;
 		</TweetWrapper>
 	);
 };

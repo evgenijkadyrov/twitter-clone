@@ -75,6 +75,7 @@ export const HeightSizes = {
 	h60: '60px',
 	h40: '40px',
 	h150: '150px',
+	h250: '250px',
 	h450: '450px',
 	h600: '600px',
 };
@@ -90,5 +91,6 @@ export const BorderRadiusSizes = {
 };
 export const GapSizes = {
 	g40: '40px',
-	g15: '5px',
+	g15: '15px',
+	g10: '10px',
 };

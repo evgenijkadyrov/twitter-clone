@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from 'react';
+import { memo, SyntheticEvent, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { CreatingTweetBlock } from '@/components';
@@ -9,7 +9,7 @@ interface TweetModalProps {
 	closeModal: () => void;
 }
 
-export const TweetModal = ({ closeModal }: TweetModalProps) => {
+export const TweetModal = memo(({ closeModal }: TweetModalProps) => {
 	const [tweet, setTweet] = useState<string>('');
 	const closeOutside = (e: SyntheticEvent): void => {
 		if (e.currentTarget === e.target) {
@@ -27,4 +27,4 @@ export const TweetModal = ({ closeModal }: TweetModalProps) => {
 		</Container>,
 		document.body
 	);
-};
+});

@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore';
 
 import { TweetResponse } from '@/components';
+import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
 import { User, UserWithFollow } from '@/store/userSlice';
 
@@ -34,7 +35,10 @@ export const useUsers = ({
 }: UseUsersProps): UseUsers => {
 	const getRecommendationUsers = (): Unsubscribe => {
 		try {
-			const usersFirstQuery = query(collection(db, 'users'), limit(NUMBER_OF_RECOMMENDATION_USER));
+			const usersFirstQuery = query(
+				collection(db, DbCollection.users),
+				limit(NUMBER_OF_RECOMMENDATION_USER)
+			);
 			return onSnapshot(usersFirstQuery, (querySnapshot) => {
 				const userData = querySnapshot.docs.map((doc) => {
 					const user = doc.data() as User;
@@ -51,7 +55,7 @@ export const useUsers = ({
 	const getSearchUsers = async () => {
 		try {
 			const usersFirstQuery = query(
-				collection(db, 'users'),
+				collection(db, DbCollection.users),
 				orderBy('name', 'asc'),
 				startAt(debouncedValue),
 				endAt(`${debouncedValue}\uf8ff`)

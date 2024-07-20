@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
-export const AuthorInfo = styled.div`
+export const AuthorInfoWrapper = styled.div`
 	display: flex;
 	gap: ${Sizes.GapSizes.g15};
 `;

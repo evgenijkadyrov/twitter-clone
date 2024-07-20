@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { TextAreaTweet } from '@components/Content/TextAreaForTweet';
 import { Button } from '@components/ui/Button';
@@ -18,7 +19,7 @@ import {
 	Wrapper,
 } from './creatingTweetBlock.styled';
 
-export const CreatingTweetBlock = ({ tweetText, setTweet }: CreatingTweetBlockProps) => {
+export const CreatingTweetBlock = memo(({ tweetText, setTweet }: CreatingTweetBlockProps) => {
 	const { avatarImage } = useSelector(userSelector);
 
 	const { handleCreateTweet, inputFileChangeHandler } = useCreateTweet({ tweetText, setTweet });
@@ -44,4 +45,4 @@ export const CreatingTweetBlock = ({ tweetText, setTweet }: CreatingTweetBlockPr
 			<Divider />
 		</>
 	);
-};
+});
