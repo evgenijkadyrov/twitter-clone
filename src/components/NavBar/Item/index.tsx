@@ -1,14 +1,12 @@
 import { useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 
-import { NavLink } from '@/constants/navLinks';
+import { Paths } from '@/constants/routerPaths';
 import { userSelector } from '@/store/selectors';
 
+import { ItemProps } from './navBarItem.interface';
 import { Icon, ListItem, StyledLink } from './navBarItem.styled';
 
-interface ItemProps {
-	link: NavLink;
-}
 export const Item = ({ link }: ItemProps) => {
 	const { to, icon, activeIcon, title } = link;
 	const match = useMatch({
@@ -17,7 +15,7 @@ export const Item = ({ link }: ItemProps) => {
 	});
 	const { id } = useSelector(userSelector);
 
-	const dest = to === '/profile' ? `${to}/${id}` : to;
+	const dest = to === Paths.PROFILE.toString() ? `${to}/${id}` : to;
 
 	return (
 		<ListItem>

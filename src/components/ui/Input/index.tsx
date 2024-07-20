@@ -1,7 +1,8 @@
-import { forwardRef, PropsWithRef } from 'react';
-import { ErrorMessage, StyledInput } from '@components/Input/input.styled';
+import React, { forwardRef, PropsWithRef } from 'react';
+import { ErrorMessage, StyledInput } from '@components/ui/Input/input.styled';
+import IntrinsicElements = React.JSX.IntrinsicElements;
 
-export interface InputProps extends PropsWithRef<JSX.IntrinsicElements['input']> {
+export interface InputProps extends PropsWithRef<IntrinsicElements['input']> {
 	/* eslint-disable-next-line react/require-default-props */
 	width?: string | undefined;
 	errorMessage?: string | undefined;

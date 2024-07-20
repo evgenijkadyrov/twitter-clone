@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { Button } from '@components/Button';
-import { TypeButton } from '@components/Button/button.interface';
 import { TextAreaTweet } from '@components/Content/TextAreaForTweet';
+import { Button } from '@components/ui/Button';
+import { TypeButton } from '@components/ui/Button/button.interface';
 
 import uploadIcon from '@/assets/icons/upload-image.svg';
 import { AVAILABLE_PICTURE_FORMAT } from '@/constants/textConstant';

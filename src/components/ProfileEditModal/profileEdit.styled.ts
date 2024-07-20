@@ -50,9 +50,3 @@ export const FormTitle = styled.div`
 	margin-top: ${Sizes.MarginSizes.m15};
 	margin-bottom: ${Sizes.MarginSizes.m15};
 `;
-export const ErrorStyled = styled.div`
-	font-size: ${({ theme }) => theme.fontSize.f12};
-	margin-top: ${Sizes.MarginSizes.m05};
-	margin-bottom: ${Sizes.MarginSizes.m10};
-	color: ${({ theme }) => theme.fontColors.red};
-`;

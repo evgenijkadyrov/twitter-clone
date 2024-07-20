@@ -1,8 +1,8 @@
-import { TypeButton } from '@components/Button/button.interface';
+import { TypeButton } from '@components/ui/Button/button.interface';
 
 import defaultAvatar from '@/assets/images/avatar.png';
-import { Button } from '@/components/Button';
 import { Avatar } from '@/components/SearchBar/SearchInput/searchInput.styled';
+import { Button } from '@/components/ui/Button';
 import { UserWithFollow } from '@/store/userSlice';
 
 import { ProfileInfo, Row, SubTitle, TitleForRecommended, TitleProfile } from './recomended.styled';

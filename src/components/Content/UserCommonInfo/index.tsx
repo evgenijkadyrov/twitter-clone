@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { Button } from '@components/Button';
-import { TypeButton } from '@components/Button/button.interface';
+import { Button } from '@components/ui/Button';
+import { TypeButton } from '@components/ui/Button/button.interface';
 
 import { userSelector } from '@/store/selectors';
 

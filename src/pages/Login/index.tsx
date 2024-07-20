@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Input } from '@components/Input';
+import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 

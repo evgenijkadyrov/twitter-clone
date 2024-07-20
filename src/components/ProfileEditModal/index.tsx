@@ -1,26 +1,20 @@
-import { FC, SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { Input } from '@components/Input';
 import { FormData, ProfileEditModalProps } from '@components/ProfileEditModal/profileEdit.inteface';
+import { ErrorMessage } from '@components/ui/ErrorMessage';
+import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
-import { NotificationMessages } from '@/constants/notificationMessages';
 import { UPDATE_USER_INFO } from '@/constants/registrationFormData';
-import { handleFirebaseError } from '@/helpers/firebaseErrors';
+import { useUpdateProfileInfo } from '@/hooks/useUpdateProfileInfo';
 import { Button, ButtonWrapper, Inputs } from '@/pages/Registration/registration.styled';
-import { updateUserInfo } from '@/services/serviceAuth';
-import { useAppDispatch } from '@/store';
-import { notificationActions } from '@/store/notificationSlice';
 import { userSelector } from '@/store/selectors';
-import { User, userActions } from '@/store/userSlice';
+import { User } from '@/store/userSlice';
 import { UpdateSchema } from '@/validation/signUpValidation';
 
-import { ButtonClose, Container, ErrorStyled, FormTitle, Modal } from './profileEdit.styled';
-
-const ErrorMessage: FC<ErrorMessageProps> = ({ message }) => <ErrorStyled>{message}</ErrorStyled>;
+import { ButtonClose, Container, FormTitle, Modal } from './profileEdit.styled';
 
 export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 	const {
@@ -32,42 +26,13 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 		resolver: yupResolver(UpdateSchema),
 		mode: 'onBlur',
 	});
-	const dispatch = useAppDispatch();
 	const user = useSelector(userSelector);
+	const updateProfileInfo = useUpdateProfileInfo();
 
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
-		const { phoneNumber, name, email, nickname, description } = data;
-		try {
-			await updateUserInfo(phoneNumber, name, email, nickname, description, user.id);
-			dispatch(
-				userActions.updateUser({
-					...user,
-					name,
-					phoneNumber,
-					email,
-					description,
-					nickname,
-				} as User)
-			);
-			dispatch(
-				notificationActions.showSuccess({
-					success: NotificationMessages.SUCCESS_UPDATE_PROFILE_INFO,
-				})
-			);
-		} catch (error: unknown) {
-			dispatch(
-				notificationActions.showError(
-					handleFirebaseError(
-						error,
-						ErrorsResponseCode.EMAIL_ALREADY_IN_USE,
-						NotificationMessages.ERROR_UPDATE_PROFILE
-					)
-				)
-			);
-		} finally {
-			reset();
-			closeModal();
-		}
+		await updateProfileInfo(data as User);
+		reset();
+		closeModal();
 	};
 	const closeOutside = (e: SyntheticEvent): void => {
 		if (e.currentTarget === e.target) {
@@ -110,6 +75,3 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 		document.body
 	);
 };
-interface ErrorMessageProps {
-	message: string;
-}

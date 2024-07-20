@@ -1,18 +1,17 @@
 import { Link, PathMatch } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const StyledLink = styled(Link)<{ $active: PathMatch<string> | null }>`
-	padding: 5px 10px;
+import * as Sizes from '@/style/sizes';
 
+export const StyledLink = styled(Link)<{ $active: PathMatch | null }>`
+	padding: ${Sizes.PaddingSizes.p05} ${Sizes.PaddingSizes.p10};
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-
 	font-weight: ${({ $active, theme }) =>
 		$active ? theme.fontWeights.semiBold : theme.fontWeights.regular};
 
-	border-radius: 8px;
-
+	border-radius: ${Sizes.BorderRadiusSizes.br06};
 	transition: background-color 0.3s linear;
 
 	&:hover {
@@ -21,8 +20,8 @@ export const StyledLink = styled(Link)<{ $active: PathMatch<string> | null }>`
 `;
 
 export const ListItem = styled.li`
-	margin-bottom: 20px;
+	margin-bottom: ${Sizes.MarginSizes.m20};
 `;
 export const Icon = styled.img`
-	margin-right: 15px;
+	margin-right: ${Sizes.MarginSizes.m15};
 `;

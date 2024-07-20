@@ -132,11 +132,11 @@ export const signOut = async (): Promise<void> => {
 };
 
 export const updateUserInfo = async (
-	phoneNumber: string,
-	name: string,
-	email: string,
-	nickname: string | undefined,
-	description: string | undefined,
+	phoneNumber: string | null,
+	name: string | null,
+	email: string | null,
+	nickname: string | null | undefined,
+	description: string | null | undefined,
 	id: string | null | undefined
 ): Promise<void> => {
 	const auth = getAuth();
@@ -148,7 +148,7 @@ export const updateUserInfo = async (
 	const userRef = doc(db, 'users', id);
 
 	if (user.email !== email) {
-		await updateEmail(auth.currentUser, email);
+		await updateEmail(auth.currentUser, email as string);
 	}
 
 	await updateDoc(userRef, {

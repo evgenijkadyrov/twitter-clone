@@ -12,6 +12,8 @@ import {
 	SuccessWrapper,
 } from './notification.styled';
 
+const TIME_SHOW_NOTIFICATION = 3000;
+
 export const Notification = () => {
 	const { error, success } = useSelector(notificationSelector);
 
@@ -21,7 +23,7 @@ export const Notification = () => {
 		if (error || success) {
 			errorTimeout = setTimeout(() => {
 				dispatch(notificationActions.clearNotification());
-			}, 3000);
+			}, TIME_SHOW_NOTIFICATION);
 		}
 		return () => {
 			clearTimeout(errorTimeout);
