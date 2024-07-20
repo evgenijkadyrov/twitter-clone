@@ -91,6 +91,8 @@ export const singUp = async (
 		phoneNumber,
 		birthDate,
 		id: uid,
+		nickname: null,
+		description: null,
 	});
 	return { uid, token };
 };

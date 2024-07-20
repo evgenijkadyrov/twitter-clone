@@ -11,6 +11,9 @@ export interface User {
 	nickname?: string | null;
 	avatarImage?: string | null;
 }
+export interface UserWithFollow extends User {
+	follow: boolean;
+}
 
 const initialState: User = {
 	id: null,

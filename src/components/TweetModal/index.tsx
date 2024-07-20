@@ -22,7 +22,7 @@ export const TweetModal = ({ closeModal }: TweetModalProps) => {
 		<Container onClick={closeOutside}>
 			<Modal>
 				<FormTitle>Create tweet</FormTitle>
-				<CreatingTweetBlock avatarImage={avatarImage} tweet={tweet} setTweet={setTweet} />
+				<CreatingTweetBlock avatarImage={avatarImage} tweetText={tweet} setTweet={setTweet} />
 				<ButtonClose onClick={closeModal}>X</ButtonClose>
 			</Modal>
 		</Container>,

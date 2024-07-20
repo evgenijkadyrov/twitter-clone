@@ -55,6 +55,7 @@ export const HeightSizes = {
 	h60: '60px',
 	h40: '40px',
 	h150: '150px',
+	h450: '450px',
 };
 export const BorderSizes = {
 	b01: '1px',

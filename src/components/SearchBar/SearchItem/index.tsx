@@ -3,6 +3,7 @@ import { TweetComponent } from '@components/Content/Tweet';
 
 import { TweetResponse } from '@/components';
 import { Paths } from '@/constants/routerPaths';
+import { HeightSizes } from '@/style/sizes';
 
 import { SearchItemProps } from './searchItem.interfaces';
 
@@ -25,7 +26,7 @@ export const SearchItem = ({ data, clearSearch }: SearchItemProps) => {
 				}
 			}}
 		>
-			<TweetComponent tweet={data as TweetResponse} />;
+			<TweetComponent tweet={data as TweetResponse} imageHeight={HeightSizes.h150} />;
 		</div>
 	);
 };

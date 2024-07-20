@@ -8,8 +8,7 @@ export const LikesBlock = styled.div`
   gap:gap:${Sizes.GapSizes.g15}
 `;
 export const LikeIcon = styled.img`
-	margin-right: 10px;
-
+	margin-right: ${Sizes.MarginSizes.m10};
 	cursor: pointer;
 `;
 export const LikeCount = styled.p`

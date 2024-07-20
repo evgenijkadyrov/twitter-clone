@@ -4,6 +4,7 @@ import { UpdateSchema } from '@/validation/signUpValidation';
 
 export interface ProfileEditModalProps {
 	closeModal: () => void;
+	setUpdate: (p: (prev) => boolean) => void;
 }
 
 export interface UpdateFormData {

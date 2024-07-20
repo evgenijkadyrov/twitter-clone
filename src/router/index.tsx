@@ -5,6 +5,8 @@ import { SuspenseLayoutForAuthBlock, SuspenseLayoutForMainContent } from '@compo
 import { ContentBlock } from '@/components/Content';
 import { Paths } from '@/constants/routerPaths';
 import { Home, Login, Registration } from '@/pages';
+import { Feed } from '@/pages/Feed';
+import { TweetPage } from '@/pages/TweetPage';
 
 export const rootRouter = createBrowserRouter(
 	createRoutesFromElements(
@@ -16,8 +18,9 @@ export const rootRouter = createBrowserRouter(
 					<Route path={Paths.REGISTRATION} element={<Registration />} />
 				</Route>
 				<Route element={<SuspenseLayoutForMainContent />}>
-					<Route path={Paths.FEED} element="Feed" />
-					<Route path={Paths.PROFILE + Paths.PROFILE_ID} element={<ContentBlock />} />
+					<Route path={Paths.FEED} element={<Feed />} />
+					<Route path={Paths.PROFILE + Paths.ID} element={<ContentBlock />} />
+					<Route path={Paths.TWEET + Paths.ID} element={<TweetPage />} />
 				</Route>
 			</Route>
 			<Route path={Paths.NOT_FOUND} element="Not found" />

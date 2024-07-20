@@ -8,6 +8,7 @@ export interface Tweet {
 	tweetContent: string;
 	tweetImage: string | null;
 	likedList: string[];
+	avatarImage: string;
 }
 // export const tweets: Tweet[] = [
 // 	{

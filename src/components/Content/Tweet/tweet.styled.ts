@@ -3,18 +3,26 @@ import styled from 'styled-components';
 import * as Sizes from '@/style/sizes';
 
 export const TweetContainer = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 16fr 1fr;
-  grid-gap: 10px;
-  margin-bottom: ${Sizes.MarginSizes.m10};
-  position: relative;
-  
-  }
+	display: grid;
+	grid-template-columns: 2fr 16fr 1fr;
+	grid-gap: 10px;
+	margin-bottom: ${Sizes.MarginSizes.m10};
+	position: relative;
 `;
-export const TweetImage = styled.img`
-	width: 680px;
-	height: 450px;
-	border-radius: 10px;
+interface TweetImageProps {
+	background_url: string;
+	height: string;
+}
+
+export const TweetImage = styled.div<TweetImageProps>`
+	text-align: center;
+	width: 100%;
+	height: ${({ height }) => height};
+	background-image: url(${({ background_url }) => background_url});
+	background-position: left;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-left: ${Sizes.MarginSizes.m15};
 `;
 export const TweetText = styled.div`
 	margin-top: ${Sizes.MarginSizes.m15};

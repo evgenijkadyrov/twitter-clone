@@ -15,7 +15,7 @@ export const LikesComponent = ({
 	<LikesBlock>
 		<LikeIcon
 			src={isLiked ? activeLike : likeIcon}
-			alt="activeLike"
+			alt="Like"
 			onClick={handleLikeClick}
 			loading="lazy"
 		/>

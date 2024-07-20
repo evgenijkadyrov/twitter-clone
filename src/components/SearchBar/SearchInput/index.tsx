@@ -1,22 +1,50 @@
-import { KeyboardEvent, SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { RecommendedUsers } from '@components/Recomendedusers';
 import { SearchList } from '@components/SearchBar/SearchList';
-import { collection, getDocs, orderBy, query, startAt, where } from 'firebase/firestore';
 
 import searchIcon from '@/assets/icons/search.svg';
+import defaultAvatar from '@/assets/images/avatar.png';
 import { TweetResponse } from '@/components';
-import { db } from '@/firebase';
-import { User } from '@/store/userSlice';
+import useDebounce from '@/hooks/useDebounce';
+import { useTweets } from '@/hooks/useTweets';
+import { useUsers } from '@/hooks/useUsers';
+import { User, UserWithFollow } from '@/store/userSlice';
 
-import { Aside, Container, Icon, SearchBarContainer, Title } from './searchInput.styled';
+import {
+	Aside,
+	Avatar,
+	Container,
+	Icon,
+	ProfileInfo,
+	Row,
+	SearchBarContainer,
+	SubTitle,
+	Title,
+	TitleProfile,
+} from './searchInput.styled';
 
 export enum SearchFields {
 	users = 'name',
-	tweets = 'text',
+	tweets = 'tweetContent',
 }
 
 export const SearchInput = () => {
 	const [searchValue, setSearchValue] = useState<string>('');
 	const [tweetItems, setTweetItems] = useState<TweetResponse[]>([]);
+	const [usersBySearch, setUsersBySearch] = useState<User[]>([]);
+	const [usersByRecommendation, setUsersByRecommendation] = useState<UserWithFollow[]>([]);
+	const location = useLocation();
+	const searchPath = location.pathname === '/feed' ? 'users' : 'tweets';
+
+	const debouncedSearchValue = useDebounce(searchValue, 300);
+
+	const { getRecommendationUsers, getSearchUsers } = useUsers({
+		setUsersByRecommendation,
+		debouncedSearchValue,
+		setUsersBySearch,
+	});
+	const getTweets = useTweets({ debouncedSearchValue, setTweetItems });
 
 	const onChangeHandler = (e: SyntheticEvent) => {
 		const target = e.target as HTMLInputElement;
@@ -27,53 +55,61 @@ export const SearchInput = () => {
 		setSearchValue('');
 	};
 
-	const getTweets = async () => {
-		const tweetQuery = query(
-			collection(db, 'tweets'),
-			orderBy('tweetContent', 'asc'),
-			startAt(searchValue)
-		);
-		// const tweetQuery = query(collection(db, 'tweets'), where('tweetContent','==',searchValue));
-		const tweetSnapshot = await getDocs(tweetQuery);
-		const tweetPromises: Promise<TweetResponse>[] = tweetSnapshot.docs.map(async (doc) => {
-			const userDataQuery = query(collection(db, 'users'), where('id', '==', doc.data().userId));
-			const userDataSnapshot = await getDocs(userDataQuery);
-			const userData = userDataSnapshot.docs[0]?.data() as User;
-			const { nickname, name }: User = userData;
-			return {
-				...doc.data(),
-				id: doc.id,
-				authorName: name,
-				authorNickname: nickname,
-			} as TweetResponse;
-		});
-		const tweets: Awaited<TweetResponse>[] = await Promise.all(tweetPromises);
-		setTweetItems(tweets);
-	};
-	const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
+	useEffect(() => {
+		getRecommendationUsers();
+	}, [getRecommendationUsers]);
+
+	const search = useCallback(() => {
+		if (searchPath === 'users') {
+			getSearchUsers().catch((error) => {
+				console.error('Error getting users:', error);
+			});
+		} else {
+			setTweetItems([]);
 			getTweets().catch((error) => {
 				console.error('Error getting tweets:', error);
 			});
 		}
-	};
+	}, [searchPath, getSearchUsers, getTweets]);
+
+	useEffect(() => {
+		search();
+	}, [debouncedSearchValue]);
 
 	return (
 		<Aside>
 			<Container>
 				<Icon src={searchIcon} alt="search" />
 				<SearchBarContainer
-					placeholder="Search Twitter"
+					placeholder={searchPath === 'users' ? 'Search Users' : 'Search tweets'}
 					value={searchValue}
 					onChange={onChangeHandler}
-					onKeyPress={handleKeyPress}
 				/>
 			</Container>
 			{searchValue && (
 				<>
 					<Title>Search Results</Title>
-					<SearchList tweetItems={tweetItems} clearSearch={clearSearch} />
+					{searchPath === 'tweets' ? (
+						<SearchList tweetItems={tweetItems} clearSearch={clearSearch} />
+					) : (
+						usersBySearch.map(({ name, nickname, id, avatarImage }) => (
+							<Row key={id}>
+								<Avatar background_url={avatarImage || defaultAvatar} />
+
+								<ProfileInfo>
+									<TitleProfile>{name}</TitleProfile>
+									<SubTitle>{nickname}</SubTitle>
+								</ProfileInfo>
+							</Row>
+						))
+					)}
 				</>
+			)}
+			{!searchValue && (
+				<RecommendedUsers
+					usersByRecommendation={usersByRecommendation}
+					setUsersByRecommendation={setUsersByRecommendation}
+				/>
 			)}
 		</Aside>
 	);

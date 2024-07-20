@@ -17,6 +17,7 @@ export const ContentBlock: FC = () => {
 	const { avatarImage } = useSelector(userSelector);
 	const [tweet, setTweet] = useState('');
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+	const [update, setUpdate] = useState(false);
 	const modalClickHandler = (): void => {
 		setIsOpenModal((prev) => !prev);
 	};
@@ -24,10 +25,15 @@ export const ContentBlock: FC = () => {
 		<Content>
 			<TopBlock />
 			<UserCommonInfo openModal={modalClickHandler} />
-			{isOpenModal && <ProfileEditModal closeModal={modalClickHandler} />}
+			{isOpenModal && <ProfileEditModal closeModal={modalClickHandler} setUpdate={setUpdate} />}
 			<SubscriptionBlock />
-			<CreatingTweetBlock avatarImage={avatarImage} tweet={tweet} setTweet={setTweet} />
-			<TweetsBlock avatarImage={avatarImage} />
+			<CreatingTweetBlock
+				avatarImage={avatarImage}
+				tweetText={tweet}
+				setTweet={setTweet}
+				setUpdate={setUpdate}
+			/>
+			<TweetsBlock avatarImage={avatarImage} update={update} setUpdate={setUpdate} />
 		</Content>
 	);
 };

@@ -21,7 +21,8 @@ import { UpdateSchema } from '@/validation/signUpValidation';
 import { ButtonClose, Container, ErrorStyled, FormTitle, Modal } from './profileEdit.styled';
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ message }) => <ErrorStyled>{message}</ErrorStyled>;
-export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
+
+export const ProfileEditModal = ({ closeModal, setUpdate }: ProfileEditModalProps) => {
 	const {
 		handleSubmit,
 		register,
@@ -48,6 +49,7 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 					nickname,
 				} as User)
 			);
+			setUpdate((prev) => !prev);
 			dispatch(
 				notificationActions.showSuccess({
 					success: NotificationMessages.SUCCESS_UPDATE_PROFILE_INFO,
