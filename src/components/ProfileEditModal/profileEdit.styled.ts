@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
+const RIGHT_POSITION_CLOSE = '20px';
 export const Container = styled.div`
 	position: fixed;
 	inset: 0;
@@ -38,7 +39,7 @@ export const Modal = styled.div`
 `;
 export const ButtonClose = styled.button`
 	position: absolute;
-	right: 20px;
+	right: ${RIGHT_POSITION_CLOSE};
 	border: none;
 	background-color: transparent;
 	font-size: ${({ theme }) => theme.fontSize.f20};

@@ -10,6 +10,7 @@ import {
 	Unsubscribe,
 } from 'firebase/firestore';
 
+import { TweetResponse } from '@/components';
 import { db } from '@/firebase';
 import { User, UserWithFollow } from '@/store/userSlice';
 
@@ -18,7 +19,7 @@ const NUMBER_OF_RECOMMENDATION_USER = 3;
 interface UseUsersProps {
 	setUsersByRecommendation: (users: UserWithFollow[]) => void;
 	debouncedValue: string;
-	setUsersBySearch: (users: User[]) => void;
+	setData: (data: User[] | TweetResponse[]) => void;
 }
 
 interface UseUsers {
@@ -29,7 +30,7 @@ interface UseUsers {
 export const useUsers = ({
 	setUsersByRecommendation,
 	debouncedValue,
-	setUsersBySearch,
+	setData,
 }: UseUsersProps): UseUsers => {
 	const getRecommendationUsers = (): Unsubscribe => {
 		try {
@@ -57,7 +58,7 @@ export const useUsers = ({
 			);
 			const userSnapshot = await getDocs(usersFirstQuery);
 			const userData = userSnapshot.docs.map((doc) => doc.data());
-			setUsersBySearch(userData as User[]);
+			setData(userData as User[]);
 		} catch (error) {
 			console.log('Error getting users: ', error);
 		}

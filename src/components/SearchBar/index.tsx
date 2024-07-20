@@ -1,9 +1,9 @@
-import { SearchInput } from '@components/SearchBar/SearchInput';
+import { SearchContainer } from '@components/SearchBar/SearchContainer';
 
-import { SearchBarWrapper } from './rightSide.styled';
+import { SearchBarWrapper } from './searchBar.styled';
 
 export const SearchBar = () => (
 	<SearchBarWrapper>
-		<SearchInput />
+		<SearchContainer />
 	</SearchBarWrapper>
 );

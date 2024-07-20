@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { TweetComponent } from '@components/Content/Tweet';
+import { TweetWrapper } from '@components/SearchBar/SearchItem/searchItem.styled';
 
 import { TweetResponse } from '@/components';
 import { Paths } from '@/constants/routerPaths';
@@ -16,7 +17,7 @@ export const SearchItem = ({ data, clearSearch }: SearchItemProps) => {
 	};
 
 	return (
-		<div
+		<TweetWrapper
 			onClick={tweetClickHandler}
 			tabIndex={0}
 			role="button"
@@ -27,6 +28,6 @@ export const SearchItem = ({ data, clearSearch }: SearchItemProps) => {
 			}}
 		>
 			<TweetComponent tweet={data as TweetResponse} imageHeight={HeightSizes.h150} />;
-		</div>
+		</TweetWrapper>
 	);
 };

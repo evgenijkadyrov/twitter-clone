@@ -57,7 +57,6 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 									defaultValue={user[field.registerName] as string}
 									/* eslint-disable-next-line react/jsx-props-no-spreading */
 									{...register(field.registerName)}
-									// errorMessage={errors.root?.message}
 								/>
 								{errors[field.registerName] && (
 									<ErrorMessage message={errors[field.registerName]?.message as string} />

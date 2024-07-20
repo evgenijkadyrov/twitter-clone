@@ -6,10 +6,11 @@ import { User } from '@/store/userSlice';
 
 interface UseTweets {
 	debouncedValue: string;
-	setTweetItems: (tweets: TweetResponse[]) => void;
+	setData: (data: TweetResponse[] | User[]) => void;
 }
+
 export const useTweets =
-	({ debouncedValue, setTweetItems }: UseTweets) =>
+	({ debouncedValue, setData }: UseTweets) =>
 	async () => {
 		try {
 			const tweetQuery = query(
@@ -33,7 +34,7 @@ export const useTweets =
 				} as TweetResponse;
 			});
 			const tweets = await Promise.all(tweetPromises);
-			setTweetItems(tweets);
+			setData(tweets);
 		} catch (error) {
 			console.error('Error getting tweets:', error);
 		}

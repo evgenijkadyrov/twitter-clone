@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
-	padding: 15px 10px;
+import * as Sizes from '@/style/sizes';
 
+export const Header = styled.header`
+	padding: ${Sizes.PaddingSizes.p14} ${Sizes.PaddingSizes.p10};
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 `;
 
 export const Title = styled.p`
-	margin-bottom: 5px;
+	margin-bottom: ${Sizes.MarginSizes.m05};
 	position: relative;
-
 	font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 	font-size: ${({ theme }) => theme.fontSize.f20};
 
@@ -21,26 +21,26 @@ export const Title = styled.p`
 `;
 
 export const ThemeToggler = styled.div`
-	border: 2px solid ${({ theme }) => theme.border};
-	width: 60px;
+	border: ${Sizes.BorderSizes.b02} solid ${({ theme }) => theme.border};
+	width: ${Sizes.WidthSizes.w60};
 
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 
 	background-color: transparent;
-	border-radius: 15px;
+	border-radius: ${Sizes.BorderRadiusSizes.br15};
 
 	@media screen and (max-width: 550px) {
-		width: 40px;
+		width: ${Sizes.WidthSizes.w40};
 	}
 `;
 
 const RadioButton = styled.input`
 	margin: 0;
-	border: 2px solid transparent;
-	width: 30px;
-	height: 30px;
+	border: ${Sizes.BorderSizes.b02} solid transparent;
+	width: ${Sizes.WidthSizes.w32};
+	height: ${Sizes.HeightSizes.h32};
 
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -55,8 +55,8 @@ const RadioButton = styled.input`
 	}
 
 	@media screen and (max-width: 550px) {
-		width: 20px;
-		height: 20px;
+		width: ${Sizes.WidthSizes.w20};
+		height: ${Sizes.HeightSizes.h20};
 	}
 `;
 
@@ -72,7 +72,7 @@ export const DarkThemeRadioButton = styled(RadioButton)`
 	}
 `;
 export const BackIcon = styled.img`
-	height: 20px;
-	width: 20px;
+	height: ${Sizes.HeightSizes.h20};
+	width: ${Sizes.WidthSizes.w20};
 	cursor: pointer;
 `;

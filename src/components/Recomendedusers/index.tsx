@@ -17,12 +17,7 @@ export const RecommendedUsers = ({
 }: RecommendedUsersProps) => {
 	const handleChangeSubscribe = (userId: string | null) => () => {
 		const usersWithFollowing = usersByRecommendation.map((user) =>
-			user.id === userId
-				? {
-						...user,
-						follow: !user.follow,
-					}
-				: user
+			user.id === userId ? { ...user, follow: !user.follow } : user
 		);
 		setUsersByRecommendation(usersWithFollowing);
 	};

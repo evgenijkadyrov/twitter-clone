@@ -1,39 +1,46 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { RecommendedUsers } from '@components/Recomendedusers';
-import { SearchList } from '@components/SearchBar/SearchList';
-import { UserNameBlock } from '@components/ui/userNameBlock';
+import { SearchAbstract } from '@components/SearchBar/SearchTweets';
+import { SearchInput } from '@components/ui/SearchInput';
 
-import searchIcon from '@/assets/icons/search.svg';
 import { TweetResponse } from '@/components';
+import { Paths } from '@/constants/routerPaths';
 import useDebounce from '@/hooks/useDebounce';
 import { useTweets } from '@/hooks/useTweets';
 import { useUsers } from '@/hooks/useUsers';
 import { User, UserWithFollow } from '@/store/userSlice';
 
-import { Aside, Container, Icon, SearchBarContainer, Title } from './searchInput.styled';
+import { SearchBarWrapper, Title } from './searchContainer.styled';
 
 export enum SearchFields {
 	users = 'name',
 	tweets = 'tweetContent',
 }
 
-export const SearchInput = () => {
+export enum SearchPath {
+	users = 'users',
+	tweets = 'tweets',
+}
+
+export const SearchContainer = () => {
 	const [searchValue, setSearchValue] = useState<string>('');
-	const [tweetItems, setTweetItems] = useState<TweetResponse[]>([]);
-	const [usersBySearch, setUsersBySearch] = useState<User[]>([]);
+	// const [tweetItems, setTweetItems] = useState<TweetResponse[]>([]);
+	// const [usersBySearch, setUsersBySearch] = useState<User[]>([]);
+	const [data, setData] = useState<User[] | TweetResponse[]>([]);
 	const [usersByRecommendation, setUsersByRecommendation] = useState<UserWithFollow[]>([]);
 	const location = useLocation();
-	const searchPath = location.pathname === '/feed' ? 'users' : 'tweets';
+	const searchPath =
+		location.pathname === Paths.FEED.toString() ? SearchPath.users : SearchPath.tweets;
 
 	const { debouncedValue } = useDebounce(searchValue, 300);
 
 	const { getRecommendationUsers, getSearchUsers } = useUsers({
 		setUsersByRecommendation,
 		debouncedValue,
-		setUsersBySearch,
+		setData,
 	});
-	const getTweets = useTweets({ debouncedValue, setTweetItems });
+	const getTweets = useTweets({ debouncedValue, setData });
 
 	const onChangeHandler = (e: SyntheticEvent) => {
 		const target = e.target as HTMLInputElement;
@@ -49,12 +56,12 @@ export const SearchInput = () => {
 	}, []);
 
 	const search = useCallback(() => {
-		if (searchPath === 'users') {
+		if (searchPath === SearchPath.users) {
 			getSearchUsers().catch((error) => {
 				console.error('Error getting users:', error);
 			});
-		} else {
-			setTweetItems([]);
+		}
+		if (searchPath === SearchPath.tweets) {
 			getTweets().catch((error) => {
 				console.error('Error getting tweets:', error);
 			});
@@ -66,25 +73,17 @@ export const SearchInput = () => {
 	}, [debouncedValue]);
 
 	return (
-		<Aside>
-			<Container>
-				<Icon src={searchIcon} alt="search" />
-				<SearchBarContainer
-					placeholder={searchPath === 'users' ? 'Search Users' : 'Search tweets'}
-					value={searchValue}
-					onChange={onChangeHandler}
-				/>
-			</Container>
+		<SearchBarWrapper>
+			<SearchInput
+				searchValue={searchValue}
+				searchPath={searchPath}
+				onChangeHandler={onChangeHandler}
+			/>
+
 			{searchValue && (
 				<>
 					<Title>Search Results</Title>
-					{searchPath === 'tweets' ? (
-						<SearchList tweetItems={tweetItems} clearSearch={clearSearch} />
-					) : (
-						usersBySearch.map(({ name, nickname, id, avatarImage }) => (
-							<UserNameBlock name={name} avatarImage={avatarImage} id={id} nickname={nickname} />
-						))
-					)}
+					<SearchAbstract searchPath={searchPath} clearSearch={clearSearch} data={data} />
 				</>
 			)}
 			{!searchValue && (
@@ -93,6 +92,6 @@ export const SearchInput = () => {
 					setUsersByRecommendation={setUsersByRecommendation}
 				/>
 			)}
-		</Aside>
+		</SearchBarWrapper>
 	);
 };
