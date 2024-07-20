@@ -22,7 +22,7 @@ import { ButtonClose, Container, ErrorStyled, FormTitle, Modal } from './profile
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ message }) => <ErrorStyled>{message}</ErrorStyled>;
 
-export const ProfileEditModal = ({ closeModal, setUpdate }: ProfileEditModalProps) => {
+export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 	const {
 		handleSubmit,
 		register,
@@ -49,7 +49,6 @@ export const ProfileEditModal = ({ closeModal, setUpdate }: ProfileEditModalProp
 					nickname,
 				} as User)
 			);
-			setUpdate((prev) => !prev);
 			dispatch(
 				notificationActions.showSuccess({
 					success: NotificationMessages.SUCCESS_UPDATE_PROFILE_INFO,

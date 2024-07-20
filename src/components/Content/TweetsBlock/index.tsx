@@ -11,15 +11,11 @@ import { HeightSizes } from '@/style/sizes';
 
 import { Title, TweetWrapper } from './tweets.styled';
 
-interface TweetBlockProps {
-	setUpdate: (p: (prev) => boolean) => void;
-}
-
 export interface TweetResponse extends Tweet {
 	id: string;
 }
 
-export const TweetsBlock = ({ setUpdate }: TweetBlockProps) => {
+export const TweetsBlock = () => {
 	const { id } = useSelector(userSelector);
 	const [tweetsServer, setTweets] = useState<TweetResponse[]>([]);
 
@@ -52,7 +48,7 @@ export const TweetsBlock = ({ setUpdate }: TweetBlockProps) => {
 
 				try {
 					const tweets = await Promise.all(tweetPromises);
-					const sortedTweets = tweets.sort((a, b) => b.createdAt - a.createdAt);
+					const sortedTweets = tweets.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
 					setTweets(sortedTweets);
 				} catch (error) {
 					console.error('Error getting tweets:', error);
@@ -71,12 +67,7 @@ export const TweetsBlock = ({ setUpdate }: TweetBlockProps) => {
 		<TweetWrapper>
 			<Title>Tweets</Title>
 			{tweetsServer.map((tweet) => (
-				<TweetComponent
-					key={tweet.id}
-					tweet={tweet}
-					imageHeight={HeightSizes.h450}
-					setUpdateLikes={setUpdate}
-				/>
+				<TweetComponent key={tweet.id} tweet={tweet} imageHeight={HeightSizes.h450} />
 			))}
 		</TweetWrapper>
 	);

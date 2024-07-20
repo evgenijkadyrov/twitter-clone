@@ -5,18 +5,18 @@ import { db } from '@/firebase';
 import { User } from '@/store/userSlice';
 
 interface UseTweets {
-	debouncedSearchValue: string;
+	debouncedValue: string;
 	setTweetItems: (tweets: TweetResponse[]) => void;
 }
 export const useTweets =
-	({ debouncedSearchValue, setTweetItems }: UseTweets) =>
+	({ debouncedValue, setTweetItems }: UseTweets) =>
 	async () => {
 		try {
 			const tweetQuery = query(
 				collection(db, 'tweets'),
 				orderBy('tweetContent', 'asc'),
-				startAt(debouncedSearchValue),
-				endAt(`${debouncedSearchValue}\uf8ff`)
+				startAt(debouncedValue),
+				endAt(`${debouncedValue}\uf8ff`)
 			);
 			const tweetSnapshot = await getDocs(tweetQuery);
 			const tweetPromises = tweetSnapshot.docs.map(async (doc) => {

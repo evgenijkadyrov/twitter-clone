@@ -37,14 +37,14 @@ export const SearchInput = () => {
 	const location = useLocation();
 	const searchPath = location.pathname === '/feed' ? 'users' : 'tweets';
 
-	const debouncedSearchValue = useDebounce(searchValue, 300);
+	const { debouncedValue } = useDebounce(searchValue, 300);
 
 	const { getRecommendationUsers, getSearchUsers } = useUsers({
 		setUsersByRecommendation,
-		debouncedSearchValue,
+		debouncedValue,
 		setUsersBySearch,
 	});
-	const getTweets = useTweets({ debouncedSearchValue, setTweetItems });
+	const getTweets = useTweets({ debouncedValue, setTweetItems });
 
 	const onChangeHandler = (e: SyntheticEvent) => {
 		const target = e.target as HTMLInputElement;
@@ -74,7 +74,7 @@ export const SearchInput = () => {
 
 	useEffect(() => {
 		search();
-	}, [debouncedSearchValue]);
+	}, [debouncedValue]);
 
 	return (
 		<Aside>

@@ -58,7 +58,7 @@ export const SideBar = () => {
 			<Button onClick={modalClickHandler}>Tweet</Button>
 			{name && (
 				<Row>
-					{avatarImage && <Avatar background_url={avatarImage} alt="icon" />}
+					{avatarImage && <Avatar background_url={avatarImage} />}
 					<ProfileInfo>
 						<Title>{name}</Title>
 						<SubTitle>{nickname}</SubTitle>

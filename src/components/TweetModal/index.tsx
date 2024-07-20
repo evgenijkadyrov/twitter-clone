@@ -9,7 +9,6 @@ interface TweetModalProps {
 	closeModal: () => void;
 }
 
-const avatarImage = '';
 export const TweetModal = ({ closeModal }: TweetModalProps) => {
 	const [tweet, setTweet] = useState<string>('');
 	const closeOutside = (e: SyntheticEvent): void => {
@@ -22,7 +21,7 @@ export const TweetModal = ({ closeModal }: TweetModalProps) => {
 		<Container onClick={closeOutside}>
 			<Modal>
 				<FormTitle>Create tweet</FormTitle>
-				<CreatingTweetBlock avatarImage={avatarImage} tweetText={tweet} setTweet={setTweet} />
+				<CreatingTweetBlock tweetText={tweet} setTweet={setTweet} />
 				<ButtonClose onClick={closeModal}>X</ButtonClose>
 			</Modal>
 		</Container>,

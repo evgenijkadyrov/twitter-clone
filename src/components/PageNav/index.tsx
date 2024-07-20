@@ -1,4 +1,4 @@
-import React, { ReactElement, SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import backArrow from '@assets/icons/left.svg';
@@ -21,7 +21,8 @@ export const PageNav = () => {
 
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const handleClick = (e: SyntheticEvent): ReactElement => {
+
+	const handleClick = (e: SyntheticEvent) => {
 		const target = e.target as HTMLInputElement;
 		if (target.value === isDarkTheme.toString()) {
 			return;

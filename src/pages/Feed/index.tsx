@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TweetComponent } from '@components/Content/Tweet';
 import { PageNav } from '@components/PageNav';
@@ -14,7 +14,6 @@ export const Feed = () => {
 	const [tweet, setTweet] = useState('');
 	const { id } = useSelector(userSelector);
 	const [tweetsServer, setTweets] = useState<TweetResponse[]>([]);
-	const [update, setUpdateLikes] = useState(false);
 
 	useEffect(() => {
 		const getTweets = async () => {
@@ -40,20 +39,14 @@ export const Feed = () => {
 		getTweets().catch((error) => {
 			console.error('Error getting tweets:', error);
 		});
-	}, [id, update]);
+	}, [id]);
 
 	return (
 		<div>
 			<PageNav />
 			<CreatingTweetBlock tweetText={tweet} setTweet={setTweet} />
 			{tweetsServer.map((tweet) => (
-				<TweetComponent
-					key={tweet.id}
-					tweet={tweet}
-					avatarImage={tweet.avatarImage}
-					imageHeight={HeightSizes.h450}
-					setUpdateLikes={setUpdateLikes}
-				/>
+				<TweetComponent key={tweet.id} tweet={tweet} imageHeight={HeightSizes.h450} />
 			))}
 		</div>
 	);

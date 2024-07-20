@@ -17,7 +17,7 @@ const NUMBER_OF_RECOMMENDATION_USER = 3;
 
 interface UseUsersProps {
 	setUsersByRecommendation: (users: UserWithFollow[]) => void;
-	debouncedSearchValue: { debouncedValue: string };
+	debouncedValue: string;
 	setUsersBySearch: (users: User[]) => void;
 }
 
@@ -28,7 +28,7 @@ interface UseUsers {
 
 export const useUsers = ({
 	setUsersByRecommendation,
-	debouncedSearchValue,
+	debouncedValue,
 	setUsersBySearch,
 }: UseUsersProps): UseUsers => {
 	const getRecommendationUsers = (): Unsubscribe => {
@@ -52,8 +52,8 @@ export const useUsers = ({
 			const usersFirstQuery = query(
 				collection(db, 'users'),
 				orderBy('name', 'asc'),
-				startAt(debouncedSearchValue.debouncedValue),
-				endAt(`${debouncedSearchValue.debouncedValue}\uf8ff`)
+				startAt(debouncedValue),
+				endAt(`${debouncedValue}\uf8ff`)
 			);
 			const userSnapshot = await getDocs(usersFirstQuery);
 			const userData = userSnapshot.docs.map((doc) => doc.data());
