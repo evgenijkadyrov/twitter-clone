@@ -49,6 +49,7 @@ module.exports = {
 		'react-refresh/only-export-components': 'off',
 		'react-hooks/exhaustive-deps': 'off',
 		'no-floating-promise/no-floating-promise': 'off',
+		'@typescript-eslint/no-floating-promises': 'off',
 		'dot-notation': 'off',
 		'simple-import-sort/imports': [
 			'error',
