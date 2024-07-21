@@ -32,9 +32,9 @@ export const Home = () => (
 					<StyledLink to="#">Privacy Policy</StyledLink>, including{' '}
 					<StyledLink to="#">Cookie Use</StyledLink> .
 				</Text>
-				<div>
+				<Text>
 					Already have an account?<StyledLink to="login"> Log in?</StyledLink>
-				</div>
+				</Text>
 			</Column>
 		</Row>
 		<List>

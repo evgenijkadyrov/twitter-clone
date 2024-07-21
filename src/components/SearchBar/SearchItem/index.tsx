@@ -32,7 +32,6 @@ export const SearchItem = ({ data, clearSearch }: SearchItemProps) => {
 				imageHeight={HeightSizes.h150}
 				showTweetImage={false}
 			/>
-			;
 		</TweetWrapper>
 	);
 };

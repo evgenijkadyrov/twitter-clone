@@ -128,7 +128,7 @@ export const DarkTheme: DefaultTheme = {
 			search: Colors.grey[100],
 		},
 		textColor: {
-			primary: Colors.white,
+			primary: Colors.black,
 		},
 		border: {
 			primary: Colors.grey[100],

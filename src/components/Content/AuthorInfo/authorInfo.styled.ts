@@ -4,12 +4,15 @@ import * as Sizes from '@/style/sizes';
 
 export const AuthorInfoWrapper = styled.div`
 	display: flex;
-	gap: ${Sizes.GapSizes.g15};
+	flex-wrap: wrap;
+	width: 100%;
+	gap: ${Sizes.GapSizes.g10};
 `;
 
 export const AuthorName = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f20};
 	font-weight: ${({ theme }) => theme.fontWeights.bold};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const AuthorNickName = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f18};
@@ -18,4 +21,5 @@ export const AuthorNickName = styled.div`
 export const TweetCreatedAt = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f18};
 	color: ${({ theme }) => theme.fontColors.grey};
+	flex-wrap: wrap;
 `;

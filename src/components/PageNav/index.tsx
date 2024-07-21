@@ -2,6 +2,7 @@ import { SyntheticEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import backArrow from '@assets/icons/left.svg';
+import lightLeft from '@assets/icons/left-light.svg';
 
 import { useAppDispatch } from '@/store';
 import { themeSelector } from '@/store/selectors';
@@ -34,7 +35,12 @@ export const PageNav = () => {
 	};
 	return (
 		<Header>
-			<BackIcon src={backArrow} alt="back" onClick={backClickHandler} loading="lazy" />
+			<BackIcon
+				src={isDarkTheme ? lightLeft : backArrow}
+				alt="back"
+				onClick={backClickHandler}
+				loading="lazy"
+			/>
 			<Title>Home</Title>
 			<ThemeToggler>
 				<LightThemeRadioButton

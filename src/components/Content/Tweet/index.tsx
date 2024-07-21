@@ -41,7 +41,7 @@ export const TweetComponent = memo(
 		useTweetImageURL(tweetImage, setImageUrl);
 		return (
 			<TweetContainer onClick={handleClickTweet}>
-				{avatarImage && <Avatar background_url={avatarImage} />}
+				<Avatar background_url={avatarImage} />
 				<TweetWrapper>
 					<AuthorInfo
 						authorName={authorName}

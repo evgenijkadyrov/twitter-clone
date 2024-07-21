@@ -5,6 +5,7 @@ import * as Sizes from '@/style/sizes';
 
 export const Section = styled.section`
 	height: 100%;
+	background-color: ${({ theme }) => theme.backgroundColor};
 `;
 export const Row = styled.div`
 	display: flex;
@@ -24,17 +25,21 @@ export const Icon = styled.img`
 `;
 export const Image = styled.img`
 	width: 60%;
+	max-height: 100vh;
 `;
 export const Title = styled.h1`
 	margin-bottom: ${Sizes.MarginSizes.m40};
 	font-size: ${({ theme }) => theme.fontSize.f64};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const SubTitle = styled.h3`
 	margin-bottom: ${Sizes.MarginSizes.m30};
 	font-size: ${({ theme }) => theme.fontSize.f42};
+	color: ${({ theme }) => theme.textColor};
 `;
 
 export const Text = styled.div`
+	color: ${({ theme }) => theme.textColor};
 	font-size: ${({ theme }) => theme.fontSize.f14};
 	width: ${Sizes.WidthSizes.w375};
 	margin-top: ${Sizes.MarginSizes.m10};
@@ -51,11 +56,13 @@ export const ListItem = styled.div`
 	margin-right: ${Sizes.MarginSizes.m10};
 	font-size: ${({ theme }) => theme.fontSize.f12};
 	color: ${({ theme }) => theme.textColor};
-	margin-bottom: ${Sizes.MarginSizes.m20};
+	padding-bottom: ${Sizes.MarginSizes.m20};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const List = styled.div`
+	background-color: ${({ theme }) => theme.backgroundColor};
 	display: flex;
 	justify-content: center;
-	margin-top: ${Sizes.MarginSizes.m20};
+	padding-top: ${Sizes.MarginSizes.m20};
 	gap: ${Sizes.GapSizes.g15};
 `;

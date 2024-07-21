@@ -19,6 +19,7 @@ export const BlockName = styled.div`
 	font-weight: ${({ theme }) => theme.fontWeights.bold};
 	margin-left: ${Sizes.MarginSizes.m15};
 	margin-top: ${Sizes.MarginSizes.m20};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const TweetsCount = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f16};

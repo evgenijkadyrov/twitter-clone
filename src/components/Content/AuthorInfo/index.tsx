@@ -8,7 +8,7 @@ interface AuthorInfoProps {
 export const AuthorInfo = ({ authorName, authorNickname, createdAt }: AuthorInfoProps) => (
 	<AuthorInfoWrapper>
 		<AuthorName>{authorName}</AuthorName>
-		<AuthorNickName>{authorNickname}</AuthorNickName>
 		<TweetCreatedAt>{createdAt}</TweetCreatedAt>
+		<AuthorNickName>{authorNickname}</AuthorNickName>
 	</AuthorInfoWrapper>
 );

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
+const BOTTOM_POSITION = '10px';
+const HEIGHT_DIVIDER = '1px';
+
 export const TweetContainer = styled.div`
 	display: grid;
 	grid-template-columns: 2fr 16fr 1fr;
@@ -27,10 +30,12 @@ export const TweetImage = styled.div<TweetImageProps>`
 export const TweetText = styled.div`
 	margin-top: ${Sizes.MarginSizes.m15};
 	font-size: ${({ theme }) => theme.fontSize.f18};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const Settings = styled.div`
 	display: flex;
 	justify-content: flex-end;
+	color: ${({ theme }) => theme.textColor};
 `;
 export const TweetWrapper = styled.div`
 display: flex;
@@ -39,10 +44,10 @@ display: flex;
   &:after {
     position: absolute;
     left: 0;
-    bottom: 10px;
+    bottom: ${BOTTOM_POSITION};
     content: '';
     width: 100%;
-    height: 1px;
+    height: ${HEIGHT_DIVIDER};
     background-color: ${({ theme }) => theme.border};
   
 `;

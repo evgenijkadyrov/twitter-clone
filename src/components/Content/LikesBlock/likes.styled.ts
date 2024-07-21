@@ -12,6 +12,7 @@ export const LikeIcon = styled.img`
 	cursor: pointer;
 `;
 export const LikeCount = styled.p`
+	color: ${({ theme }) => theme.textColor};
 	@media screen and (max-width: 550px) {
 		font-size: ${({ theme }) => theme.fontSize.f14};
 	}

@@ -14,7 +14,7 @@ export const Title = styled.p`
 	position: relative;
 	font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 	font-size: ${({ theme }) => theme.fontSize.f20};
-
+	color: ${({ theme }) => theme.textColor};
 	@media screen and (max-width: 550px) {
 		font-size: ${({ theme }) => theme.fontSize.f18};
 	}
@@ -23,12 +23,11 @@ export const Title = styled.p`
 export const ThemeToggler = styled.div`
 	border: ${Sizes.BorderSizes.b02} solid ${({ theme }) => theme.border};
 	width: ${Sizes.WidthSizes.w60};
-
+	height: ${Sizes.HeightSizes.h32};
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 
-	background-color: transparent;
 	border-radius: ${Sizes.BorderRadiusSizes.br15};
 
 	@media screen and (max-width: 550px) {
@@ -52,6 +51,7 @@ const RadioButton = styled.input`
 
 	&:checked {
 		border-color: ${({ theme }) => theme.border};
+		background-color: ${({ theme }) => theme.fontColors.grey};
 	}
 
 	@media screen and (max-width: 550px) {

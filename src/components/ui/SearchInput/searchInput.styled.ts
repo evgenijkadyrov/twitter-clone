@@ -15,7 +15,7 @@ export const SearchBarContainer = styled.input`
 
 	border-radius: ${Sizes.BorderRadiusSizes.br40};
 	background-color: ${({ theme }) => theme.input.backgroundColor.search};
-	color: ${({ theme }) => theme.fontColors.grey};
+	color: ${({ theme }) => theme.input.textColor};
 
 	font: inherit;
 	font-size: ${({ theme }) => theme.fontSize.f18};
