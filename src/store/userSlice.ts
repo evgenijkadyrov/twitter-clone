@@ -7,6 +7,12 @@ export interface User {
 	token: string | null;
 	phoneNumber: string | null;
 	birthDate: string | null;
+	description?: string | null;
+	nickname?: string | null;
+	avatarImage?: string | null;
+}
+export interface UserWithFollow extends User {
+	follow: boolean;
 }
 
 const initialState: User = {
@@ -16,6 +22,9 @@ const initialState: User = {
 	token: null,
 	phoneNumber: null,
 	birthDate: null,
+	nickname: null,
+	avatarImage: null,
+	description: null,
 };
 
 const userSlice = createSlice({
@@ -23,6 +32,8 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		fetchUser: (_, action: PayloadAction<User>) => ({ ...action.payload }),
+		logout: () => ({ ...initialState }),
+		updateUser: (state, action: PayloadAction<User>) => ({ ...state, ...action.payload }),
 	},
 });
 export const { actions: userActions, reducer: userReducer } = userSlice;

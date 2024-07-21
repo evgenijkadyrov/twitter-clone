@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Input } from '@components/Input';
+import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -7,8 +7,10 @@ import IconImage from '@/assets/images/twitter.svg';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
 import { Paths } from '@/constants/routerPaths';
+import { formatUserData } from '@/helpers';
 import { handleFirebaseError } from '@/helpers/firebaseErrors';
-import { login, LoginFormFields } from '@/services/serviceAuth';
+import { LoginFormFields } from '@/services/interfaces';
+import { login } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
 import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
@@ -26,7 +28,6 @@ import {
 } from './login.styled';
 
 type FormData = yup.InferType<typeof LoginSchema>;
-
 export const Login = () => {
 	const {
 		handleSubmit,
@@ -41,17 +42,9 @@ export const Login = () => {
 	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
 		try {
 			const { userData, uid, token } = await login(data);
-			dispatch(
-				userActions.fetchUser({
-					name: (userData?.data.name as string) || null,
-					phoneNumber: (userData?.data.phoneNumber as string) || null,
-					email: (userData?.data.email as string) || null,
-					id: uid,
-					token: token || null,
-					birthDate: (userData?.data.birthDate as string) || null,
-					// description: (userData?.data.description as string) || null,
-				})
-			);
+
+			const formattedUserData = formatUserData(userData, uid, token);
+			dispatch(userActions.fetchUser(formattedUserData));
 			dispatch(
 				notificationActions.showSuccess({
 					success: NotificationMessages.SUCCESS_LOGIN,

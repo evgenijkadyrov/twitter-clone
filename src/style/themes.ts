@@ -12,7 +12,7 @@ export const LightTheme: DefaultTheme = {
 		backgroundColor: {
 			primary: Colors.blue[400],
 			hover: Colors.blue[600],
-			disabled: Colors.blue[100],
+			disabled: Colors.grey[400],
 		},
 		textColor: {
 			primary: Colors.white,
@@ -26,7 +26,7 @@ export const LightTheme: DefaultTheme = {
 	input: {
 		backgroundColor: {
 			primary: Colors.transparent,
-			search: Colors.grey[400],
+			search: Colors.grey[100],
 		},
 		textColor: {
 			primary: Colors.black,
@@ -125,10 +125,10 @@ export const DarkTheme: DefaultTheme = {
 	input: {
 		backgroundColor: {
 			primary: Colors.blue[400],
-			search: Colors.blue[400],
+			search: Colors.grey[100],
 		},
 		textColor: {
-			primary: Colors.white,
+			primary: Colors.black,
 		},
 		border: {
 			primary: Colors.grey[100],
@@ -175,7 +175,7 @@ export const DarkTheme: DefaultTheme = {
 	},
 	fontColors: {
 		blue: Colors.blue[300],
-		grey: Colors.grey[700],
+		grey: Colors.grey[100],
 		red: Colors.red,
 		white: Colors.white,
 	},

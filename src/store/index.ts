@@ -5,11 +5,13 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist
 import storage from 'redux-persist/lib/storage';
 
 import { notificationReducer } from '@/store/notificationSlice';
+import { themeReducer } from '@/store/themeSlice';
 import { userReducer } from '@/store/userSlice';
 
 const rootReducer = combineReducers({
 	user: userReducer,
 	notification: notificationReducer,
+	theme: themeReducer,
 });
 const persistConfig = {
 	key: 'root',

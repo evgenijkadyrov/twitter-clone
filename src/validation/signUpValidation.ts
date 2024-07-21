@@ -28,3 +28,19 @@ export const SignupSchema = yup.object().shape({
 	year: yup.string().required('Year is required'),
 	day: yup.string().required('Day is required'),
 });
+
+export const UpdateSchema = yup.object().shape({
+	name: yup
+		.string()
+		.min(3, 'Name must contain at least 3 character')
+		.max(128, 'Name must contain maximum 128 characters')
+		.required('Name is required'),
+	phoneNumber: yup
+		.string()
+		.test('phone', ' Phone is invalid', (value) => validatePhone(parseInt(value ?? '0', 10)))
+		.required('Phone number is required!'),
+
+	email: yup.string().required('Email  is required'),
+	nickname: yup.string(),
+	description: yup.string(),
+});

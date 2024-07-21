@@ -5,6 +5,7 @@ import * as Sizes from '@/style/sizes';
 
 export const Section = styled.section`
 	height: 100%;
+	background-color: ${({ theme }) => theme.backgroundColor};
 `;
 export const Row = styled.div`
 	display: flex;
@@ -24,41 +25,21 @@ export const Icon = styled.img`
 `;
 export const Image = styled.img`
 	width: 60%;
+	max-height: 100vh;
 `;
 export const Title = styled.h1`
 	margin-bottom: ${Sizes.MarginSizes.m40};
 	font-size: ${({ theme }) => theme.fontSize.f64};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const SubTitle = styled.h3`
 	margin-bottom: ${Sizes.MarginSizes.m30};
 	font-size: ${({ theme }) => theme.fontSize.f42};
+	color: ${({ theme }) => theme.textColor};
 `;
-export const Button = styled.button`
-	width: ${Sizes.WidthSizes.w400};
-	background-color: ${({ theme }) => theme.button.backgroundColor};
-	height: ${Sizes.HeightSizes.h60};
-	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.border};
-	border-radius: ${Sizes.BorderRadiusSizes.br40};
-	margin-bottom: ${Sizes.MarginSizes.m20};
 
-	&:hover {
-		cursor: pointer;
-	}
-`;
-export const WrapperForButtonContent = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-export const ButtonIcon = styled.img`
-	width: ${Sizes.WidthSizes.w32};
-	height: ${Sizes.HeightSizes.h32};
-`;
-export const ButtonText = styled.p`
-	font-size: ${({ theme }) => theme.fontSize.f20};
-	font-weight: ${({ theme }) => theme.fontWeights.medium};
-`;
 export const Text = styled.div`
+	color: ${({ theme }) => theme.textColor};
 	font-size: ${({ theme }) => theme.fontSize.f14};
 	width: ${Sizes.WidthSizes.w375};
 	margin-top: ${Sizes.MarginSizes.m10};
@@ -75,11 +56,13 @@ export const ListItem = styled.div`
 	margin-right: ${Sizes.MarginSizes.m10};
 	font-size: ${({ theme }) => theme.fontSize.f12};
 	color: ${({ theme }) => theme.textColor};
-	margin-bottom: ${Sizes.MarginSizes.m20};
+	padding-bottom: ${Sizes.MarginSizes.m20};
+	color: ${({ theme }) => theme.textColor};
 `;
 export const List = styled.div`
+	background-color: ${({ theme }) => theme.backgroundColor};
 	display: flex;
 	justify-content: center;
-	margin-top: ${Sizes.MarginSizes.m20};
+	padding-top: ${Sizes.MarginSizes.m20};
 	gap: ${Sizes.GapSizes.g15};
 `;

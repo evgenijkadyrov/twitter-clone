@@ -47,6 +47,9 @@ module.exports = {
 			},
 		],
 		'react-refresh/only-export-components': 'off',
+		'react-hooks/exhaustive-deps': 'off',
+		'no-floating-promise/no-floating-promise': 'off',
+		'@typescript-eslint/no-floating-promises': 'off',
 		'dot-notation': 'off',
 		'simple-import-sort/imports': [
 			'error',
@@ -79,6 +82,8 @@ module.exports = {
 		'import/prefer-default-export': 'off',
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
+		'react/require-default-props': 'off',
+		'react/prop-types': 'off',
 		'@typescript-eslint/no-misused-promises': [
 			'error',
 			{

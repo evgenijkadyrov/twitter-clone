@@ -11,9 +11,7 @@ export const StyledInput = styled.input<{ $width?: string | undefined }>`
 	font-size: ${({ theme }) => theme.fontSize.f18};
 	color: ${({ theme }) => theme.input.textColor.primary};
 	background-color: ${({ theme }) => theme.input.backgroundColor.primary};
-
 	border-radius: ${Sizes.BorderRadiusSizes.br06};
-
 	transition: all 0.3s linear;
 
 	&:focus {
@@ -23,12 +21,10 @@ export const StyledInput = styled.input<{ $width?: string | undefined }>`
 	&::placeholder {
 		font: inherit;
 		font-size: ${({ theme }) => theme.fontSize.f18};
-
 		color: ${({ theme }) => theme.input.placeholder.primary};
 	}
 `;
 export const ErrorMessage = styled.p`
 	font-size: ${({ theme }) => theme.fontSize.f12};
-
 	color: ${({ theme }) => theme.fontColors.red};
 `;

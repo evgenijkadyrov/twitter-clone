@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-import { Colors } from '@/style//colors';
 import { ScreenWidth } from '@/style/screenWidth';
 
-export const SearchBar = styled.div`
-	background-color: ${Colors.blue[50]};
+export const SearchBarWrapper = styled.div`
 	display: flex;
 	flex-basis: 20%;
 

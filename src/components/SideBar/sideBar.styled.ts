@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
-import { ScreenWidth } from '@/style/screenWidth';
+import * as Sizes from '@/style/sizes';
 
-export const SideBar = styled.div`
-	background-color: #888888;
+export const SideBarWrapper = styled.div`
 	display: flex;
 	flex-basis: 10%;
+	flex-direction: column;
+`;
 
-	@media screen and (max-width: ${ScreenWidth.iPad}) {
-		flex-basis: 5%;
-	}
+export const Title = styled.div`
+	font-size: ${({ theme }) => theme.fontSize.f16};
+	font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+	margin-bottom: ${Sizes.MarginSizes.m05};
+	color: ${({ theme }) => theme.textColor};
 `;

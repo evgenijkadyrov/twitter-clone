@@ -4,30 +4,28 @@ import {
 	GoogleAuthProvider,
 	signInWithEmailAndPassword,
 	signInWithPopup,
+	updateEmail,
 } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, limit, query, setDoc, where } from 'firebase/firestore';
+import {
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	limit,
+	query,
+	setDoc,
+	updateDoc,
+	where,
+} from 'firebase/firestore';
 import * as yup from 'yup';
 
 import { db } from '@/firebase';
+import { LoginFormFields } from '@/services/interfaces';
+import { User } from '@/store/userSlice';
 import { validatePhone } from '@/validation/signUpValidation';
 
 export const validateEmail = (email: string | undefined): boolean =>
 	yup.string().email().isValidSync(email);
-
-export interface User {
-	id: string | null;
-	name: string | null;
-	email: string | null;
-	phoneNumber: string | null;
-	token: string | null;
-	birthDate: string | null;
-	description: string | null;
-}
-
-export interface LoginFormFields {
-	phoneOrEmail: string;
-	password: string;
-}
 
 export const signUpWithGoogle = async (): Promise<User> => {
 	const auth = getAuth();
@@ -49,6 +47,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 		phoneNumber: null,
 		birthDate: null,
 		description: null,
+		nickname: null,
 	};
 
 	if (docSnap.exists()) {
@@ -74,6 +73,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 };
 
 const auth = getAuth();
+
 export const singUp = async (
 	name: string,
 	email: string,
@@ -84,12 +84,15 @@ export const singUp = async (
 	const { user } = await createUserWithEmailAndPassword(auth, email, password);
 	const { uid } = user;
 	const token = await user.getIdToken();
+
 	await setDoc(doc(db, 'users', uid), {
 		name,
 		email,
 		phoneNumber,
 		birthDate,
 		id: uid,
+		nickname: null,
+		description: null,
 	});
 	return { uid, token };
 };
@@ -122,4 +125,37 @@ export const login = async (inputData: LoginFormFields) => {
 	const userData = data.find((item) => item.data.id === uid);
 
 	return { userData, token, uid };
+};
+export const signOut = async (): Promise<void> => {
+	const auth = getAuth();
+	await auth.signOut();
+};
+
+export const updateUserInfo = async (
+	phoneNumber: string | null,
+	name: string | null,
+	email: string | null,
+	nickname: string | null | undefined,
+	description: string | null | undefined,
+	id: string | null | undefined
+): Promise<void> => {
+	const auth = getAuth();
+	const user = auth.currentUser;
+	if (!user || !id) {
+		throw new Error('not login');
+	}
+
+	const userRef = doc(db, 'users', id);
+
+	if (user.email !== email) {
+		await updateEmail(auth.currentUser, email as string);
+	}
+
+	await updateDoc(userRef, {
+		name,
+		email,
+		phoneNumber,
+		description,
+		nickname,
+	});
 };

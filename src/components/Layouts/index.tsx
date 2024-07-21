@@ -1,17 +1,18 @@
-import { FC, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Content } from '@components/Content/content.styled';
-import { SearchBar } from '@components/SearchBar/rightSide.styled';
-import { SideBar } from '@components/SideBar/sideBar.styled';
+import { SearchBar } from '@components/SearchBar/';
+import { SideBar } from '@components/SideBar';
 
 import { Section } from './layouts.styled';
 
-export const SuspenseLayoutForAuthBlock: FC = () => (
+export const SuspenseLayoutForAuthBlock = () => (
 	<Suspense fallback={<div>Loading</div>}>
 		<Outlet />
 	</Suspense>
 );
-export const SuspenseLayoutForMainContent: FC = () => (
+
+export const SuspenseLayoutForMainContent = () => (
 	<Section>
 		<SideBar />
 		<Suspense fallback={<div>Loading</div>}>
