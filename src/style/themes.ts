@@ -175,7 +175,7 @@ export const DarkTheme: DefaultTheme = {
 	},
 	fontColors: {
 		blue: Colors.blue[300],
-		grey: Colors.grey[700],
+		grey: Colors.grey[100],
 		red: Colors.red,
 		white: Colors.white,
 	},

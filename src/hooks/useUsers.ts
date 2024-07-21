@@ -4,11 +4,11 @@ import {
 	endAt,
 	getDocs,
 	limit,
-	onSnapshot,
+	// onSnapshot,
 	orderBy,
 	query,
 	startAt,
-	Unsubscribe,
+	// Unsubscribe,
 } from 'firebase/firestore';
 
 import { DbCollection } from '@/constants/textConstant';
@@ -28,31 +28,71 @@ interface UseUsers {
 	getSearchUsers: () => Promise<void>;
 }
 
+// export const useUsers = ({
+// 	setUsersByRecommendation,
+// 	debouncedValue,
+// 	setData,
+// }: UseUsersProps): UseUsers => {
+// 	const getRecommendationUsers = (): Unsubscribe => {
+// 		try {
+// 			const usersFirstQuery = query(
+// 				collection(db, DbCollection.users),
+// 				limit(NUMBER_OF_RECOMMENDATION_USER)
+// 			);
+// 			return onSnapshot(usersFirstQuery, (querySnapshot) => {
+// 				const userData = querySnapshot.docs.map((doc) => {
+// 					const user = doc.data() as User;
+// 					return { ...user, follow: false };
+// 				});
+//
+// 				setUsersByRecommendation(userData as UserWithFollow[]);
+// 			});
+// 		} catch (error) {
+// 			console.log('Error getting users: ', error);
+// 			throw error;
+// 		}
+// 	};
+// 	const getSearchUsers = async () => {
+// 		try {
+// 			const usersFirstQuery = query(
+// 				collection(db, DbCollection.users),
+// 				orderBy('name', 'asc'),
+// 				startAt(debouncedValue),
+// 				endAt(`${debouncedValue}\uf8ff`)
+// 			);
+// 			const userSnapshot = await getDocs(usersFirstQuery);
+// 			const userData = userSnapshot.docs.map((doc) => doc.data());
+// 			setData(userData as User[]);
+// 		} catch (error) {
+// 			console.log('Error getting users: ', error);
+// 		}
+// 	};
+// 	return { getRecommendationUsers, getSearchUsers };
+// };
 export const useUsers = ({
 	setUsersByRecommendation,
 	debouncedValue,
 	setData,
 }: UseUsersProps): UseUsers => {
-	const getRecommendationUsers = (): Unsubscribe => {
+	const getRecommendationUsers = async (): Promise<void> => {
 		try {
 			const usersFirstQuery = query(
 				collection(db, DbCollection.users),
 				limit(NUMBER_OF_RECOMMENDATION_USER)
 			);
-			return onSnapshot(usersFirstQuery, (querySnapshot) => {
-				const userData = querySnapshot.docs.map((doc) => {
-					const user = doc.data() as User;
-					return { ...user, follow: false };
-				});
-
-				setUsersByRecommendation(userData as UserWithFollow[]);
+			const userSnapshot = await getDocs(usersFirstQuery);
+			const userData = userSnapshot.docs.map((doc) => {
+				const user = doc.data() as User;
+				return { ...user, follow: false };
 			});
+			setUsersByRecommendation(userData as UserWithFollow[]);
 		} catch (error) {
 			console.log('Error getting users: ', error);
 			throw error;
 		}
 	};
-	const getSearchUsers = async () => {
+
+	const getSearchUsers = async (): Promise<void> => {
 		try {
 			const usersFirstQuery = query(
 				collection(db, DbCollection.users),
@@ -67,5 +107,6 @@ export const useUsers = ({
 			console.log('Error getting users: ', error);
 		}
 	};
+
 	return { getRecommendationUsers, getSearchUsers };
 };

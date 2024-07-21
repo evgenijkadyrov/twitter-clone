@@ -10,7 +10,7 @@ export const StyledLink = styled(Link)<{ $active: PathMatch | null }>`
 	justify-content: flex-start;
 	font-weight: ${({ $active, theme }) =>
 		$active ? theme.fontWeights.semiBold : theme.fontWeights.regular};
-
+	color: ${({ theme }) => theme.textColor};
 	border-radius: ${Sizes.BorderRadiusSizes.br06};
 	transition: background-color 0.3s linear;
 
