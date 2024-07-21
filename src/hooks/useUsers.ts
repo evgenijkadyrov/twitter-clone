@@ -1,3 +1,4 @@
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import {
 	collection,
 	endAt,
@@ -10,7 +11,6 @@ import {
 	Unsubscribe,
 } from 'firebase/firestore';
 
-import { TweetResponse } from '@/components';
 import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
 import { User, UserWithFollow } from '@/store/userSlice';

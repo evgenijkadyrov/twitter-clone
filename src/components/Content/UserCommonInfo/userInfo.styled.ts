@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { MarginSizes } from '@/style/sizes';
 import * as Sizes from '@/style/sizes';
 
+const TOP_AVATAR_POSITION = '50px';
 export const CommonInfo = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -33,7 +34,7 @@ interface AvatarProps {
 }
 export const Avatar = styled.div<AvatarProps>`
 	position: relative;
-	top: -50px;
+	top: -${TOP_AVATAR_POSITION};
 	border-radius: 50%;
 	width: ${Sizes.WidthSizes.w150};
 	height: ${Sizes.HeightSizes.h150};

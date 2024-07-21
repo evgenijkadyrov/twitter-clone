@@ -19,30 +19,36 @@ import {
 	Wrapper,
 } from './creatingTweetBlock.styled';
 
-export const CreatingTweetBlock = memo(({ tweetText, setTweet }: CreatingTweetBlockProps) => {
-	const { avatarImage } = useSelector(userSelector);
+export const CreatingTweetBlock = memo(
+	({ tweetText, setTweet, closeModal }: CreatingTweetBlockProps) => {
+		const { avatarImage } = useSelector(userSelector);
 
-	const { handleCreateTweet, inputFileChangeHandler } = useCreateTweet({ tweetText, setTweet });
+		const { handleCreateTweet, inputFileChangeHandler } = useCreateTweet({
+			tweetText,
+			setTweet,
+			closeModal,
+		});
 
-	return (
-		<>
-			<Wrapper>
-				<Avatar background_url={avatarImage as string} />
-				<TextAreaTweet tweet={tweetText} setTweet={setTweet} />
-				<Label htmlFor="upload-photo-modal">
-					<UploadIcon src={uploadIcon} alt="upload" />
-					<FileInput
-						type="file"
-						id="upload-photo-modal"
-						accept={AVAILABLE_PICTURE_FORMAT}
-						onChange={inputFileChangeHandler}
-					/>
-				</Label>
-				<Button width="100%" color="primary" onClick={handleCreateTweet} type={TypeButton.submit}>
-					Sent
-				</Button>
-			</Wrapper>
-			<Divider />
-		</>
-	);
-});
+		return (
+			<>
+				<Wrapper>
+					<Avatar background_url={avatarImage as string} />
+					<TextAreaTweet tweet={tweetText} setTweet={setTweet} />
+					<Label htmlFor="upload-photo-modal">
+						<UploadIcon src={uploadIcon} alt="upload" />
+						<FileInput
+							type="file"
+							id="upload-photo-modal"
+							accept={AVAILABLE_PICTURE_FORMAT}
+							onChange={inputFileChangeHandler}
+						/>
+					</Label>
+					<Button width="100%" color="primary" onClick={handleCreateTweet} type={TypeButton.submit}>
+						Sent
+					</Button>
+				</Wrapper>
+				<Divider />
+			</>
+		);
+	}
+);

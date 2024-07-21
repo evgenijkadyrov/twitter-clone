@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { TweetComponent } from '@components/Content/Tweet';
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { PageNav } from '@components/PageNav';
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 
-import { TweetResponse } from '@/components';
 import { db } from '@/firebase';
 import { User } from '@/store/userSlice';
 import { HeightSizes } from '@/style/sizes';

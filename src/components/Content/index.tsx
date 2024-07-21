@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { ProfileEditModal } from '@components/ProfileEditModal';
 
 import {
@@ -11,7 +11,7 @@ import {
 
 import { Content } from './content.styled';
 
-export const ContentBlock: FC = () => {
+export const ContentBlock = () => {
 	const [tweet, setTweet] = useState('');
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 	const modalClickHandler = (): void => {

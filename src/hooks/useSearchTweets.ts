@@ -1,6 +1,6 @@
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { collection, endAt, getDocs, orderBy, query, startAt, where } from 'firebase/firestore';
 
-import { TweetResponse } from '@/components';
 import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
 import { User } from '@/store/userSlice';
@@ -10,7 +10,7 @@ interface UseTweets {
 	setData: (data: TweetResponse[] | User[]) => void;
 }
 
-export const useTweets =
+export const useSearchTweets =
 	({ debouncedValue, setData }: UseTweets) =>
 	async () => {
 		try {

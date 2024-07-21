@@ -11,11 +11,13 @@ import { userSelector } from '@/store/selectors';
 interface CreateTweetHook {
 	handleCreateTweet: () => Promise<void>;
 	inputFileChangeHandler: (e: SyntheticEvent) => void;
+	closeModal?: () => void;
 }
 
 export const useCreateTweet = ({
 	setTweet,
 	tweetText,
+	closeModal,
 }: CreatingTweetBlockProps): CreateTweetHook => {
 	const { id } = useSelector(userSelector);
 	const { showSuccessNotification, showErrorNotification } = useNotification();
@@ -26,6 +28,9 @@ export const useCreateTweet = ({
 			await TweetService.sendTweet(tweetText, id, uploadedImage);
 			showSuccessNotification(NotificationMessages.SUCCESS_TWEET_CREATED);
 			setTweet('');
+			if (closeModal) {
+				closeModal();
+			}
 		} catch (error: unknown) {
 			showErrorNotification(
 				error,

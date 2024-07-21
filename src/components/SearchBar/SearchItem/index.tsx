@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { TweetComponent } from '@components/Content/Tweet';
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { TweetWrapper } from '@components/SearchBar/SearchItem/searchItem.styled';
 
-import { TweetResponse } from '@/components';
 import { Paths } from '@/constants/routerPaths';
 import { HeightSizes } from '@/style/sizes';
 

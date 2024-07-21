@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
+const TOP_POSITION = '50px';
+const WIDTH_DIVIDER = '1px';
 export const Title = styled.div`
   margin-left: ${Sizes.MarginSizes.m15};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
@@ -10,11 +12,11 @@ export const Title = styled.div`
 
   &:after {
     position: absolute;
-    top: 50px;
+    top: ${TOP_POSITION};
     left: 0;
     content: '';
     width: 50%;
-    height: 1px;
+    height: ${WIDTH_DIVIDER};
     background-color: ${({ theme }) => theme.border};
   }
 

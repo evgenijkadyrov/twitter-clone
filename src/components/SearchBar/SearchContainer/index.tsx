@@ -1,13 +1,13 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { RecommendedUsers } from '@components/Recomendedusers';
 import { SearchAbstract } from '@components/SearchBar/SearchTweets';
 import { SearchInput } from '@components/ui/SearchInput';
 
-import { TweetResponse } from '@/components';
 import { Paths } from '@/constants/routerPaths';
 import useDebounce from '@/hooks/useDebounce';
-import { useTweets } from '@/hooks/useTweets';
+import { useSearchTweets } from '@/hooks/useSearchTweets';
 import { useUsers } from '@/hooks/useUsers';
 import { User, UserWithFollow } from '@/store/userSlice';
 
@@ -33,7 +33,7 @@ export const SearchContainer = () => {
 		debouncedValue,
 		setData,
 	});
-	const getTweets = useTweets({ debouncedValue, setData });
+	const getTweets = useSearchTweets({ debouncedValue, setData });
 
 	const onChangeHandler = (e: SyntheticEvent) => {
 		const target = e.target as HTMLInputElement;

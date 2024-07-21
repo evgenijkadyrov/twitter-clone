@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TweetComponent } from '@components/Content/Tweet';
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { PageNav } from '@components/PageNav';
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 
-import { CreatingTweetBlock, TweetResponse } from '@/components';
+import { CreatingTweetBlock } from '@/components';
 import { db } from '@/firebase';
 import { userSelector } from '@/store/selectors';
 import { User } from '@/store/userSlice';

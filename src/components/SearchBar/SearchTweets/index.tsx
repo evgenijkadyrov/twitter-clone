@@ -1,8 +1,8 @@
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { SearchPath } from '@components/SearchBar/SearchContainer';
 import { SearchItem } from '@components/SearchBar/SearchItem';
 import { UserNameBlock } from '@components/ui/userNameBlock';
 
-import { TweetResponse } from '@/components';
 import { User } from '@/store/userSlice';
 
 interface SearchAbstractProps {
