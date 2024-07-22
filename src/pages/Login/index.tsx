@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import IconImage from '@/assets/images/twitter.svg';
+import { Button } from '@/components/ui/Button';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
 import { Paths } from '@/constants/routerPaths';
@@ -16,16 +17,7 @@ import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 import { LoginSchema } from '@/validation/loginValidation';
 
-import {
-	Button,
-	ButtonWrapper,
-	Inputs,
-	Logo,
-	Section,
-	StyledLink,
-	Title,
-	Wrapper,
-} from './login.styled';
+import { ButtonWrapper, Inputs, Logo, Section, StyledLink, Title, Wrapper } from './login.styled';
 
 type FormData = yup.InferType<typeof LoginSchema>;
 export const Login = () => {

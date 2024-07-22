@@ -20,11 +20,16 @@ export const ButtonRegistrationBlock = () => {
 	return (
 		<>
 			<ButtonRegistration
+				data-testid="registration-block"
 				text="Sign up with Google"
 				icon={Google}
 				onclickHandler={handleGoogleClick}
 			/>
-			<ButtonRegistration text="Sign up with email" onclickHandler={handleEmailClick} />
+			<ButtonRegistration
+				testId="registration-by-email"
+				text="Sign up with email"
+				onclickHandler={handleEmailClick}
+			/>
 		</>
 	);
 };

@@ -33,3 +33,14 @@ export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export type RootState = ReturnType<typeof store.getState>;
 export const persistor = persistStore(store);
+
+declare global {
+	interface Window {
+		Cypress?: unknown;
+		store?: typeof store;
+	}
+}
+
+if (typeof window !== 'undefined' && window.Cypress) {
+	window.store = store;
+}

@@ -18,7 +18,7 @@ export const ContentBlock = () => {
 		setIsOpenModal((prev) => !prev);
 	};
 	return (
-		<Content>
+		<Content data-testid="content">
 			<TopBlock />
 			<UserCommonInfo openModal={modalClickHandler} />
 			{isOpenModal && <ProfileEditModal closeModal={modalClickHandler} />}

@@ -5,6 +5,7 @@ import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { Button } from '@/components/ui/Button';
 import { BIRTHDATE_SELECTED_FIELDS } from '@/constants/birthDateSelectedFields';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
@@ -22,7 +23,6 @@ import { SignupSchema } from '@/validation/signUpValidation';
 
 import {
 	AgeConfirmText,
-	Button,
 	ButtonWrapper,
 	ErrorMessage,
 	Inputs,
@@ -90,14 +90,26 @@ export const Registration = () => {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Inputs>
 						{REGISTRATION_FORM_DATA.map((field) => (
-							<Input
-								key={field.name}
-								placeholder={field.placeholder}
-								type={field.type}
-								/* eslint-disable-next-line react/jsx-props-no-spreading */
-								{...register(field.registerName)}
-								errorMessage={errors.root?.message}
-							/>
+							<>
+								<Input
+									key={field.name}
+									placeholder={field.placeholder}
+									type={field.type}
+									/* eslint-disable-next-line react/jsx-props-no-spreading */
+									{...register(field.registerName)}
+									errorMessage={errors.root?.message}
+								/>
+								<ErrorMessage>
+									{Object.keys(errors).map(
+										(fieldName) =>
+											field.name === fieldName && (
+												<p key={fieldName}>
+													{errors[fieldName]?.message || `Required ${fieldName}!`}
+												</p>
+											)
+									)}
+								</ErrorMessage>
+							</>
 						))}
 					</Inputs>
 					<StyledLink to={Paths.HOME}>Use email</StyledLink>
@@ -117,9 +129,10 @@ export const Registration = () => {
 					</SelectWrapper>
 					<ErrorMessage>
 						{Object.keys(errors).map((fieldName) => (
-							<p key={fieldName}>{errors.root?.message || `Error ${fieldName}!`}</p>
+							<p key={fieldName}>{errors.root?.message || `Required ${fieldName}!`}</p>
 						))}
 					</ErrorMessage>
+
 					<ButtonWrapper>
 						<Button
 							type="submit"

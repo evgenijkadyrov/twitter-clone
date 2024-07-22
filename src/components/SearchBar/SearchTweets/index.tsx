@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { SearchPath } from '@components/SearchBar/SearchContainer';
 import { SearchItem } from '@components/SearchBar/SearchItem';
@@ -10,7 +11,7 @@ interface SearchAbstractProps {
 	data: TweetResponse[] | User[];
 	clearSearch: () => void;
 }
-export const SearchAbstract = ({ searchPath, data, clearSearch }: SearchAbstractProps) => (
+export const SearchAbstract = memo(({ searchPath, data, clearSearch }: SearchAbstractProps) => (
 	<div>
 		{searchPath === SearchPath.tweets.toString() ? (
 			<>
@@ -32,4 +33,4 @@ export const SearchAbstract = ({ searchPath, data, clearSearch }: SearchAbstract
 			</>
 		)}
 	</div>
-);
+));

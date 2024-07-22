@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import { memo, SyntheticEvent } from 'react';
 import searchIcon from '@assets/icons/search.svg';
 
 import { configPlaceholder } from '@/helpers/configireSearchPlaceholder';
@@ -10,13 +10,15 @@ interface SearchInputProps {
 	searchValue: string;
 	onChangeHandler: (e: SyntheticEvent) => void;
 }
-export const SearchInput = ({ searchPath, searchValue, onChangeHandler }: SearchInputProps) => (
-	<Container>
-		<Icon src={searchIcon} alt="search" />
-		<SearchBarContainer
-			placeholder={configPlaceholder(searchPath)}
-			value={searchValue}
-			onChange={onChangeHandler}
-		/>
-	</Container>
+export const SearchInput = memo(
+	({ searchPath, searchValue, onChangeHandler }: SearchInputProps) => (
+		<Container>
+			<Icon src={searchIcon} alt="search" />
+			<SearchBarContainer
+				placeholder={configPlaceholder(searchPath)}
+				value={searchValue}
+				onChange={onChangeHandler}
+			/>
+		</Container>
+	)
 );

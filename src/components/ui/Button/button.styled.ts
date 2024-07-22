@@ -15,13 +15,15 @@ export const StyledButton = styled.button<{
 	margin-bottom: ${Sizes.MarginSizes.m20};
 	color: ${({ theme }) => theme.button.textColor.primary};
 	cursor: pointer;
-
+	&:hover {
+		background-color: ${({ theme }) => theme.button.backgroundColor.hover};
+	}
 	&:disabled {
 		background-color: ${({ theme }) => theme.button.backgroundColor.disabled};
 		cursor: default;
 	}
-	&:hover {
-		cursor: pointer;
-		background-color: ${({ theme }) => theme.button.backgroundColor.hover};
-	}
+	// &:hover {
+	//
+	// 	background-color: ${({ theme }) => theme.button.backgroundColor.hover};
+	// }
 `;

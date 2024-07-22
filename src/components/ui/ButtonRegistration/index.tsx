@@ -11,10 +11,16 @@ interface ButtonRegistrationProps {
 	onclickHandler: () => void;
 	icon?: string;
 	text: string;
+	testId: string;
 }
 
-export const ButtonRegistration = ({ onclickHandler, icon, text }: ButtonRegistrationProps) => (
-	<Button type="button" onClick={onclickHandler}>
+export const ButtonRegistration = ({
+	onclickHandler,
+	icon,
+	text,
+	testId,
+}: ButtonRegistrationProps) => (
+	<Button type="button" onClick={onclickHandler} data-testid={testId}>
 		<WrapperForButtonContent>
 			{icon && <ButtonIcon src={Google} alt="googleIcon" />}
 			<ButtonText>{text}</ButtonText>

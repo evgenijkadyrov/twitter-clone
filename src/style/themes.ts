@@ -140,7 +140,7 @@ export const DarkTheme: DefaultTheme = {
 	},
 	select: {
 		backgroundColor: {
-			primary: Colors.white,
+			primary: Colors.darkBackground,
 		},
 		textColor: {
 			primary: Colors.white,

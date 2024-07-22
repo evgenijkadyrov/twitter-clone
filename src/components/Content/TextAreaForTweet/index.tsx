@@ -9,13 +9,12 @@ export const TextAreaTweet = memo(({ tweet, setTweet }: TextAreaTweetProps) => {
 	};
 
 	return (
-		<div>
-			<StyledTextarea
-				placeholder="What's happening..."
-				value={tweet}
-				onChange={handleChange}
-				rows={5}
-			/>
-		</div>
+		<StyledTextarea
+			data-testid="textarea-create-tweet"
+			placeholder="What's happening..."
+			value={tweet}
+			onChange={handleChange}
+			rows={5}
+		/>
 	);
 });

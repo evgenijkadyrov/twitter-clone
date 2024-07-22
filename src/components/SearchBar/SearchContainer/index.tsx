@@ -61,7 +61,7 @@ export const SearchContainer = () => {
 	}, []);
 	useEffect(() => {
 		search();
-	}, [debouncedValue]);
+	}, [searchValue]);
 
 	return (
 		<SearchBarWrapper>

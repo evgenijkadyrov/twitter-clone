@@ -33,6 +33,7 @@ export const StyledSelect = styled.select<{ $width?: string | undefined }>`
 
 export const StyledOption = styled.option`
 	color: ${({ theme }) => theme.select.textColor.primary};
+	background-color: ${({ theme }) => theme.select.backgroundColor.primary};
 
 	&:disabled {
 		color: ${({ theme }) => theme.select.textColor.disabled};

@@ -31,7 +31,7 @@ export const CreatingTweetBlock = memo(
 
 		return (
 			<>
-				<Wrapper>
+				<Wrapper data-testid="creating-block">
 					<Avatar background_url={avatarImage as string} />
 					<TextAreaTweet tweet={tweetText} setTweet={setTweet} />
 					<Label htmlFor="upload-photo-modal">
