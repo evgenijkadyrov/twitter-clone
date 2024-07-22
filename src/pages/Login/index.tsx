@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { TypeButton } from '@components/ui/Button/button.interface';
 import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -77,7 +78,7 @@ export const Login = () => {
 						/>
 					</Inputs>
 					<ButtonWrapper>
-						<Button type="submit" content="Log In" disabled={!isValid || !isDirty || isSubmitting}>
+						<Button type={TypeButton.submit} disabled={!isValid || !isDirty || isSubmitting}>
 							Log in
 						</Button>
 					</ButtonWrapper>

@@ -42,7 +42,7 @@ export const PageNav = () => {
 				loading="lazy"
 			/>
 			<Title>Home</Title>
-			<ThemeToggler>
+			<ThemeToggler data-testid="toggle">
 				<LightThemeRadioButton
 					type="radio"
 					name="theme"

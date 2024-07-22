@@ -13,6 +13,7 @@ export default defineConfig({
 			'@components': path.resolve(__dirname, './src/components'),
 			'@common': path.resolve(__dirname, './src/common'),
 			'@/style': path.resolve(__dirname, './src/style'),
+			'@/store': path.resolve(__dirname, './src/store'),
 		},
 	},
 	assetsInclude: ['.eslintrc.cjs'],

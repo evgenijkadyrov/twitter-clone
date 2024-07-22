@@ -43,12 +43,12 @@ export const Feed = () => {
 	}, [id]);
 
 	return (
-		<div>
+		<>
 			<PageNav />
 			<CreatingTweetBlock tweetText={tweet} setTweet={setTweet} />
 			{tweetsServer.map((tweet) => (
 				<TweetComponent key={tweet.id} tweet={tweet} imageHeight={HeightSizes.h450} />
 			))}
-		</div>
+		</>
 	);
 };

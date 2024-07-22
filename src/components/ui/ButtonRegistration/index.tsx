@@ -11,7 +11,7 @@ interface ButtonRegistrationProps {
 	onclickHandler: () => void;
 	icon?: string;
 	text: string;
-	testId: string;
+	testId?: string;
 }
 
 export const ButtonRegistration = ({

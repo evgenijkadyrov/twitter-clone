@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import IconImage from '@assets/images/twitter.svg';
 import { Select } from '@components/Select';
+import { TypeButton } from '@components/ui/Button/button.interface';
 import { Input } from '@components/ui/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -134,11 +135,7 @@ export const Registration = () => {
 					</ErrorMessage>
 
 					<ButtonWrapper>
-						<Button
-							type="submit"
-							content="Continue"
-							disabled={!isValid || !isDirty || isSubmitting}
-						>
+						<Button type={TypeButton.submit} disabled={!isValid || !isDirty || isSubmitting}>
 							Sing up
 						</Button>
 					</ButtonWrapper>
