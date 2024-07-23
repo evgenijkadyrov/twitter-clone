@@ -12,7 +12,7 @@ interface UserNameBlockProps {
 	nickname?: string | null | undefined;
 	avatarImage?: string | null | undefined;
 	id?: string | null | undefined;
-	clearSearch: () => void;
+	clearSearch?: () => void;
 	children?: ReactNode;
 }
 
@@ -27,7 +27,9 @@ export const UserNameBlock = ({
 	const navigate = useNavigate();
 	const profileClickHandler = (id: string) => (): void => {
 		navigate(`${Paths.PROFILE}/${id}`);
-		clearSearch();
+		if (clearSearch) {
+			clearSearch();
+		}
 	};
 	return (
 		<Row key={id}>

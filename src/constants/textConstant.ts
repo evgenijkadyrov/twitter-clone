@@ -11,6 +11,10 @@ export const FOLLOWERS = 'Followers';
 
 export const NUMBER_OF_TWEETS = '45 tweets';
 
+export const IMAGE_LOADED = 'Image loaded';
+
+export const IMAGE_LOADED_PERCENT = 100 as number;
+
 export enum DbCollection {
 	users = 'users',
 	tweets = 'tweets',

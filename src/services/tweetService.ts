@@ -1,24 +1,39 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 
 import { db } from '@/firebase';
 
-const uploadImage = async (uploadedImage: File | null): Promise<string | null> => {
+export const uploadImage = (
+	uploadedImage: File | null,
+	progressCallback?: (progress: number) => void
+): string | null => {
 	if (!uploadedImage) {
 		return null;
 	}
+
 	const storage = getStorage();
 	const imageName = `images/${uploadedImage.name}`;
 
 	const imageRef = ref(storage, imageName);
-	await uploadBytes(imageRef, uploadedImage);
+	const uploadTask = uploadBytesResumable(imageRef, uploadedImage);
+	uploadTask.on(
+		'state_changed',
+		(snapshot) => {
+			const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+			if (progressCallback) {
+				progressCallback(progress);
+			}
+		},
+		(error) => {
+			console.log(error);
+		}
+	);
 
 	return imageName;
 };
 
-const sendTweet = async (tweetContent: string, userId: string | null, tweetImage: File | null) => {
+const sendTweet = async (tweetContent: string, userId: string | null, imageName: string) => {
 	const tweetsCollectionRef = collection(db, 'tweets');
-	const imageName = await uploadImage(tweetImage);
 	await addDoc(tweetsCollectionRef, {
 		userId,
 		tweetContent,
@@ -28,19 +43,6 @@ const sendTweet = async (tweetContent: string, userId: string | null, tweetImage
 	});
 };
 
-// const updateTweets = async (name: string, email: string) => {
-//     const q = query(collection(db, 'tweets'), where("email", "==", email));
-//     const querySnapshot = await getDocs(q);
-//
-//     querySnapshot.forEach(async (doc) => {
-//         await updateDoc(doc.ref, {
-//             name,
-//             email,
-//         });
-//     });
-// };
-
 export const TweetService = {
 	sendTweet,
-	// updateTweets,
 };

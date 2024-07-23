@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TextAreaTweet } from '@components/Content/TextAreaForTweet';
 import { Button } from '@components/ui/Button';
@@ -7,6 +7,7 @@ import { TypeButton } from '@components/ui/Button/button.interface';
 import uploadIcon from '@/assets/icons/upload-image.svg';
 import { AVAILABLE_PICTURE_FORMAT } from '@/constants/textConstant';
 import { useCreateTweet } from '@/hooks/useCreateTweet';
+import { useShowNotificationUploadImage } from '@/hooks/useShowNorificationImageload';
 import { userSelector } from '@/store/selectors';
 
 import { CreatingTweetBlockProps } from './creatingTweetBlock.interface';
@@ -21,13 +22,15 @@ import {
 
 export const CreatingTweetBlock = memo(
 	({ tweetText, setTweet, closeModal }: CreatingTweetBlockProps) => {
+		const [progress, setProgress] = useState<number | null>(null);
 		const { avatarImage } = useSelector(userSelector);
-
 		const { handleCreateTweet, inputFileChangeHandler } = useCreateTweet({
 			tweetText,
 			setTweet,
 			closeModal,
+			progressCallback: setProgress,
 		});
+		const { renderProgressNotification } = useShowNotificationUploadImage(progress, setProgress);
 
 		return (
 			<>
@@ -42,7 +45,9 @@ export const CreatingTweetBlock = memo(
 							accept={AVAILABLE_PICTURE_FORMAT}
 							onChange={inputFileChangeHandler}
 						/>
+						<div>{renderProgressNotification()}</div>
 					</Label>
+
 					<Button width="100%" color="primary" onClick={handleCreateTweet} type={TypeButton.submit}>
 						Sent
 					</Button>

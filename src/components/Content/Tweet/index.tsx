@@ -32,8 +32,7 @@ export const TweetComponent = memo(
 		const formatDate = formattedDate(createdAt);
 
 		const isLiked = calculateIfIsLiked(likedList, id as string);
-		const handleLikeClick = useUpdateLike({ likedList, tweetId, id });
-		console.log('ISLIKE', likedList, id);
+		const handleLikeClick = useUpdateLike({ likedList, tweetId });
 		useEffect(() => {
 			setIsOwner(userId === id);
 		}, [tweet, id, userId]);
