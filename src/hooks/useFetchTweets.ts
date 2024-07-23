@@ -66,7 +66,7 @@ import { User } from '@/store/userSlice';
 // };
 export const useFetchTweets = (id: string | null) => {
 	const [tweets, setTweets] = useState<TweetResponse[]>([]);
-
+	console.log(tweets);
 	useEffect(() => {
 		const getTweets = async () => {
 			try {

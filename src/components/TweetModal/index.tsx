@@ -19,7 +19,7 @@ export const TweetModal = memo(({ closeModal }: TweetModalProps) => {
 
 	return createPortal(
 		<Container onClick={closeOutside}>
-			<Modal>
+			<Modal data-testid="modal-window">
 				<FormTitle>Create tweet</FormTitle>
 				<CreatingTweetBlock tweetText={tweet} setTweet={setTweet} closeModal={closeModal} />
 				<ButtonClose onClick={closeModal}>X</ButtonClose>
