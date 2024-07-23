@@ -11,11 +11,16 @@ export const useFetchTweets = (id: string | null) => {
 
 	useEffect(() => {
 		const getTweets = () => {
-			const tweetQuery = query(
-				collection(db, DbCollection.tweets),
-				where('userId', '==', id),
-				orderBy('createdAt', 'desc')
-			);
+			let tweetQuery;
+			if (id) {
+				tweetQuery = query(
+					collection(db, DbCollection.tweets),
+					where('userId', '==', id),
+					orderBy('createdAt', 'desc')
+				);
+			} else {
+				tweetQuery = query(collection(db, DbCollection.tweets), orderBy('createdAt', 'desc'));
+			}
 
 			return onSnapshot(tweetQuery, async (querySnapshot) => {
 				const tweetPromises = querySnapshot.docs.map(async (doc) => {
