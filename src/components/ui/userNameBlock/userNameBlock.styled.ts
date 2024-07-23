@@ -5,6 +5,7 @@ import * as Sizes from '@/style/sizes';
 export const Row = styled.div`
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 `;
 export const ProfileInfo = styled.div`
 	width: 150px;

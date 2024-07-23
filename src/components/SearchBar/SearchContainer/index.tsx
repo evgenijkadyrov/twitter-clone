@@ -1,14 +1,17 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 import { RecommendedUsers } from '@components/Recomendedusers';
 import { SearchAbstract } from '@components/SearchBar/SearchTweets';
+import { LoadingSpinner } from '@components/ui/LoadingSpinner';
 import { SearchInput } from '@components/ui/SearchInput';
 
 import { Paths } from '@/constants/routerPaths';
 import useDebounce from '@/hooks/useDebounce';
 import { useSearchTweets } from '@/hooks/useSearchTweets';
 import { useUsers } from '@/hooks/useUsers';
+import { loadingSelector } from '@/store/selectors';
 import { User, UserWithFollow } from '@/store/userSlice';
 
 import { SearchBarWrapper, Title } from './searchContainer.styled';
@@ -23,11 +26,11 @@ export const SearchContainer = () => {
 	const [data, setData] = useState<User[] | TweetResponse[]>([]);
 	const [usersByRecommendation, setUsersByRecommendation] = useState<UserWithFollow[]>([]);
 	const location = useLocation();
+	const isLoading = useSelector(loadingSelector);
 	const searchPath =
 		location.pathname === Paths.FEED.toString() ? SearchPath.users : SearchPath.tweets;
 
 	const { debouncedValue } = useDebounce(searchValue, 300);
-
 	const { getRecommendationUsers, getSearchUsers } = useUsers({
 		setUsersByRecommendation,
 		debouncedValue,
@@ -46,6 +49,7 @@ export const SearchContainer = () => {
 
 	const search = useCallback(() => {
 		if (searchPath === SearchPath.users) {
+			console.log('1');
 			getSearchUsers().catch((error) => {
 				console.error('Error getting users:', error);
 			});
@@ -55,14 +59,14 @@ export const SearchContainer = () => {
 				console.error('Error getting tweets:', error);
 			});
 		}
-	}, [searchPath, getSearchUsers, getTweets]);
+	}, [searchPath, debouncedValue]);
 	useEffect(() => {
 		getRecommendationUsers();
 	}, []);
 	useEffect(() => {
 		search();
-	}, [searchValue]);
-
+	}, [debouncedValue]);
+	console.log('data', data);
 	return (
 		<SearchBarWrapper>
 			<SearchInput
@@ -76,12 +80,12 @@ export const SearchContainer = () => {
 					<SearchAbstract searchPath={searchPath} clearSearch={clearSearch} data={data} />
 				</>
 			)}
-			{!searchValue && (
-				<RecommendedUsers
-					usersByRecommendation={usersByRecommendation}
-					setUsersByRecommendation={setUsersByRecommendation}
-				/>
-			)}
+			{isLoading && !data && <LoadingSpinner />}
+
+			<RecommendedUsers
+				usersByRecommendation={usersByRecommendation}
+				setUsersByRecommendation={setUsersByRecommendation}
+			/>
 		</SearchBarWrapper>
 	);
 };

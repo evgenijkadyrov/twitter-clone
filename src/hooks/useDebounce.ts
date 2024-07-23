@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 function useDebounce<T>(value: T, delay: number): { debouncedValue: T } {
 	const [debouncedValue, setDebouncedValue] = useState(value);
-
 	useEffect(() => {
 		if (typeof value === 'string' && value.trim().length === 0) {
 			setDebouncedValue(value);
@@ -14,7 +13,7 @@ function useDebounce<T>(value: T, delay: number): { debouncedValue: T } {
 		}, delay);
 		// eslint-disable-next-line consistent-return
 		return () => clearTimeout(handler);
-	}, [value, delay]);
+	}, [value]);
 
 	return { debouncedValue };
 }

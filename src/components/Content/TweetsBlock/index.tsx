@@ -1,22 +1,19 @@
-import { useSelector } from 'react-redux';
 import { TweetComponent } from '@components/Content/Tweet';
+import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
 
-import { useFetchTweets } from '@/hooks/useFetchTweets';
-import { userSelector } from '@/store/selectors';
 import { HeightSizes } from '@/style/sizes';
 
 import { Title, TweetWrapper } from './tweets.styled';
 
-export const TweetsBlock = () => {
-	const { id } = useSelector(userSelector);
-	const { tweets } = useFetchTweets(id);
+interface TweetsBlockProps {
+	tweets: TweetResponse[];
+}
 
-	return (
-		<TweetWrapper>
-			<Title>Tweets</Title>
-			{tweets.map((tweet) => (
-				<TweetComponent key={tweet.id} tweet={tweet} imageHeight={HeightSizes.h450} />
-			))}
-		</TweetWrapper>
-	);
-};
+export const TweetsBlock = ({ tweets }: TweetsBlockProps) => (
+	<TweetWrapper>
+		<Title>Tweets</Title>
+		{tweets.map((tweet) => (
+			<TweetComponent key={tweet.id} tweet={tweet} imageHeight={HeightSizes.h450} />
+		))}
+	</TweetWrapper>
+);

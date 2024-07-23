@@ -31,9 +31,9 @@ export const TweetComponent = memo(
 		const { id } = useSelector(userSelector);
 		const formatDate = formattedDate(createdAt);
 
-		const isLiked = calculateIfIsLiked(likedList, id);
-		const handleLikeClick = useUpdateLike({ likedList, tweetId, userId });
-
+		const isLiked = calculateIfIsLiked(likedList, id as string);
+		const handleLikeClick = useUpdateLike({ likedList, tweetId, id });
+		console.log('ISLIKE', likedList, id);
 		useEffect(() => {
 			setIsOwner(userId === id);
 		}, [tweet, id, userId]);
@@ -54,7 +54,7 @@ export const TweetComponent = memo(
 					)}
 					<Likes
 						isLiked={isLiked}
-						countLikes={likedList.length}
+						countLikes={likedList?.length}
 						handleLikeClick={handleLikeClick}
 					/>
 				</TweetWrapper>

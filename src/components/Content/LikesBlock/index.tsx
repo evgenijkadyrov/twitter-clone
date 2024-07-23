@@ -13,6 +13,7 @@ interface LikesProps {
 	countLikes: number;
 	handleLikeClick: () => void;
 }
+
 export const Likes = memo(({ isLiked, countLikes, handleLikeClick }: LikesProps) => {
 	const { isDarkTheme } = useSelector(themeSelector);
 	const getLikeIconSrc = () => {

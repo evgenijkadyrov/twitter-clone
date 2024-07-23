@@ -4,6 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist/es/constants';
 import storage from 'redux-persist/lib/storage';
 
+import { loadingReducer } from '@/store/loadingSlice';
 import { notificationReducer } from '@/store/notificationSlice';
 import { themeReducer } from '@/store/themeSlice';
 import { userReducer } from '@/store/userSlice';
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 	user: userReducer,
 	notification: notificationReducer,
 	theme: themeReducer,
+	loading: loadingReducer,
 });
 const persistConfig = {
 	key: 'root',
