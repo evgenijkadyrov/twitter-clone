@@ -40,7 +40,7 @@ export const ThemeToggler = styled.div`
 	}
 `;
 
-const RadioButton = styled.input`
+export const RadioButton = styled.input`
 	margin: 0;
 	border: ${Sizes.BorderSizes.b02} solid transparent;
 	width: ${Sizes.WidthSizes.w32};

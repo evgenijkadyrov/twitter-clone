@@ -13,7 +13,7 @@ export const LikeIcon = styled.img`
 `;
 export const LikeCount = styled.p`
 	color: ${({ theme }) => theme.textColor};
-	@media screen and (max-width: 550px) {
+	@media screen and (max-width: 568px) {
 		font-size: ${({ theme }) => theme.fontSize.f14};
 	}
 `;

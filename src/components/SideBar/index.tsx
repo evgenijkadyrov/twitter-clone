@@ -21,10 +21,9 @@ export const SideBar = () => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const dispatch = useAppDispatch();
 	const { showSuccessNotification, showErrorNotification } = useNotification();
-	// const { isVisibleLeftSidebar: isVisible } = useAppSelector(sidebarSelector);
-	const [isVisibleLeftSidebar, setisVisible] = useState(false);
+	const [isVisibleSidebar, setIsVisibleSideBar] = useState(false);
 	const toggleVisibility = (): void => {
-		setisVisible(!isVisibleLeftSidebar);
+		setIsVisibleSideBar(!isVisibleSidebar);
 	};
 	const modalClickHandler = (): void => {
 		setIsOpenModal((prev) => !prev);
@@ -45,13 +44,13 @@ export const SideBar = () => {
 	};
 	return (
 		<>
-			<Burger $isVisible={isVisibleLeftSidebar} onClick={toggleVisibility}>
+			<Burger $isVisible={isVisibleSidebar} onClick={toggleVisibility}>
 				<Span className="first" />
 				<Span className="second" />
 				<Span className="third" />
 			</Burger>
 
-			<SideBarWrapper $isVisible={isVisibleLeftSidebar}>
+			<SideBarWrapper $isVisible={isVisibleSidebar}>
 				<NavBar />
 				<Button type={TypeButton.button} onClick={modalClickHandler}>
 					Tweet

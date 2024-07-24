@@ -8,6 +8,7 @@ import { LoadingSpinner } from '@components/ui/LoadingSpinner';
 import { SearchInput } from '@components/ui/SearchInput';
 
 import { Paths } from '@/constants/routerPaths';
+import { SearchPath } from '@/constants/textConstant';
 import useDebounce from '@/hooks/useDebounce';
 import { useSearchTweets } from '@/hooks/useSearchTweets';
 import { useUsers } from '@/hooks/useUsers';
@@ -15,11 +16,6 @@ import { loadingSelector } from '@/store/selectors';
 import { User, UserWithFollow } from '@/store/userSlice';
 
 import { Title } from './searchContainer.styled';
-
-export enum SearchPath {
-	users = 'users',
-	tweets = 'tweets',
-}
 
 export const SearchContainer = () => {
 	const [searchValue, setSearchValue] = useState<string>('');
@@ -67,7 +63,6 @@ export const SearchContainer = () => {
 		search();
 	}, [debouncedValue]);
 	return (
-		// <SearchBarWrapper>
 		<>
 			<SearchInput
 				searchValue={searchValue}
@@ -87,6 +82,5 @@ export const SearchContainer = () => {
 				setUsersByRecommendation={setUsersByRecommendation}
 			/>
 		</>
-		// </SearchBarWrapper>
 	);
 };

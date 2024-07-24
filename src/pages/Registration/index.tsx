@@ -13,12 +13,11 @@ import { NotificationMessages } from '@/constants/notificationMessages';
 import { REGISTRATION_FORM_DATA } from '@/constants/registrationFormData';
 import { Paths } from '@/constants/routerPaths';
 import { AGE_TEXT_CONFIRM } from '@/constants/textConstant';
-import { handleFirebaseError } from '@/helpers/firebaseErrors';
 import { formateDate } from '@/helpers/formateDate';
+import { useNotification } from '@/hooks/useNotification';
 import { RegistrationFormData } from '@/pages/Registration/registration.interface';
 import { singUp } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
-import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 import { SignupSchema } from '@/validation/signUpValidation';
 
@@ -48,6 +47,7 @@ export const Registration = () => {
 		mode: 'onBlur',
 	});
 	const dispatch = useAppDispatch();
+	const { showSuccessNotification, showErrorNotification } = useNotification();
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
 		const { phoneNumber, name, password, email, day, month, year }: RegistrationFormData = data;
 		const birthDate = formateDate(day, month, year);
@@ -64,20 +64,12 @@ export const Registration = () => {
 					description: null,
 				})
 			);
-			dispatch(
-				notificationActions.showSuccess({
-					success: NotificationMessages.SUCCESS_REGISTRATION,
-				})
-			);
+			showSuccessNotification(NotificationMessages.SUCCESS_REGISTRATION);
 		} catch (error: unknown) {
-			dispatch(
-				notificationActions.showError(
-					handleFirebaseError(
-						error,
-						ErrorsResponseCode.EMAIL_ALREADY_IN_USE,
-						NotificationMessages.ERROR_REGISTRATION
-					)
-				)
+			showErrorNotification(
+				error,
+				ErrorsResponseCode.EMAIL_ALREADY_IN_USE,
+				NotificationMessages.ERROR_REGISTRATION
 			);
 		} finally {
 			reset();

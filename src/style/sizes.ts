@@ -1,62 +1,36 @@
-const p200 = '200px';
-const p64 = '64px';
-const p50 = '50px';
-const p42 = '42px';
-const p35 = '35px';
-const p32 = '32px';
-const p24 = '24px';
-const p20 = '20px';
-const p18 = '18px';
-const p14 = '14px';
-const p10 = '10px';
-const p08 = '8px';
-const p05 = '5px';
-const p02 = '2px';
-
 export const PaddingSizes = {
-	p200,
-	p64,
-	p50,
-	p42,
-	p35,
-	p32,
-	p24,
-	p20,
-	p18,
-	p14,
-	p10,
-	p08,
-	p05,
-	p02,
+	p02: '2px',
+	p05: '5px',
+	p08: '8px',
+	p10: '10px',
+	p14: '14px',
+	p18: '18px',
+	p20: '20px',
+	p24: '24px',
+	p32: '32px',
+	p35: '35px',
+	p42: '42px',
+	p50: '50px',
+	p64: '64px',
+	p200: '200px',
 };
-const m200 = '200px';
-const m80 = '80px';
-const m70 = '70px';
-const m60 = '60px';
-const m50 = '50px';
-const m40 = '40px';
-const m30 = '30px';
-const m25 = '25px';
-const m20 = '20px';
-const m15 = '15px';
-const m10 = '10px';
-const m05 = '5px';
 
 export const MarginSizes = {
-	m200,
-	m80,
-	m70,
-	m60,
-	m50,
-	m40,
-	m30,
-	m25,
-	m20,
-	m15,
-	m10,
-	m05,
+	m05: '5px',
+	m10: '10px',
+	m15: '15px',
+	m20: '20px',
+	m25: '25px',
+	m30: '30px',
+	m40: '40px',
+	m50: '50px',
+	m60: '60px',
+	m70: '70px',
+	m80: '80px',
+	m200: '200px',
 };
 export const WidthSizes = {
+	w16: '16px',
 	w32: '32px',
 	w20: '20px',
 	w40: '40px',
@@ -71,17 +45,19 @@ export const WidthSizes = {
 	w150: '150px',
 };
 export const HeightSizes = {
-	h32: '32px',
-	h04: '4px',
 	h03: '3px',
-	h20: '20px',
+	h04: '4px',
 	h16: '16px',
+	h20: '20px',
+	h32: '32px',
+	h40: '40px',
 	h50: '50px',
 	h60: '60px',
 	h75: '75px',
-	h40: '40px',
 	h100: '100px',
 	h150: '150px',
+	h190: '190px',
+	h200: '200px',
 	h250: '250px',
 	h450: '450px',
 	h600: '600px',
@@ -93,15 +69,15 @@ export const BorderSizes = {
 	b03: '3px',
 };
 export const BorderRadiusSizes = {
-	br40: '40px',
+	br03: '3px',
+	br06: '6px',
 	br10: '10px',
 	br15: '15px',
-	br06: '6px',
-	br03: '3px',
+	br40: '40px',
 };
 export const GapSizes = {
-	g40: '40px',
-	g15: '15px',
-	g10: '10px',
 	g05: '5px',
+	g10: '10px',
+	g15: '15px',
+	g40: '40px',
 };

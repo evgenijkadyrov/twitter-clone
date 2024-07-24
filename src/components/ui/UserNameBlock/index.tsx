@@ -1,20 +1,11 @@
-import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import defaultAvatar from '@assets/images/avatar.png';
 import { Avatar } from '@components/SearchBar/SearchContainer/searchContainer.styled';
 
 import { Paths } from '@/constants/routerPaths';
 
+import { UserNameBlockProps } from './userBlock.interface';
 import { ProfileInfo, Row, SubTitle, TitleProfile } from './userNameBlock.styled';
-
-interface UserNameBlockProps {
-	name?: string | null | undefined;
-	nickname?: string | null | undefined;
-	avatarImage?: string | null | undefined;
-	id?: string | null | undefined;
-	clearSearch?: () => void;
-	children?: ReactNode;
-}
 
 export const UserNameBlock = ({
 	name,

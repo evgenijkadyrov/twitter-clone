@@ -5,8 +5,8 @@ import { Avatar } from '@components/Content/CreatingTweetBlock/creatingTweetBloc
 import { Likes } from '@components/Content/LikesBlock';
 
 import { calculateIfIsLiked } from '@/helpers/calculateIfIsLiked';
-import useTweetImageURL from '@/helpers/convertImageUrl';
 import { formattedDate } from '@/helpers/formattedTimestampToDate';
+import useTweetImageURL from '@/hooks/useConvertImageUrl';
 import useUpdateLike from '@/hooks/useUpdateLike';
 import { userSelector } from '@/store/selectors';
 

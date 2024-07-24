@@ -6,7 +6,7 @@ import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
 import { User } from '@/store/userSlice';
 
-export const useFetchTweets = (id: string | null) => {
+export const useFetchTweetsByUser = (id: string | null) => {
 	const [tweets, setTweets] = useState<TweetResponse[]>([]);
 
 	useEffect(() => {

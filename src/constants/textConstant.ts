@@ -19,3 +19,9 @@ export enum DbCollection {
 	users = 'users',
 	tweets = 'tweets',
 }
+export const FOLLOW = 'Follow';
+export const UNFOLLOW = 'Unfollow';
+export enum SearchPath {
+	users = 'users',
+	tweets = 'tweets',
+}

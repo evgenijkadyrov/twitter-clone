@@ -8,18 +8,7 @@ export const NotificationWrapper = styled.div`
 `;
 
 const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 2;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% {opacity: 0;}40% {opacity: 1;}60% {opacity: 2;}100% {opacity: 0;}
 `;
 export const ErrorWrapper = styled.div`
 	background-color: ${({ theme }) => theme.notification.backgroundColor.primary};

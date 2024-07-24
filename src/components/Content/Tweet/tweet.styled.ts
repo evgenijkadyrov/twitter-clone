@@ -6,12 +6,13 @@ const BOTTOM_POSITION = '10px';
 const HEIGHT_DIVIDER = '1px';
 
 export const TweetContainer = styled.div`
-	display: grid;
-	grid-template-columns: 2fr 16fr 1fr;
-	grid-gap: ${Sizes.GapSizes.g10}
-	margin-bottom: ${Sizes.MarginSizes.m10};
-	position: relative;
+  display: grid;
+  grid-template-columns: 2fr 16fr 1fr;
+  grid-gap: ${Sizes.GapSizes.g10}
+  margin-bottom: ${Sizes.MarginSizes.m10};
+  position: relative;
 `;
+
 interface TweetImageProps {
 	background_url: string;
 	height: string;
@@ -28,13 +29,13 @@ export const TweetImage = styled.div<TweetImageProps>`
 	margin-left: ${Sizes.MarginSizes.m15};
 
 	@media screen and (max-width: 1085px) {
-		height: 250px;
+		height: ${Sizes.HeightSizes.h250};
 	}
-	@media screen and (max-width: 750px) {
-		max-height: 200px;
+	@media screen and (max-width: 768px) {
+		max-height: ${Sizes.HeightSizes.h200};
 	}
 	@media screen and (max-width: 568px) {
-		max-height: 150px;
+		max-height: ${Sizes.HeightSizes.h150};
 	}
 `;
 export const TweetText = styled.div`
@@ -42,7 +43,7 @@ export const TweetText = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f18};
 	color: ${({ theme }) => theme.textColor};
 
-	@media screen and (max-width: 750px) {
+	@media screen and (max-width: 768px) {
 		margin-top: ${Sizes.MarginSizes.m10};
 		font-size: ${({ theme }) => theme.fontSize.f14};
 	}
@@ -57,9 +58,10 @@ export const Settings = styled.div`
 	color: ${({ theme }) => theme.textColor};
 `;
 export const TweetWrapper = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   margin-bottom: ${Sizes.MarginSizes.m20};
+
   &:after {
     position: absolute;
     left: 0;
@@ -68,7 +70,7 @@ display: flex;
     width: 100%;
     height: ${HEIGHT_DIVIDER};
     background-color: ${({ theme }) => theme.border};
-	  @media screen and (max-width: 768px) {
-		  margin-bottom: ${Sizes.MarginSizes.m10};
-	  }
+    @media screen and (max-width: 768px) {
+      margin-bottom: ${Sizes.MarginSizes.m10};
+    }
 `;

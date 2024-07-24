@@ -14,6 +14,7 @@ import {
 	limit,
 	query,
 	setDoc,
+	UpdateData,
 	updateDoc,
 	where,
 } from 'firebase/firestore';
@@ -157,5 +158,5 @@ export const updateUserInfo = async (
 		phoneNumber,
 		description,
 		nickname,
-	});
+	} as UpdateData<User>);
 };

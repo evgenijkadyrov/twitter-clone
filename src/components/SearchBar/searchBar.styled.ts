@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 import * as Sizes from '@/style/sizes';
 
-export const Container = styled.div`
-	//position: relative
-`;
 export const SearchBarWrapper = styled.div<{ $isVisible?: boolean }>`
 	display: flex;
 	flex-basis: 20%;

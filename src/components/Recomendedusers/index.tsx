@@ -3,6 +3,7 @@ import { TypeButton } from '@components/ui/Button/button.interface';
 import { UserNameBlock } from '@components/ui/UserNameBlock';
 
 import { Button } from '@/components/ui/Button';
+import { FOLLOW, UNFOLLOW } from '@/constants/textConstant';
 import { UserWithFollow } from '@/store/userSlice';
 
 import { TitleForRecommended } from './recomended.styled';
@@ -34,7 +35,7 @@ export const RecommendedUsers = memo(
 							width="30%"
 							onClick={handleChangeSubscribe(id)}
 						>
-							{follow ? 'Unfollow' : 'Follow'}
+							{follow ? UNFOLLOW : FOLLOW}
 						</Button>
 					</UserNameBlock>
 				))}

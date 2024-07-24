@@ -1,8 +1,6 @@
-import { FC } from 'react';
-
 import { Container, Ring, Span } from './loadingSpinner.styled';
 
-export const LoadingSpinner: FC = () => (
+export const LoadingSpinner = () => (
 	<Container>
 		<Ring>
 			<Span />

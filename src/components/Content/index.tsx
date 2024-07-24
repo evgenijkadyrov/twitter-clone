@@ -14,7 +14,7 @@ import {
 	TweetsBlock,
 	UserCommonInfo,
 } from '@/components';
-import { useFetchTweets } from '@/hooks/useFetchTweets';
+import { useFetchTweetsByUser } from '@/hooks/useFetchTweetsByUser';
 import { userSelector } from '@/store/selectors';
 
 import { Content } from './content.styled';
@@ -28,7 +28,7 @@ export const ContentBlock = () => {
 		setIsOpenModal((prev) => !prev);
 	};
 
-	const { tweets } = useFetchTweets(id as string);
+	const { tweets } = useFetchTweetsByUser(id as string);
 	console.log('tweets', tweets);
 
 	return (

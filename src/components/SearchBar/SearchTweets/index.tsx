@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.interface';
-import { SearchPath } from '@components/SearchBar/SearchContainer';
 import { SearchItem } from '@components/SearchBar/SearchItem';
 import { LoadingSpinner } from '@components/ui/LoadingSpinner';
 import { UserNameBlock } from '@components/ui/UserNameBlock';
 
+import { SearchPath } from '@/constants/textConstant';
 import { loadingSelector } from '@/store/selectors';
 import { User } from '@/store/userSlice';
 

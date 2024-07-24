@@ -3,13 +3,13 @@ import { TweetComponent } from '@components/Content/Tweet';
 import { PageNav } from '@components/PageNav';
 
 import { CreatingTweetBlock } from '@/components';
-import { useFetchTweets } from '@/hooks/useFetchTweets';
+import { useFetchTweetsByUser } from '@/hooks/useFetchTweetsByUser';
 import { HeightSizes } from '@/style/sizes';
 
 export const Feed = () => {
 	const [tweet, setTweet] = useState('');
 
-	const { tweets } = useFetchTweets(null);
+	const { tweets } = useFetchTweetsByUser(null);
 
 	return (
 		<>

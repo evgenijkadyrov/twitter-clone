@@ -6,23 +6,23 @@ export const SideBarWrapper = styled.div<{ $isVisible?: boolean }>`
 	display: flex;
 	flex-basis: 10%;
 	flex-direction: column;
-  
-  @media screen and (max-width: 768px) {
-    position: absolute;
-    top: 0;
-    left: ${({ $isVisible }) => ($isVisible ? '0' : '-100%')};
-    z-index: 10;
 
-    height: 100%;
-    padding-left: ${Sizes.PaddingSizes.p35};
-    padding-right: ${Sizes.PaddingSizes.p20};
+	@media screen and (max-width: 768px) {
+		position: absolute;
+		top: 0;
+		left: ${({ $isVisible }) => ($isVisible ? '0' : '-100%')};
+		z-index: 10;
 
-    background-color: ${({ theme }) => theme.backgroundColors.sidebar};
-    box-shadow: ${Sizes.BorderSizes.b01} 0 ${Sizes.HeightSizes.h16} 0 ${({ theme }) => theme.shadowColor};
-  }
+		height: 100%;
+		padding-left: ${Sizes.PaddingSizes.p35};
+		padding-right: ${Sizes.PaddingSizes.p20};
 
-  transition: left 0.4s linear;
-\` ;
+		background-color: ${({ theme }) => theme.backgroundColors.sidebar};
+		box-shadow: ${Sizes.BorderSizes.b01} 0 ${Sizes.HeightSizes.h16} 0
+			${({ theme }) => theme.shadowColor};
+	}
+
+	transition: left 0.4s linear;
 `;
 
 export const Title = styled.div`

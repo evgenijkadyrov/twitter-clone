@@ -1,4 +1,4 @@
-import { SearchPath } from '@components/SearchBar/SearchContainer';
+import { SearchPath } from '@/constants/textConstant';
 
 enum SearchPlaceholder {
 	users = 'Search users',
