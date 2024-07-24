@@ -1,44 +1,25 @@
-import { useState } from 'react';
-import reactLogo from '@assets/react.svg';
-import { Header } from '@components/Header';
+import { useSelector } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
+import { Notification } from '@components/Notification';
+import { ErrorBoundary } from '@components/ui/ErrorBoundary';
+import { ThemeProvider } from 'styled-components';
 
-import viteLogo from '@assets/vite.svg';
-
-import './App.css';
+import { rootRouter } from '@/router';
+import { themeSelector } from '@/store/selectors';
+import { GlobalStyles } from '@/style/globals';
+import { DarkTheme, LightTheme } from '@/style/themes';
 
 const App = () => {
-	const [count, setCount] = useState(0);
-
+	const { isDarkTheme } = useSelector(themeSelector);
 	return (
 		<>
-			<div>
-				<a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-					<img src={viteLogo as string} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank" rel="noreferrer">
-					<img
-						src={reactLogo as string}
-						className="logo react"
-						alt="React logo"
-					/>
-				</a>
-			</div>
-			<Header />
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button
-					onClick={() => setCount((prevState) => prevState + 1)}
-					type="button"
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
+			<GlobalStyles />
+			<ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
+				<ErrorBoundary>
+					<Notification />
+					<RouterProvider router={rootRouter} fallbackElement="Loading" />
+				</ErrorBoundary>
+			</ThemeProvider>
 		</>
 	);
 };

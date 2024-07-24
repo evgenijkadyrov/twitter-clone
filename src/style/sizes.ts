@@ -1,0 +1,83 @@
+export const PaddingSizes = {
+	p02: '2px',
+	p05: '5px',
+	p08: '8px',
+	p10: '10px',
+	p14: '14px',
+	p18: '18px',
+	p20: '20px',
+	p24: '24px',
+	p32: '32px',
+	p35: '35px',
+	p42: '42px',
+	p50: '50px',
+	p64: '64px',
+	p200: '200px',
+};
+
+export const MarginSizes = {
+	m05: '5px',
+	m10: '10px',
+	m15: '15px',
+	m20: '20px',
+	m25: '25px',
+	m30: '30px',
+	m40: '40px',
+	m50: '50px',
+	m60: '60px',
+	m70: '70px',
+	m80: '80px',
+	m200: '200px',
+};
+export const WidthSizes = {
+	w16: '16px',
+	w32: '32px',
+	w20: '20px',
+	w40: '40px',
+	w400: '400px',
+	w375: '375px',
+	w50: '50px',
+	w60: '60px',
+	w75: '75px',
+	w100: '100px',
+	w450: '450px',
+	w500: '500px',
+	w150: '150px',
+};
+export const HeightSizes = {
+	h03: '3px',
+	h04: '4px',
+	h16: '16px',
+	h20: '20px',
+	h32: '32px',
+	h40: '40px',
+	h50: '50px',
+	h60: '60px',
+	h75: '75px',
+	h100: '100px',
+	h150: '150px',
+	h190: '190px',
+	h200: '200px',
+	h250: '250px',
+	h450: '450px',
+	h600: '600px',
+	h650: '650px',
+};
+export const BorderSizes = {
+	b01: '1px',
+	b02: '2px',
+	b03: '3px',
+};
+export const BorderRadiusSizes = {
+	br03: '3px',
+	br06: '6px',
+	br10: '10px',
+	br15: '15px',
+	br40: '40px',
+};
+export const GapSizes = {
+	g05: '5px',
+	g10: '10px',
+	g15: '15px',
+	g40: '40px',
+};
