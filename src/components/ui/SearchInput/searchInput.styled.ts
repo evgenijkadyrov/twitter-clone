@@ -6,7 +6,7 @@ export const Container = styled.div`
 	position: relative;
 	width: 100%;
 `;
-export const SearchBarContainer = styled.input`
+export const SearchInputContainer = styled.input`
 	padding: ${Sizes.PaddingSizes.p10} 0 ${Sizes.PaddingSizes.p10} ${Sizes.PaddingSizes.p50};
 	width: 100%;
 
@@ -27,7 +27,7 @@ export const SearchBarContainer = styled.input`
 		color: ${({ theme }) => theme.input.placeholder.primary};
 	}
 
-	@media screen and (max-width: 1000px) {
+	@media screen and (max-width: 1068px) {
 		background-color: ${({ theme }) => theme.border};
 	}
 `;

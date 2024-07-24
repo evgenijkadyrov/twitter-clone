@@ -64,33 +64,44 @@ export const WidthSizes = {
 	w375: '375px',
 	w50: '50px',
 	w60: '60px',
+	w75: '75px',
+	w100: '100px',
 	w450: '450px',
 	w500: '500px',
 	w150: '150px',
 };
 export const HeightSizes = {
 	h32: '32px',
+	h04: '4px',
+	h03: '3px',
 	h20: '20px',
+	h16: '16px',
 	h50: '50px',
 	h60: '60px',
+	h75: '75px',
 	h40: '40px',
+	h100: '100px',
 	h150: '150px',
 	h250: '250px',
 	h450: '450px',
 	h600: '600px',
+	h650: '650px',
 };
 export const BorderSizes = {
 	b01: '1px',
 	b02: '2px',
+	b03: '3px',
 };
 export const BorderRadiusSizes = {
 	br40: '40px',
 	br10: '10px',
 	br15: '15px',
 	br06: '6px',
+	br03: '3px',
 };
 export const GapSizes = {
 	g40: '40px',
 	g15: '15px',
 	g10: '10px',
+	g05: '5px',
 };

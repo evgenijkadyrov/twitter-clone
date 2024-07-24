@@ -30,8 +30,13 @@ export const ThemeToggler = styled.div`
 
 	border-radius: ${Sizes.BorderRadiusSizes.br15};
 
-	@media screen and (max-width: 550px) {
+	@media screen and (max-width: 1085px) {
 		width: ${Sizes.WidthSizes.w40};
+		height: ${Sizes.HeightSizes.h20};
+	}
+	@media screen and (max-width: 750px) {
+		width: ${Sizes.WidthSizes.w32};
+		height: ${Sizes.HeightSizes.h20};
 	}
 `;
 
@@ -54,9 +59,13 @@ const RadioButton = styled.input`
 		background-color: ${({ theme }) => theme.fontColors.grey};
 	}
 
-	@media screen and (max-width: 550px) {
-		width: ${Sizes.WidthSizes.w20};
+	@media screen and (max-width: 1085px) {
+		width: ${Sizes.WidthSizes.w40};
 		height: ${Sizes.HeightSizes.h20};
+	}
+	@media screen and (max-width: 750px) {
+		width: ${Sizes.WidthSizes.w32};
+		height: ${Sizes.HeightSizes.h16};
 	}
 `;
 

@@ -22,8 +22,4 @@ export const StyledButton = styled.button<{
 		background-color: ${({ theme }) => theme.button.backgroundColor.disabled};
 		cursor: default;
 	}
-	// &:hover {
-	//
-	// 	background-color: ${({ theme }) => theme.button.backgroundColor.hover};
-	// }
 `;

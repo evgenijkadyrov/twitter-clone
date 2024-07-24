@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { Notification } from '@components/Notification';
+import { ErrorBoundary } from '@components/ui/ErrorBoundary';
 import { ThemeProvider } from 'styled-components';
 
 import { rootRouter } from '@/router';
@@ -14,8 +15,10 @@ const App = () => {
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
-				<Notification />
-				<RouterProvider router={rootRouter} fallbackElement="Loading" />
+				<ErrorBoundary>
+					<Notification />
+					<RouterProvider router={rootRouter} fallbackElement="Loading" />
+				</ErrorBoundary>
 			</ThemeProvider>
 		</>
 	);

@@ -14,7 +14,7 @@ import { useUsers } from '@/hooks/useUsers';
 import { loadingSelector } from '@/store/selectors';
 import { User, UserWithFollow } from '@/store/userSlice';
 
-import { SearchBarWrapper, Title } from './searchContainer.styled';
+import { Title } from './searchContainer.styled';
 
 export enum SearchPath {
 	users = 'users',
@@ -67,7 +67,8 @@ export const SearchContainer = () => {
 		search();
 	}, [debouncedValue]);
 	return (
-		<SearchBarWrapper>
+		// <SearchBarWrapper>
+		<>
 			<SearchInput
 				searchValue={searchValue}
 				searchPath={searchPath}
@@ -85,6 +86,7 @@ export const SearchContainer = () => {
 				usersByRecommendation={usersByRecommendation}
 				setUsersByRecommendation={setUsersByRecommendation}
 			/>
-		</SearchBarWrapper>
+		</>
+		// </SearchBarWrapper>
 	);
 };

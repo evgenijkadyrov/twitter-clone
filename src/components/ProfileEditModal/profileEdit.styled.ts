@@ -15,7 +15,7 @@ export const Modal = styled.div`
 	position: relative;
 
 	width: ${Sizes.WidthSizes.w500};
-	height: ${Sizes.HeightSizes.h600};
+	height: ${Sizes.HeightSizes.h650};
 	padding: ${Sizes.PaddingSizes.p20};
 
 	display: flex;

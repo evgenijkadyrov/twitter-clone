@@ -3,7 +3,7 @@ import searchIcon from '@assets/icons/search.svg';
 
 import { configPlaceholder } from '@/helpers/configireSearchPlaceholder';
 
-import { Container, Icon, SearchBarContainer } from './searchInput.styled';
+import { Container, Icon, SearchInputContainer } from './searchInput.styled';
 
 interface SearchInputProps {
 	searchPath: string;
@@ -14,7 +14,7 @@ export const SearchInput = memo(
 	({ searchPath, searchValue, onChangeHandler }: SearchInputProps) => (
 		<Container>
 			<Icon src={searchIcon} alt="search" />
-			<SearchBarContainer
+			<SearchInputContainer
 				placeholder={configPlaceholder(searchPath)}
 				value={searchValue}
 				onChange={onChangeHandler}

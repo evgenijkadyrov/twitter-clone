@@ -21,6 +21,14 @@ export const Title = styled.h1`
 	margin-bottom: ${Sizes.MarginSizes.m40};
 
 	font-size: ${({ theme }) => theme.fontSize.f32};
+	@media screen and (max-width: 768px) {
+		font-size: ${({ theme }) => theme.fontSize.f24};
+		margin-bottom: ${Sizes.MarginSizes.m20};
+	}
+	@media screen and (max-width: 568px) {
+		font-size: ${({ theme }) => theme.fontSize.f18};
+		margin-bottom: ${Sizes.MarginSizes.m10};
+	}
 `;
 
 export const StyledLink = styled(Link)`

@@ -4,7 +4,7 @@ import { TweetResponse } from '@components/Content/TweetsBlock/tweetsBlock.inter
 import { SearchPath } from '@components/SearchBar/SearchContainer';
 import { SearchItem } from '@components/SearchBar/SearchItem';
 import { LoadingSpinner } from '@components/ui/LoadingSpinner';
-import { UserNameBlock } from '@components/ui/userNameBlock';
+import { UserNameBlock } from '@components/ui/UserNameBlock';
 
 import { loadingSelector } from '@/store/selectors';
 import { User } from '@/store/userSlice';

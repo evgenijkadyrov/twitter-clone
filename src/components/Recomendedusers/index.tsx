@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { TypeButton } from '@components/ui/Button/button.interface';
-import { UserNameBlock } from '@components/ui/userNameBlock';
+import { UserNameBlock } from '@components/ui/UserNameBlock';
 
 import { Button } from '@/components/ui/Button';
 import { UserWithFollow } from '@/store/userSlice';

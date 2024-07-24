@@ -13,6 +13,12 @@ export const ImageBackground = styled.div<ImageBackgroundProps>`
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	@media screen and (max-width: 1085px) {
+		height: ${Sizes.HeightSizes.h150};
+	}
+	@media screen and (max-width: 750px) {
+		height: ${Sizes.HeightSizes.h60};
+	}
 `;
 export const BlockName = styled.div`
 	font-size: ${({ theme }) => theme.fontSize.f16};

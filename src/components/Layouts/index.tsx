@@ -3,11 +3,12 @@ import { Outlet } from 'react-router-dom';
 import { Content } from '@components/Content/content.styled';
 import { SearchBar } from '@components/SearchBar/';
 import { SideBar } from '@components/SideBar';
+import { LoadingSpinner } from '@components/ui/LoadingSpinner';
 
 import { Section } from './layouts.styled';
 
 export const SuspenseLayoutForAuthBlock = () => (
-	<Suspense fallback={<div>Loading</div>}>
+	<Suspense fallback={<LoadingSpinner />}>
 		<Outlet />
 	</Suspense>
 );
@@ -15,7 +16,7 @@ export const SuspenseLayoutForAuthBlock = () => (
 export const SuspenseLayoutForMainContent = () => (
 	<Section>
 		<SideBar />
-		<Suspense fallback={<div>Loading</div>}>
+		<Suspense fallback={<LoadingSpinner />}>
 			<Content>
 				<Outlet />
 			</Content>

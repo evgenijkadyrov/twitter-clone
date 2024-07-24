@@ -26,4 +26,10 @@ export const ButtonIcon = styled.img`
 export const ButtonText = styled.p`
 	font-size: ${({ theme }) => theme.fontSize.f20};
 	font-weight: ${({ theme }) => theme.fontWeights.medium};
+	@media screen and (max-width: 1068px) {
+		font-size: ${({ theme }) => theme.fontSize.f18};
+	}
+	@media screen and (max-width: 768px) {
+		font-size: ${({ theme }) => theme.fontSize.f14};
+	}
 `;

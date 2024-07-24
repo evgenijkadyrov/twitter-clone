@@ -7,6 +7,9 @@ export const Content = styled.div`
 	flex-basis: 50%;
 	flex-direction: column;
 	@media screen and (max-width: ${ScreenWidth.iPad}) {
-		flex-basis: 50%;
+		flex-basis: 60%;
+	}
+	@media screen and (max-width: ${ScreenWidth.iPad}) {
+		flex-basis: 70%;
 	}
 `;
