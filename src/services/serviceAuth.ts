@@ -35,7 +35,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 	const credentials = GoogleAuthProvider.credentialFromResult(result);
 	const token = credentials?.accessToken;
 	const { user } = result;
-	const { displayName, phoneNumber, email, uid } = user;
+	const { displayName, phoneNumber, email, uid, photoURL } = user;
 
 	const docRef = doc(db, 'users', uid);
 	const docSnap = await getDoc(docRef);
@@ -61,6 +61,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 		phoneNumber,
 		email,
 		id: uid,
+		avatarImage: photoURL,
 	});
 
 	return {
@@ -69,6 +70,7 @@ export const signUpWithGoogle = async (): Promise<User> => {
 		name: displayName,
 		phoneNumber,
 		email,
+		avatarImage: photoURL,
 		token: token || null,
 	} as User;
 };
@@ -97,6 +99,7 @@ export const singUp = async (
 	});
 	return { uid, token };
 };
+
 export const login = async (inputData: LoginFormFields) => {
 	const auth = getAuth();
 	const { phoneOrEmail, password } = inputData;

@@ -4,12 +4,16 @@ import { ButtonRegistration } from '@components/ui/ButtonRegistration';
 
 import { Paths } from '@/constants/routerPaths';
 import { signUpWithGoogle } from '@/services/serviceAuth';
+import { useAppDispatch } from '@/store';
+import { userActions } from '@/store/userSlice';
 
 export const ButtonRegistrationBlock = () => {
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const handleGoogleClick = async (): Promise<void> => {
 		try {
-			await signUpWithGoogle();
+			const data = await signUpWithGoogle();
+			dispatch(userActions.fetchUser(data));
 		} catch (error) {
 			console.log(error);
 		}
