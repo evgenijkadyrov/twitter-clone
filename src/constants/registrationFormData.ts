@@ -18,12 +18,7 @@ export const REGISTRATION_FORM_DATA: RegistrationProps[] = [
 		registerName: 'email',
 		type: 'text',
 	},
-	{
-		name: 'phoneNumber',
-		placeholder: 'Phone number',
-		registerName: 'phoneNumber',
-		type: 'text',
-	},
+
 	{
 		name: 'password',
 		placeholder: 'Password',

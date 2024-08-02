@@ -5,7 +5,10 @@ export const validatePhone = (phone: number | string | undefined): boolean =>
 		.number()
 		.integer()
 		.positive()
-		.test((phone) => !!(phone && phone.toString().length >= 8 && phone.toString().length <= 14))
+		.test(
+			'Not correct number of symbol',
+			(phone) => !!(phone && phone.toString().length >= 12 && phone.toString().length <= 13)
+		)
 		.isValidSync(phone);
 
 export const SignupSchema = yup.object().shape({

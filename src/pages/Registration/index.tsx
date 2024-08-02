@@ -1,4 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-number-input/react-hook-form-input';
 import IconImage from '@assets/images/twitter.svg';
 import { Select } from '@components/Select';
 import { TypeButton } from '@components/ui/Button/button.interface';
@@ -19,7 +20,7 @@ import { RegistrationFormData } from '@/pages/Registration/registration.interfac
 import { singUp } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
 import { userActions } from '@/store/userSlice';
-import { SignupSchema } from '@/validation/signUpValidation';
+import { SignupSchema, validatePhone } from '@/validation/signUpValidation';
 
 import {
 	AgeConfirmText,
@@ -41,6 +42,7 @@ export const Registration = () => {
 		handleSubmit,
 		register,
 		reset,
+		control,
 		formState: { errors, isValid, isDirty, isSubmitting },
 	} = useForm<FormData>({
 		resolver: yupResolver(SignupSchema),
@@ -104,7 +106,21 @@ export const Registration = () => {
 								</ErrorMessage>
 							</>
 						))}
+						<PhoneInput
+							name="phoneNumber"
+							control={control}
+							inputComponent={Input}
+							rules={{ required: true, validate: validatePhone }}
+							placeholder="+375 99 9999999"
+							errorMessage={errors.root?.message}
+						/>
 					</Inputs>
+					<ErrorMessage>
+						{Object.keys(errors).map((fieldName) => (
+							<p key={fieldName}>{errors.root?.message || `Phone number not correct`}</p>
+						))}
+					</ErrorMessage>
+
 					<StyledLink to={Paths.HOME}>Use email</StyledLink>
 					<SubTitle>Date of birth</SubTitle>
 					<AgeConfirmText>{AGE_TEXT_CONFIRM}</AgeConfirmText>
@@ -121,9 +137,12 @@ export const Registration = () => {
 						))}
 					</SelectWrapper>
 					<ErrorMessage>
-						{Object.keys(errors).map((fieldName) => (
-							<p key={fieldName}>{errors.root?.message || `Required ${fieldName}!`}</p>
-						))}
+						{Object.keys(errors).map((fieldName) => {
+							if (fieldName === 'phoneNumber') {
+								return false;
+							}
+							return <p key={fieldName}>{errors.root?.message || `Required ${fieldName}!`}</p>;
+						})}
 					</ErrorMessage>
 
 					<ButtonWrapper>
