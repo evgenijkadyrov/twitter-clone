@@ -29,7 +29,6 @@ export const ContentBlock = () => {
 	};
 
 	const { tweets } = useFetchTweetsByUser(id as string);
-	console.log('tweets', tweets);
 
 	return (
 		<Content data-testid="content">

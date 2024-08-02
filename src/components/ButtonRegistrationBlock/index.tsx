@@ -3,8 +3,10 @@ import Google from '@assets/icons/google-icon.svg';
 import { ButtonRegistration } from '@components/ui/ButtonRegistration';
 
 import { Paths } from '@/constants/routerPaths';
+import { getErrorMessage } from '@/helpers/getErrorMessage';
 import { signUpWithGoogle } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 
 export const ButtonRegistrationBlock = () => {
@@ -15,7 +17,7 @@ export const ButtonRegistrationBlock = () => {
 			const data = await signUpWithGoogle();
 			dispatch(userActions.fetchUser(data));
 		} catch (error) {
-			console.log(error);
+			dispatch(notificationActions.showError({ error: getErrorMessage(error) }));
 		}
 	};
 	const handleEmailClick = () => {

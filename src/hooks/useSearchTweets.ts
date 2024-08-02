@@ -4,8 +4,10 @@ import { collection, endAt, getDocs, orderBy, query, startAt, where } from 'fire
 
 import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
+import { getErrorMessage } from '@/helpers/getErrorMessage';
 import { useAppDispatch } from '@/store';
 import { loadingActions } from '@/store/loadingSlice';
+import { notificationActions } from '@/store/notificationSlice';
 import { User } from '@/store/userSlice';
 
 interface UseTweets {
@@ -50,7 +52,7 @@ export const useSearchTweets = ({ debouncedValue, setData }: UseTweets) => {
 			setData(tweets);
 			dispatch(loadingActions.setLoading(false));
 		} catch (error) {
-			console.error('Error getting tweets:', error);
+			dispatch(notificationActions.showError({ error: getErrorMessage(error) }));
 		}
 	}, [debouncedValue, setData, dispatch]);
 	return getTweets;
