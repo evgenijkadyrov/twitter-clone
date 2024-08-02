@@ -52,8 +52,10 @@ export const TweetText = styled.div`
 		font-size: ${({ theme }) => theme.fontSize.f12};
 	}
 `;
-export const Settings = styled.div`
+export const Settings = styled.button`
 	display: flex;
+	height: 20px;
+	width: 20px;
 	justify-content: flex-end;
 	color: ${({ theme }) => theme.textColor};
 `;
@@ -73,4 +75,27 @@ export const TweetWrapper = styled.div`
     @media screen and (max-width: 768px) {
       margin-bottom: ${Sizes.MarginSizes.m10};
     }
+`;
+
+export const InputEditable = styled.input`
+	width: 80%;
+	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.input.border.primary};
+	padding: ${Sizes.MarginSizes.m15};
+	outline: none;
+	font: inherit;
+	font-size: ${({ theme }) => theme.fontSize.f18};
+	color: ${({ theme }) => theme.input.textColor.primary};
+	background-color: ${({ theme }) => theme.input.backgroundColor.primary};
+	border-radius: ${Sizes.BorderRadiusSizes.br06};
+	transition: all 0.3s linear;
+
+	&:focus {
+		border-color: ${({ theme }) => theme.input.border.focused};
+	}
+
+	&::placeholder {
+		font: inherit;
+		font-size: ${({ theme }) => theme.fontSize.f18};
+		color: ${({ theme }) => theme.input.placeholder.primary};
+	}
 `;

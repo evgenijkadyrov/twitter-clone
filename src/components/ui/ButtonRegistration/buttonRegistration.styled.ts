@@ -23,6 +23,9 @@ export const ButtonIcon = styled.img`
 	width: ${Sizes.WidthSizes.w32};
 	height: ${Sizes.HeightSizes.h32};
 	margin-right: ${Sizes.MarginSizes.m10};
+	&:hover {
+		cursor: pointer;
+	}
 `;
 export const ButtonText = styled.p`
 	font-size: ${({ theme }) => theme.fontSize.f20};

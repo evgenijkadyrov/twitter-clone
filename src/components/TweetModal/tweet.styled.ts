@@ -12,30 +12,30 @@ export const Container = styled.div`
 `;
 
 export const Modal = styled.div`
-	position: relative;
+  position: relative;
 
-	width: ${Sizes.WidthSizes.w500};
-	height: ${Sizes.HeightSizes.h250};
-	padding: ${Sizes.PaddingSizes.p20};
+  width: ${Sizes.WidthSizes.w500};
+  height: ${Sizes.HeightSizes.h250};
+  padding: ${Sizes.PaddingSizes.p20};
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
-	box-shadow: 0 0 ${Sizes.HeightSizes.h04} ${({ theme }) => theme.shadowColor};
-	border-radius: ${Sizes.BorderRadiusSizes.br06}
-	background-color: ${({ theme }) => theme.backgroundColor};
+  box-shadow: 0 0 ${Sizes.HeightSizes.h04} ${({ theme }) => theme.shadowColor};
+  border-radius: ${Sizes.BorderRadiusSizes.br06}
+  background-color: ${({ theme }) => theme.backgroundColor};
 
-	@media screen and (max-width: 1085px) {
-		padding-top: ${Sizes.PaddingSizes.p32};
-		width: 100%;
-	}
+  @media screen and (max-width: 1085px) {
+    padding-top: ${Sizes.PaddingSizes.p32};
+    width: 100%;
+  }
 
-	@media screen and (max-width: 768px) {
-		height: auto;
-		padding-bottom: ${Sizes.PaddingSizes.p10};
-	}
+  @media screen and (max-width: 768px) {
+    height: auto;
+    padding-bottom: ${Sizes.PaddingSizes.p10};
+  }
 `;
 export const ButtonClose = styled.button`
 	position: absolute;

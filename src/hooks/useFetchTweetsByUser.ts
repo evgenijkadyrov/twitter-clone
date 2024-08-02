@@ -46,7 +46,12 @@ export const useFetchTweetsByUser = (id: string | null) => {
 
 				try {
 					const tweets = await Promise.all(tweetPromises);
-					const sortedTweets = tweets.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+					const sortedTweets = tweets?.slice().sort((a, b) => {
+						if (b.createdAt !== null && a.createdAt !== null) {
+							return b.createdAt.seconds - a.createdAt.seconds;
+						}
+						return 0;
+					});
 					setTweets(sortedTweets);
 				} catch (error) {
 					dispatch(notificationActions.showError({ error: getErrorMessage(error) }));

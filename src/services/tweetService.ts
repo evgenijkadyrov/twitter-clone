@@ -1,4 +1,5 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { addDoc, collection, deleteDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 
 import { db } from '@/firebase';
@@ -12,7 +13,7 @@ export const uploadImage = (
 	}
 
 	const storage = getStorage();
-	const imageName = `images/${uploadedImage.name}`;
+	const imageName = `images/${uploadedImage.name + Date.now()}`;
 
 	const imageRef = ref(storage, imageName);
 	const uploadTask = uploadBytesResumable(imageRef, uploadedImage);
@@ -42,7 +43,29 @@ const sendTweet = async (tweetContent: string, userId: string | null, imageName:
 		likedList: [],
 	});
 };
+const deleteTweet = async (tweetId: string) => {
+	const tweetsCollectionRef = doc(db, 'tweets', tweetId);
+	await deleteDoc(tweetsCollectionRef);
+};
+export const updateTweetInfo = async (
+	tweetId: string,
+	tweetContent: string,
+	id: string
+): Promise<void> => {
+	const auth = getAuth();
+	const user = auth.currentUser;
+	if (!user || !id) {
+		throw new Error('not authorized');
+	}
 
+	const userRef = doc(db, 'tweets', tweetId);
+
+	await updateDoc(userRef, {
+		tweetContent,
+	});
+};
 export const TweetService = {
 	sendTweet,
+	deleteTweet,
+	updateTweetInfo,
 };
