@@ -8,6 +8,7 @@ import { UserNameBlock } from '@components/ui/UserNameBlock';
 import { Button } from '@/components/ui/Button';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
+import { useModalScrollLock } from '@/hooks/useModalScrollLock';
 import { useNotification } from '@/hooks/useNotification';
 import { signOut } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
@@ -28,7 +29,7 @@ export const SideBar = () => {
 	const modalClickHandler = (): void => {
 		setIsOpenModal((prev) => !prev);
 	};
-
+	useModalScrollLock(isOpenModal);
 	const handleLogout = async () => {
 		try {
 			await signOut();
