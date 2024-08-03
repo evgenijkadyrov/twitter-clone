@@ -13,8 +13,10 @@ import {
 
 import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
+import { getErrorMessage } from '@/helpers/getErrorMessage';
 import { useAppDispatch } from '@/store';
 import { loadingActions } from '@/store/loadingSlice';
+import { notificationActions } from '@/store/notificationSlice';
 import { User, UserWithFollow } from '@/store/userSlice';
 
 const NUMBER_OF_RECOMMENDATION_USER = 3;
@@ -52,7 +54,7 @@ export const useUsers = ({
 				setUsersByRecommendation(userData as UserWithFollow[]);
 			});
 		} catch (error) {
-			console.log('Error getting users: ', error);
+			dispatch(notificationActions.showError({ error: getErrorMessage(error) }));
 			throw error;
 		} finally {
 			dispatch(loadingActions.setLoading(false));
@@ -77,7 +79,7 @@ export const useUsers = ({
 			setData(userData as User[]);
 			dispatch(loadingActions.setLoading(false));
 		} catch (error) {
-			console.log('Error getting users: ', error);
+			dispatch(notificationActions.showError({ error: getErrorMessage(error) }));
 		}
 	}, [dispatch, setData, debouncedValue]);
 	return { getRecommendationUsers, getSearchUsers };

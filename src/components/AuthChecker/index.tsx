@@ -9,7 +9,7 @@ interface IProps {
 	children?: ReactNode;
 }
 
-export const CheckAuth = ({ children }: IProps) => {
+export const AuthChecker = ({ children }: IProps) => {
 	const { token, id } = useSelector(userSelector);
 	const navigate = useNavigate();
 	useEffect(() => {

@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
-import { UpdateSchema } from '@/validation/signUpValidation';
+import { updateSchema } from '@/validation/updateUserSchema';
 
 export interface ProfileEditModalProps {
 	closeModal: () => void;
 }
 
-export type FormData = yup.InferType<typeof UpdateSchema>;
+export type FormData = yup.InferType<typeof updateSchema>;

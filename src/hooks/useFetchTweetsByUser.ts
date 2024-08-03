@@ -4,11 +4,14 @@ import { collection, getDocs, onSnapshot, orderBy, query, where } from 'firebase
 
 import { DbCollection } from '@/constants/textConstant';
 import { db } from '@/firebase';
+import { getErrorMessage } from '@/helpers/getErrorMessage';
+import { useAppDispatch } from '@/store';
+import { notificationActions } from '@/store/notificationSlice';
 import { User } from '@/store/userSlice';
 
 export const useFetchTweetsByUser = (id: string | null) => {
 	const [tweets, setTweets] = useState<TweetResponse[]>([]);
-
+	const dispatch = useAppDispatch();
 	useEffect(() => {
 		const getTweets = () => {
 			let tweetQuery;
@@ -43,10 +46,15 @@ export const useFetchTweetsByUser = (id: string | null) => {
 
 				try {
 					const tweets = await Promise.all(tweetPromises);
-					const sortedTweets = tweets.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+					const sortedTweets = tweets?.slice().sort((a, b) => {
+						if (b.createdAt !== null && a.createdAt !== null) {
+							return b.createdAt.seconds - a.createdAt.seconds;
+						}
+						return 0;
+					});
 					setTweets(sortedTweets);
 				} catch (error) {
-					console.error('Error getting tweets:', error);
+					dispatch(notificationActions.showError({ error: getErrorMessage(error) }));
 				}
 			});
 		};

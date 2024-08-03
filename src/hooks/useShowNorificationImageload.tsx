@@ -6,22 +6,16 @@ import { IMAGE_LOADED, IMAGE_LOADED_PERCENT } from '@/constants/textConstant';
 interface ShowNotificationUploadImage {
 	renderProgressNotification: () => ReactNode;
 }
+
 export const useShowNotificationUploadImage = (
-	progress: number | null,
-	setProgress: (progress: null | number) => void
+	progress: number | null
 ): ShowNotificationUploadImage => {
 	const [showProgressNotification, setShowProgressNotification] = useState<boolean>(false);
 	useEffect(() => {
 		setShowProgressNotification(true);
-
-		const timeoutId = setTimeout(() => {
+		if (progress === null) {
 			setShowProgressNotification(false);
-			setProgress(null);
-		}, 2000);
-
-		return () => {
-			clearTimeout(timeoutId);
-		};
+		}
 	}, [progress]);
 	const renderProgressNotification = () => {
 		if (!showProgressNotification) {

@@ -21,7 +21,15 @@ export enum DbCollection {
 }
 export const FOLLOW = 'Follow';
 export const UNFOLLOW = 'Unfollow';
+
 export enum SearchPath {
 	users = 'users',
 	tweets = 'tweets',
 }
+export enum SearchPlaceholder {
+	users = 'Search users',
+	tweets = 'Search tweets',
+}
+
+export const SIGN_UP_GOOGLE = 'Sign up with Google';
+export const SIGN_UP_EMAIL = 'Sign up with email';

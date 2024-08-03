@@ -6,6 +6,7 @@ export const SideBarWrapper = styled.div<{ $isVisible?: boolean }>`
 	display: flex;
 	flex-basis: 10%;
 	flex-direction: column;
+	padding-top: ${Sizes.PaddingSizes.p20};
 
 	@media screen and (max-width: 768px) {
 		position: absolute;
@@ -13,7 +14,7 @@ export const SideBarWrapper = styled.div<{ $isVisible?: boolean }>`
 		left: ${({ $isVisible }) => ($isVisible ? '0' : '-100%')};
 		z-index: 10;
 
-		height: 100%;
+		min-height: 100vh;
 		padding-left: ${Sizes.PaddingSizes.p35};
 		padding-right: ${Sizes.PaddingSizes.p20};
 
@@ -47,16 +48,10 @@ export const Span = styled.span`
 	transition:
 		transform 0.5s linear,
 		opacity 0.55s linear;
-
-	@media screen and (max-width: 568px) {
-		width: ${Sizes.WidthSizes.w20};
-		height: ${Sizes.HeightSizes.h03};
-	}
 `;
 export const Burger = styled.div<{ $isVisible?: boolean }>`
 	height: 100%;
 	padding-top: ${Sizes.PaddingSizes.p35};
-
 	display: none;
 	position: relative;
 	top: 0;
