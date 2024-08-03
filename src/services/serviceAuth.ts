@@ -23,7 +23,7 @@ import * as yup from 'yup';
 import { db } from '@/firebase';
 import { LoginFormFields } from '@/services/interfaces';
 import { User } from '@/store/userSlice';
-import { validatePhone } from '@/validation/signUpValidation';
+import { validatePhone } from '@/validation/validatePhone';
 
 export const validateEmail = (email: string | undefined): boolean =>
 	yup.string().email().isValidSync(email);

@@ -20,7 +20,8 @@ import { RegistrationFormData } from '@/pages/Registration/registration.interfac
 import { singUp } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
 import { userActions } from '@/store/userSlice';
-import { SignupSchema, validatePhone } from '@/validation/signUpValidation';
+import { signupSchema } from '@/validation/signUpValidation';
+import { validatePhone } from '@/validation/validatePhone';
 
 import {
 	AgeConfirmText,
@@ -36,7 +37,7 @@ import {
 	Wrapper,
 } from './registration.styled';
 
-type FormData = yup.InferType<typeof SignupSchema>;
+type FormData = yup.InferType<typeof signupSchema>;
 export const Registration = () => {
 	const {
 		handleSubmit,
@@ -45,7 +46,7 @@ export const Registration = () => {
 		control,
 		formState: { errors, isValid, isDirty, isSubmitting },
 	} = useForm<FormData>({
-		resolver: yupResolver(SignupSchema),
+		resolver: yupResolver(signupSchema),
 		mode: 'onBlur',
 	});
 	const dispatch = useAppDispatch();

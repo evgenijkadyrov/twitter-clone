@@ -14,7 +14,7 @@ import { useUpdateProfileInfo } from '@/hooks/useUpdateProfileInfo';
 import { Inputs } from '@/pages/Registration/registration.styled';
 import { userSelector } from '@/store/selectors';
 import { User } from '@/store/userSlice';
-import { UpdateSchema } from '@/validation/signUpValidation';
+import { updateSchema } from '@/validation/updateUserSchema';
 
 import { ButtonClose, Container, FormTitle, Modal } from './profileEdit.styled';
 
@@ -25,7 +25,7 @@ export const ProfileEditModal = ({ closeModal }: ProfileEditModalProps) => {
 		reset,
 		formState: { errors, isValid, isDirty, isSubmitting },
 	} = useForm<FormData>({
-		resolver: yupResolver(UpdateSchema),
+		resolver: yupResolver(updateSchema),
 		mode: 'onBlur',
 	});
 	const user = useSelector(userSelector);

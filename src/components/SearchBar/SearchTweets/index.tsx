@@ -18,6 +18,7 @@ export const SearchAbstract = memo(({ searchPath, data, clearSearch }: SearchAbs
 	const isLoading = useSelector(loadingSelector);
 	return (
 		<div>
+			{data.length === 0 && <div>results not found</div>}
 			{isLoading ? (
 				<LoadingSpinner />
 			) : (
