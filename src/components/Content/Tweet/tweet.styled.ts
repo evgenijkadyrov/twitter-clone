@@ -77,7 +77,7 @@ export const TweetWrapper = styled.div`
     }
 `;
 
-export const InputEditable = styled.textarea`
+export const TextAreaEditable = styled.textarea`
 	width: 80%;
 	border: ${Sizes.BorderSizes.b01} solid ${({ theme }) => theme.input.border.primary};
 	padding: ${Sizes.MarginSizes.m15};

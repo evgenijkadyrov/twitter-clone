@@ -16,7 +16,13 @@ import { TweetService } from '@/services/tweetService';
 import { userSelector } from '@/store/selectors';
 
 import { TweetComponentProps } from './tweet.interface';
-import { InputEditable, TweetContainer, TweetImage, TweetText, TweetWrapper } from './tweet.styled';
+import {
+	TextAreaEditable,
+	TweetContainer,
+	TweetImage,
+	TweetText,
+	TweetWrapper,
+} from './tweet.styled';
 
 export const TweetComponent = memo(
 	({ tweet, handleClickTweet, imageHeight, showTweetImage = true }: TweetComponentProps) => {
@@ -72,11 +78,11 @@ export const TweetComponent = memo(
 				);
 			}
 		};
-		const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) =>
+		const handleChangeTextArea = (e: ChangeEvent<HTMLTextAreaElement>) =>
 			setNewTweetContent(e.target.value);
 
-		const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = async (
-			e: KeyboardEvent<HTMLInputElement>
+		const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = async (
+			e: KeyboardEvent<HTMLTextAreaElement>
 		) => {
 			if (e.code === 'Enter') {
 				try {
@@ -102,9 +108,9 @@ export const TweetComponent = memo(
 						createdAt={formatDate}
 					/>
 					{showModalEdit ? (
-						<InputEditable
+						<TextAreaEditable
 							value={newTweetContent}
-							onChange={handleChangeInput}
+							onChange={handleChangeTextArea}
 							onKeyDown={handleKeyDown}
 							onBlur={handleFocusOut}
 						/>
