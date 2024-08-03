@@ -6,6 +6,9 @@ export const NavList = styled.nav`
 	padding-left: ${Sizes.PaddingSizes.p14};
 	display: flex;
 	flex-direction: column;
+	@media screen and (max-width: 768px) {
+		padding-top: ${Sizes.PaddingSizes.p50};
+	}
 `;
 
 export const Logo = styled.img`

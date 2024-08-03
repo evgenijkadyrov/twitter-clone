@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import logo from '@assets/images/twitter.svg';
 import { NavBar } from '@components/NavBar';
+import { Logo } from '@components/NavBar/navBar.styled';
 import { TweetModal } from '@components/TweetModal';
 import { TypeButton } from '@components/ui/Button/button.interface';
 import { UserNameBlock } from '@components/ui/UserNameBlock';
@@ -30,6 +32,7 @@ export const SideBar = () => {
 		setIsOpenModal((prev) => !prev);
 	};
 	useModalScrollLock(isOpenModal);
+	useModalScrollLock(isVisibleSidebar);
 	const handleLogout = async () => {
 		try {
 			await signOut();
@@ -52,6 +55,7 @@ export const SideBar = () => {
 			</Burger>
 
 			<SideBarWrapper $isVisible={isVisibleSidebar}>
+				{!isVisibleSidebar && <Logo src={logo} alt="logo" loading="lazy" />}
 				<NavBar />
 				<Button type={TypeButton.button} onClick={modalClickHandler}>
 					Tweet
