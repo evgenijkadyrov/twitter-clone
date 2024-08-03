@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useEffect, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, KeyboardEventHandler, memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { AuthorInfo } from '@components/Content/AuthorInfo';
 import { Avatar } from '@components/Content/CreatingTweetBlock/creatingTweetBlock.styled';
@@ -75,7 +75,9 @@ export const TweetComponent = memo(
 		const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) =>
 			setNewTweetContent(e.target.value);
 
-		const handleKeyDown = async (e: KeyboardEvent) => {
+		const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = async (
+			e: KeyboardEvent<HTMLInputElement>
+		) => {
 			if (e.code === 'Enter') {
 				try {
 					await handleEdit();

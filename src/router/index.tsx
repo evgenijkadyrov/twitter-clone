@@ -1,5 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import { CheckAuth } from '@components/Auth';
+import { AuthChecker } from '@components/AuthChecker';
 import { SuspenseLayoutForAuthBlock, SuspenseLayoutForMainContent } from '@components/Layouts';
 
 import { ContentBlock } from '@/components/Content';
@@ -11,7 +11,7 @@ import { TweetPage } from '@/pages/TweetPage';
 export const rootRouter = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path={Paths.HOME} errorElement="Error">
-			<Route element={<CheckAuth />}>
+			<Route element={<AuthChecker />}>
 				<Route element={<SuspenseLayoutForAuthBlock />}>
 					<Route index element={<Home />} />
 					<Route path={Paths.LOGIN} element={<Login />} />

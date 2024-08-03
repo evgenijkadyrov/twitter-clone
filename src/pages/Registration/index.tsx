@@ -20,7 +20,7 @@ import { RegistrationFormData } from '@/pages/Registration/registration.interfac
 import { singUp } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
 import { userActions } from '@/store/userSlice';
-import { signupSchema } from '@/validation/signUpValidation';
+import { signupSchema } from '@/validation/signupSchema';
 import { validatePhone } from '@/validation/validatePhone';
 
 import {

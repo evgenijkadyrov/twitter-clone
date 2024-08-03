@@ -3,6 +3,7 @@ import Google from '@assets/icons/google-icon.svg';
 import { ButtonRegistration } from '@components/ui/ButtonRegistration';
 
 import { Paths } from '@/constants/routerPaths';
+import { SIGN_UP_EMAIL, SIGN_UP_GOOGLE } from '@/constants/textConstant';
 import { getErrorMessage } from '@/helpers/getErrorMessage';
 import { signUpWithGoogle } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
@@ -27,13 +28,13 @@ export const ButtonRegistrationBlock = () => {
 		<>
 			<ButtonRegistration
 				data-testid="registration-block"
-				text="Sign up with Google"
+				text={SIGN_UP_GOOGLE}
 				icon={Google}
 				onclickHandler={handleGoogleClick}
 			/>
 			<ButtonRegistration
 				testId="registration-by-email"
-				text="Sign up with email"
+				text={SIGN_UP_EMAIL}
 				onclickHandler={handleEmailClick}
 			/>
 		</>
