@@ -16,11 +16,11 @@ import { login } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
 import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
-import { LoginSchema } from '@/validation/loginValidation';
+import { loginSchema } from '@/validation/loginSchema';
 
 import { ButtonWrapper, Inputs, Logo, Section, StyledLink, Title, Wrapper } from './login.styled';
 
-type FormData = yup.InferType<typeof LoginSchema>;
+type FormData = yup.InferType<typeof loginSchema>;
 export const Login = () => {
 	const {
 		handleSubmit,
@@ -28,7 +28,7 @@ export const Login = () => {
 		reset,
 		formState: { errors, isValid, isDirty, isSubmitting },
 	} = useForm<FormData>({
-		resolver: yupResolver(LoginSchema),
+		resolver: yupResolver(loginSchema),
 		mode: 'onBlur',
 	});
 	const dispatch = useAppDispatch();

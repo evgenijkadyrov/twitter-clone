@@ -15,6 +15,7 @@ import {
 	UserCommonInfo,
 } from '@/components';
 import { useFetchTweetsByUser } from '@/hooks/useFetchTweetsByUser';
+import { useModalScrollLock } from '@/hooks/useModalScrollLock';
 import { userSelector } from '@/store/selectors';
 
 import { Content } from './content.styled';
@@ -29,8 +30,7 @@ export const ContentBlock = () => {
 	};
 
 	const { tweets } = useFetchTweetsByUser(id as string);
-	console.log('tweets', tweets);
-
+	useModalScrollLock(isOpenModal);
 	return (
 		<Content data-testid="content">
 			{id !== myId && (

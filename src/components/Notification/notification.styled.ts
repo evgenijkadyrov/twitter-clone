@@ -4,7 +4,9 @@ import * as Sizes from '@/style/sizes';
 
 export const NotificationWrapper = styled.div`
 	display: flex;
-	position: absolute;
+	position: fixed;
+	top: 10px;
+	left: 20px;
 `;
 
 const fadeIn = keyframes`

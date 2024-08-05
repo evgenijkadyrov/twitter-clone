@@ -1,4 +1,4 @@
-import Google from '@assets/icons/google-icon.svg';
+import Google from '@assets/icons/google-icon-logo-svgrepo-com.svg';
 
 import {
 	Button,

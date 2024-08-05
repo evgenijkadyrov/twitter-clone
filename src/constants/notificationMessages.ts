@@ -11,4 +11,8 @@ export enum NotificationMessages {
 	ERROR_UPDATE_PROFILE = 'Error during update profile info',
 	SUCCESS_UPDATE_LKE = 'Like success updated',
 	ERROR_UPDATE_LIKE = 'Like not updated',
+	SUCCESS_TWEET_DELETE = 'Tweet success deleted',
+	ERROR_TWEET_DELETE = 'Tweet not deleted',
+	SUCCESS_TWEET_UPDATE = 'Tweet success update',
+	ERROR_TWEET_UPDATE = 'Tweet not updated',
 }

@@ -7,17 +7,18 @@ export const SearchBarWrapper = styled.div<{ $isVisible?: boolean }>`
 	flex-basis: 20%;
 	position: relative;
 	flex-direction: column;
-	margin-top: 20px;
+	padding-top: ${Sizes.PaddingSizes.p20};
 
 	@media screen and (max-width: 1068px) {
 		position: absolute;
 		top: 0;
 		right: ${({ $isVisible }) => ($isVisible ? '0' : '100%')};
+		display: ${({ $isVisible }) => ($isVisible ? 'block' : 'none')};
 		z-index: 10;
-
-		height: 100%;
-		padding: ${Sizes.PaddingSizes.p35} ${Sizes.PaddingSizes.p20};
-
+		margin-top: 0;
+		min-height: 100vh;
+		padding: ${Sizes.PaddingSizes.p64} ${Sizes.PaddingSizes.p20};
+		scroll-behavior: inherit;
 		background-color: ${({ theme }) => theme.backgroundColors.sidebar};
 		box-shadow: -${Sizes.BorderSizes.b01} 0 ${Sizes.HeightSizes.h20} 0 ${({ theme }) => theme.shadowColor};
 	}
@@ -42,10 +43,7 @@ export const Span = styled.span`
         transform 0.5s linear,
         opacity 0.55s linear;
 
-  @media screen and (max-width: 568px) {
-    width: ${Sizes.WidthSizes.w20};
-    height: ${Sizes.HeightSizes.h03};
-  }
+ 
     }
 `;
 

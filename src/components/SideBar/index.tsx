@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import logo from '@assets/images/twitter.svg';
 import { NavBar } from '@components/NavBar';
+import { Logo } from '@components/NavBar/navBar.styled';
 import { TweetModal } from '@components/TweetModal';
 import { TypeButton } from '@components/ui/Button/button.interface';
 import { UserNameBlock } from '@components/ui/UserNameBlock';
@@ -8,6 +10,7 @@ import { UserNameBlock } from '@components/ui/UserNameBlock';
 import { Button } from '@/components/ui/Button';
 import { ErrorsResponseCode } from '@/constants/errorsResponseCode';
 import { NotificationMessages } from '@/constants/notificationMessages';
+import { useModalScrollLock } from '@/hooks/useModalScrollLock';
 import { useNotification } from '@/hooks/useNotification';
 import { signOut } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
@@ -28,7 +31,8 @@ export const SideBar = () => {
 	const modalClickHandler = (): void => {
 		setIsOpenModal((prev) => !prev);
 	};
-
+	useModalScrollLock(isOpenModal);
+	useModalScrollLock(isVisibleSidebar);
 	const handleLogout = async () => {
 		try {
 			await signOut();
@@ -51,6 +55,7 @@ export const SideBar = () => {
 			</Burger>
 
 			<SideBarWrapper $isVisible={isVisibleSidebar}>
+				{!isVisibleSidebar && <Logo src={logo} alt="logo" loading="lazy" />}
 				<NavBar />
 				<Button type={TypeButton.button} onClick={modalClickHandler}>
 					Tweet

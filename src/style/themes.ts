@@ -33,7 +33,7 @@ export const LightTheme: DefaultTheme = {
 		},
 		border: {
 			primary: Colors.grey[100],
-			focused: Colors.black,
+			focused: Colors.grey[400],
 		},
 		placeholder: {
 			primary: Colors.grey[700],

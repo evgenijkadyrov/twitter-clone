@@ -18,6 +18,7 @@ export const SearchAbstract = memo(({ searchPath, data, clearSearch }: SearchAbs
 	const isLoading = useSelector(loadingSelector);
 	return (
 		<div>
+			{data.length === 0 && <div>results not found</div>}
 			{isLoading ? (
 				<LoadingSpinner />
 			) : (
@@ -30,14 +31,14 @@ export const SearchAbstract = memo(({ searchPath, data, clearSearch }: SearchAbs
 						</>
 					) : (
 						<>
-							{(data as User[]).map((user) => (
+							{(data as User[]).map(({ id, name, avatarImage, nickname }) => (
 								<UserNameBlock
-									key={user.id}
-									name={user.name}
-									avatarImage={user.avatarImage}
-									id={user.id}
+									key={id}
+									name={name}
+									avatarImage={avatarImage}
+									id={id}
 									clearSearch={clearSearch}
-									nickname={user.nickname}
+									nickname={nickname}
 								/>
 							))}
 						</>
