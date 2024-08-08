@@ -22,6 +22,7 @@ export const UserNameBlock = ({
 			clearSearch();
 		}
 	};
+
 	return (
 		<Row key={id}>
 			<Avatar background_url={avatarImage || defaultAvatar} />
