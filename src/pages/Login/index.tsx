@@ -14,6 +14,7 @@ import { handleFirebaseError } from '@/helpers/firebaseErrors';
 import { LoginFormFields } from '@/services/interfaces';
 import { login } from '@/services/serviceAuth';
 import { useAppDispatch } from '@/store';
+import { loadingActions } from '@/store/loadingSlice';
 import { notificationActions } from '@/store/notificationSlice';
 import { userActions } from '@/store/userSlice';
 import { loginSchema } from '@/validation/loginSchema';
@@ -34,10 +35,12 @@ export const Login = () => {
 	const dispatch = useAppDispatch();
 	const onSubmit: SubmitHandler<FormData> = async (data: LoginFormFields): Promise<void> => {
 		try {
+			dispatch(loadingActions.setLoading(true));
 			const { userData, uid, token } = await login(data);
 
 			const formattedUserData = formatUserData(userData, uid, token);
 			dispatch(userActions.fetchUser(formattedUserData));
+			dispatch(loadingActions.setLoading(false));
 			dispatch(
 				notificationActions.showSuccess({
 					success: NotificationMessages.SUCCESS_LOGIN,
