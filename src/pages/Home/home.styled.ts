@@ -55,7 +55,7 @@ export const Icon = styled.img`
 		margin-bottom: ${Sizes.MarginSizes.m15};
 	}
 `;
-export const Image = styled.img`
+export const ImageCustom = styled.img`
 	width: 60%;
 	max-height: 100vh;
 	@media screen and (max-width: 1068px) {
@@ -141,4 +141,10 @@ export const List = styled.div`
 		flex-wrap: wrap;
 		padding-top: ${Sizes.MarginSizes.m05};
 	}
+`;
+export const LoaderWrapper = styled.div`
+	display: flex;
+	margin-top: ${Sizes.MarginSizes.m60};
+	justify-content: center;
+	align-items: center;
 `;
